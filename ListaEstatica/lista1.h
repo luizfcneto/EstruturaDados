@@ -17,7 +17,7 @@ typedef struct tAluno{
 	char nome[50];
 	float nota1, nota2, nota3;
 	float media;
-	bool aprovado = false;
+	bool aprovado = false; //Aprovado = true quando media > 5
 }taluno;
 
 //Estrutura de Lista 
@@ -78,14 +78,11 @@ void adicionaLista(tlista* rlip, taluno* rap){
 	
 	//Adicionando no final da lista:
 	if( (*rlip).tamanho < MAX){ 	//Se o tamanho da lista for menor que o Maximo de alunos faça:
-		for(int i = 0; i < (*rlip).tamanho ; i++){		
-			if( (*rlip).tamanho == NULL ){
-				(*rlip).dados[i] = rap;
-				puts("Aluno adicionado com sucesso!");
-				(*rlip).tamanho++;
-			}
-			break;	
-		}	
+		
+		(*rlip).dados[tamanho] = rap;
+		(*rlip).tamanho++;
+		puts("Aluno adicionado com sucesso!");
+			
 	}else{
 		puts("Lista Cheia");
 	}
@@ -109,6 +106,25 @@ void adicionaLista(tlista* rlip, taluno* rap){
 
 
 //remover da lista, só é possivel caso ela nao seja vazia. Somente o primeiro, o ultimo e o termo do meio devem ser apagados
-void removeDaLista(tlista* rlip, ){
+void removeDaLista(tlista* rlip, int matriculaV){
+	int tamanhoAux;
+	if(rlip == NULL){
+		puts("Erro");
+	}
+	//Problema: Quando mais de um elemento da lista possuir a mesma matriculaV
+	for(int i = 0; i < (*rlip).tamanho; i++){
+		
+		if((*rlip).dados[i].matricula == matriculaV){
+			
+			(*rlip).dados[i] = (*rlip).dados[i+1];
+			tamanhoAux = i; //armazena a posicao do elemento que foi removido
+		}
+	}
 
+	//conserta todos os elementos acima da posicao do que foi removido para copiar-los pra posicao anterior
+	for(int j = 0; j < (*rlip).tamanho; j++){
+		if(j > tamanhoAux){
+			(*rlip).dados[i] = (*rlip).dados[i+1];
+		}
+	}
 }
