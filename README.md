@@ -18,7 +18,7 @@ Quando Utilizar?
   - Tamanho Máximo bem definido
   - Operação mais frequente é a de BUSCA
 
-2: Lista Dinamica
+2: Lista Dinamica [ENCADEADA]
 
  Vantagens:
    -
