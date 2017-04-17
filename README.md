@@ -21,7 +21,14 @@ Quando Utilizar?
 2: Lista Dinamica [ENCADEADA]
 
  Vantagens:
-   -
-
- Desvantagens:
-   -
+   - Melhor utilização dos recursos da memória (Se precisar de mais eu aloco durante o programa)
+   - Não precisa movimentar os elementos na lista nas operações de inserção e remoção
+   
+   
+Desvantagens:
+   - Acesso Indireto aos elemento (Todo conteudo será lincado por uma variavel ponteiro
+   - Necessidade de percorrer a lista para acessar a um elemento, conteudo.
+   
+Quando Utilizar?
+   - Quando não posso garantir a quantidade minima de memória pra aplicação
+   - Operações mais frequentes são Inserção e Remoção
