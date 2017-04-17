@@ -96,5 +96,6 @@ int main(void){
 	printaLista(lip);
 	//_______________________________________________
 
+	liberaLista(lip);
 	return 0;
 }
