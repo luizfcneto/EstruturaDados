@@ -8,31 +8,30 @@ Vazia -> se estiver vazia nao posso remover elementos(dados)
 Notação	:	rlip 	-> referencialistaponteiro.
 		:	rap 	-> referenciaAlunoponteiro.
 */
-#define MAX 200
+#define MAX 10
 
 
 //Estrutura de Aluno <DADO da LISTA>
 typedef struct tAluno{
-	int matricula;
+	int matricula; 	//Só iremos implementar as funcoes deste arquivo usando essa variavel
 	char nome[50];
 	float nota1, nota2, nota3;
 	float media;
-	bool aprovado = false; //Aprovado = true quando media > 5
 }taluno;
 
 //Estrutura de Lista 
 typedef struct  tLista{
 	int quantidade;		//Lista possui quantidade(inteiro)
-	Aluno dados[MAX];	//Lista possui vetor de Outra Estrutura Aluno[]
+	taluno dados[MAX];	//Lista possui vetor de Outra Estrutura Aluno[]
 
 }tlista;
 
 //Criar Lista		-> fopen() de arquivo
 tlista* criaLista(){
 	tlista *lip;
-	lip = (tlista)*malloc(sizeof(tlista));
+	lip = (tlista*)malloc(sizeof(tlista));
 	if(lip != NULL){	//Verifica se lista foi criada
-		(*lip).qtd = 0; //inicia quantidade de Lista = 0
+		(*lip).quantidade = 0; //inicia quantidade de Lista = 0
 	}
 	return lip;
 }
@@ -61,7 +60,7 @@ int listaCheia(tlista* rlip){
 }
 
 //Verifica se a lista esta vazia
-inr listaVazia(tlista* rlip){
+int listaVazia(tlista* rlip){
 	if(rlip == NULL){
 		return -1;
 	}else{
@@ -70,61 +69,85 @@ inr listaVazia(tlista* rlip){
 
 }
 
-//adicionar na lista 	Existem 3 tipos de insercao na lista
-void adicionaLista(tlista* rlip, taluno* rap){
+//adicionar no inicio da  lista 
+void adicionaInicioLista(tlista* rlip, taluno* rap){
 	if(rlip == NULL){
-		return 0;				
-	}
-	
-	//Adicionando no final da lista:
-	if( (*rlip).tamanho < MAX){ 	//Se o tamanho da lista for menor que o Maximo de alunos faça:
-		
-		(*rlip).dados[tamanho] = rap;
-		(*rlip).tamanho++;
-		puts("Aluno adicionado com sucesso!");
-			
-	}else{
-		puts("Lista Cheia");
+		puts("ERRO - Lista Invalida");				
 	}
 
 	//Adiciona no inicio da lista:
-	if( (*rlip).tamanho < MAX ){
+	if( (*rlip).quantidade < MAX ){
 		//percorrer a lista do ultimo elemento ate o primeiro, coipando eles em uma posicao acima pra gerar espaço no inicio da lista
-		for(int i = (*rlip).tamanho ; i <= 0 ; i--){
-			(*rlip).dados[i+1] = (*rlip).dados[i];
-
+		for(int i = (*rlip).quantidade-1 ; i >= 0 ; i--){
+			(*rlip).dados[i+1].matricula = (*rlip).dados[i].matricula;	
 		}
 		//adicionar o elemento na primeira posiçao
-		(*rlip).dados[0] = rap;
-		(*rlip).tamanho++;
+		(*rlip).dados[0].matricula = (*rap).matricula;
+		(*rlip).quantidade++;
+		puts("Aluno adicionado no inicio da lista com sucesso! ");
 	}else{
-		puts("Lista Cheia");
+		puts("ERRO - Lista Cheia \n");
 	}
 	
-	//
 }
 
 
+//Adiciona no final da lista
+void adicionaFinalLista(tlista* rlip, taluno* rap){
+	if(rlip == NULL){
+		puts("ERRO - Lista Invalida");				
+	}
+		
+	if( (*rlip).quantidade < MAX){ 	//Se o tamanho da lista for menor que o Maximo de alunos faça:
+		
+		(*rlip).dados[(*rlip).quantidade].matricula = (*rap).matricula;
+		(*rlip).quantidade++;
+		puts("Aluno adicionado no final da lista com sucesso!");
+			
+	}else{
+		puts("ERRO - Lista Cheia! \n");
+	}
+}
+
 //remover da lista, só é possivel caso ela nao seja vazia. Somente o primeiro, o ultimo e o termo do meio devem ser apagados
 void removeDaLista(tlista* rlip, int matriculaV){
-	int tamanhoAux;
-	if(rlip == NULL){
-		puts("Erro");
+	int tamanhoAux = -1;
+	if( rlip == NULL ){
+		puts("ERRO - lista Invalida");
 	}
 	//Problema: Quando mais de um elemento da lista possuir a mesma matriculaV
-	for(int i = 0; i < (*rlip).tamanho; i++){
+	for(int i = 0; i < (*rlip).quantidade; i++){
 		
 		if((*rlip).dados[i].matricula == matriculaV){
 			
-			(*rlip).dados[i] = (*rlip).dados[i+1];
+			(*rlip).dados[i].matricula = (*rlip).dados[i+1].matricula;
+			(*rlip).quantidade--;
 			tamanhoAux = i; //armazena a posicao do elemento que foi removido
+			printf("Elemento: %d removido com sucesso \n",i);
 		}
 	}
 
 	//conserta todos os elementos acima da posicao do que foi removido para copiar-los pra posicao anterior
-	for(int j = 0; j < (*rlip).tamanho; j++){
-		if(j > tamanhoAux){
-			(*rlip).dados[i] = (*rlip).dados[i+1];
+	if( tamanhoAux != -1){
+		for(int j = tamanhoAux; j < (*rlip).quantidade; j++){
+			(*rlip).dados[j].matricula = (*rlip).dados[j+1].matricula;
 		}
 	}
+
+	if(tamanhoAux == -1){
+		puts("ERRO - Elemento inexistente na lista \n");
+	}
+}
+
+//Colocarei para printar apenas a matricula do aluno 
+void printaLista(tlista* rlip){
+	if(rlip == NULL){
+		puts("Erro ao criar Lista");
+	}
+	printf("Numero de elementos nessa lista: %d \n",(*rlip).quantidade);
+	for (int i = 0; i < (*rlip).quantidade; i++){
+		printf("	[%d] - [ %d ]  \n",i, (*rlip).dados[i].matricula);
+	}
+	printf("_____________________________________________________________\n");
+	
 }
