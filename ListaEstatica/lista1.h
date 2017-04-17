@@ -109,6 +109,24 @@ void adicionaFinalLista(tlista* rlip, taluno* rap){
 	}
 }
 
+//Adiciona em alguma posição especifica
+void adicionaPosicaoLista(tlista* rlip, taluno* rap, int posicao){
+	if(rlip == NULL){
+		puts("ERRO - Lista Invalida");
+	}
+	if((*rlip).quantidade < MAX){
+		for(int i = (*rlip).quantidade-1; i > posicao; i++){
+				(*rlip).dados[i+1].matricula = (*rlip).dados[i].matricula;
+		}
+
+		(*rlip).dados[posicao].matricula = (*rap).matricula;
+		(*rlip).quantidade++;
+		printf("Elemento [ %d ] adicionado com sucesso na posicao: [ %d ]!\n", (*rlip).dados[posicao].matricula, posicao);
+	}else{
+		puts("ERRO - Lista Cheia! \n");
+	}
+}
+
 //remover da lista, só é possivel caso ela nao seja vazia. Somente o primeiro, o ultimo e o termo do meio devem ser apagados
 void removeDaLista(tlista* rlip, int matriculaV){
 	int tamanhoAux = -1;
@@ -150,4 +168,35 @@ void printaLista(tlista* rlip){
 	}
 	printf("_____________________________________________________________\n");
 	
+}
+
+//Busca na lista, pode ser busca por indice ou por conteudo[DADOS]
+void buscaPorIndice(tlista* rlip, int posicao){
+	if(rlip == NULL){
+		puts("ERRO - Lista Invalida! \n");
+	}else if(posicao >= (*rlip).quantidade || posicao <=0 ){
+		puts("ERRO - Elemento não pertence a essa lista!\n");
+	}else{
+		printf("	[%d] - [ %d ]  \n",posicao, (*rlip).dados[posicao].matricula);
+	}
+}
+
+//Busca por um conteudo [DADOS], especificamente matricula
+void buscaPorConteudo(tlista* rlip, int matriculaV){
+	int aux = -1;
+	if(rlip == NULL){
+		puts("ERRO - Lista Invalida! \n");
+	}else{	
+		for(int i = 0; i < (*rlip).quantidade ; i++){
+			if((*rlip).dados[i].matricula == matriculaV){
+				printf("	[%d] - [ %d ]  \n",i, (*rlip).dados[i].matricula);
+				aux = i;
+			}
+		}
+		if(aux == -1){
+			puts("ERRO - Elemento não pertence a essa lista! \n");
+		}
+	}
+
+
 }

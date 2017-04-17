@@ -94,7 +94,16 @@ int main(void){
 	adicionaFinalLista(lip,ap);
 
 	printaLista(lip);
-	//_______________________________________________
+	//_______________________________________________OK
+
+	//Não existe
+	buscaPorIndice(lip, -1);
+	buscaPorConteudo(lip, (*ap).matricula);
+
+	//Existe
+	buscaPorIndice(lip, 7);
+	(*ap).matricula = 111112;
+	buscaPorConteudo(lip, (*ap).matricula);
 
 	liberaLista(lip);
 	return 0;
