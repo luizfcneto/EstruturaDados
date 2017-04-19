@@ -2,7 +2,7 @@
 1-	Inicia-se uma lista encadeada com um ponteiro da lista apontando pra um elemento com conteudo nulo.	
 2-	Quando um ponteiro de um elemento aponta para nulo, quer dizer que esse elemento é o ultimo.
 		
-
+Notação: relep = ponteiro de um ponteiro <=> (*relep) Inicio do elemento <=> (*relep).proximo => segundo elemento(que é um ponteiro)
 */
 
 //Para fazer algo simples e demonstrativo irei deixar a estrutura aluno apenas com matricula
@@ -13,15 +13,15 @@ typedef struct tAluno{
 	//float nota1, nota2, nota3, media;
 }taluno;
 
-typedef struct tElementoListaEncadeada{
+typedef struct tElementoDaListaEncadeada{
 	tlelemento proximo*;	//é um ponteiro para o mesmo tipo de variavel
 	taluno info; 	//(*taluno).info.matricula
-}telemento;
+}*tElementoDaListaEncadeada;
 
 //Cria a lista Encadeada
-telemento* criaLista(telemento* relep){
-	telemento listaEncadeada;
-	listaEncadeada = (telemento*)malloc(sizeof(relep));
+tElementoDaListaEncadeada* criaLista(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada){
+	tElementoDaListaEncadeada listaEncadeada;
+	listaEncadeada = (tElementoDaListaEncadeada*)malloc(sizeof(tElelementoDaListaEncadeada));
 	if(listaEncadeada != NULL){
 		listaEncadeada* = NULL;	//*Tenho que devolver o primeiro ponteiro com conteudo de onde aponta pra Nulo;
 	}
@@ -30,25 +30,25 @@ telemento* criaLista(telemento* relep){
 }
 
 //Libera o espaço utilizado pela lista
-void liberaListaEncadeada(telemento* relep){
-	if(relep != NULL){	//Se o ponteiro estiver apontando pra alguem
-		telemento noh*;		//noh é auxiliar
-		while( (*relep) != NULL){	//Enquanto eu tenho conteudo na lista
-			noh = (*relep);
-			(*relep) = (*relep).proximo;
+void liberaListaEncadeada(tElelementoDaListaEncadeada* referenciaElementoDaListaEncadeada){
+	if(referenciaElementoDaListaEncadeada != NULL){	//Se o ponteiro estiver apontando pra alguem
+		tElementoDaListaEncadeada noh*;		//noh é auxiliar
+		while( (*referenciaElementoDaListaEncadeada) != NULL){	//Enquanto eu tenho conteudo na lista
+			noh = (*referenciaElementoDaListaEncadeada);
+			(*referenciaElementoDaListaEncadeada) = (*referenciaElementoDaListaEncadeada).proximo;
 			free(noh);
 		}
-		free(rlep);
+		free(referenciaElementoDaListaEncadeada);
 	}	
 }
 
 //Adiciona elemento novo no final da lista encadeada
-void adicionaElementoFinal(telemento* relep, taluno* rap){
+void adicionaElementoFinal(tElementoDaListaEncadeada* referenciaElementoDalistaEncadeada, taluno* rap){
 	//Caso não tenha ponteiro apontando para o primeiro ponteiro
-	if( relep == NULL ){
+	if( referenciaElementoDaListaEncadeada == NULL ){
 		puts("ERRO - Lista Invalida! \n");
 	}
-	telemento noh* = (telemento*)malloc(sizeof(telemento));	//crio um ponteiro para um novo elemento
+	tElementoDaListaEncadeada noh* = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));	//crio um ponteiro para um novo elemento
 
 	//Verifica se um novo elemento(noh) foi criado
 	if( noh == NULL){
@@ -58,27 +58,28 @@ void adicionaElementoFinal(telemento* relep, taluno* rap){
 	(*noh).proximo = NULL;
 	
 	//Verifica se o inicio é vazio
-	if( (*relep) == NULL ){
-		(*relep) = noh;		//caso seja, vai apontar pro primeiro elemento(que eu adicionei)
+	if( (*referenciaElementoDaListaEncadeada) == NULL ){
+		(*referenciaElementoDaListaEncadeada) = noh;		//caso seja, vai apontar pro primeiro elemento(que eu adicionei)
 	}
 
 	//caso ja exista ponteiro apontando para elementos:
-	telemento aux* = (telemento*)malloc(sizeof(telemento));	//crio um outro ponteiro de elemento para me auxiliar
-	aux = (*relep);	// aponta para o primeiro elemento
-	while(	(*aux).proximo != NULL	){
-		aux = (*aux).proximo;
+	tElementoDaListaEncadeada aux* = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));	//crio um outro ponteiro de elemento para me auxiliar
+	aux = (*referenciaElementoDaListaEncadeada);	// aponta para o primeiro elemento
+	
+	while( (*aux).proximo != NULL ){
+		aux = (*aux).proximo;	//
 	}
 	(*aux).proximo = noh;
 }
 
 //Adiciono um elemento novo no inicio
-void adicionaElementoInicio(telemento* relep, taluno* rap){
+void adicionaElementoInicio(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, taluno* rap){
 	//Caso não tenha ponteiro apontando para o primeiro ponteiro
-	if( relep == NULL){
+	if( referenciaElementoDaListaEncadeada == NULL){
 		puts("ERRO - Lista Invalida! \n");
 	}
-	telemento noh*;
-	noh = (telemento*)malloc(sizeof(telemento)); 	//Cria nó novo
+	tElementoDaListaEncadeada noh*;
+	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada)); 	//Cria nó novo
 	
 	//Verifica se um novo elemento(noh) foi criado
 	if( noh = NULL){
@@ -86,8 +87,8 @@ void adicionaElementoInicio(telemento* relep, taluno* rap){
 	}
 	//Funciona tanto para como o primeiro elemento a ser criado, como para caso ja exista elemento nessa lista
 	(*noh).info = (*rap).matricula;
-	(*noh).proximo = (*relep);	//nó novo aponta pro endereço que apontava pro primeiro(que agora sera o segundo)
-	(*relep) = noh;	//endereço do inicio aponta pro novo primeiro noh
+	(*noh).proximo = (*referenciaElementoDaListaEncadeada);	//nó novo aponta pro endereço que apontava pro primeiro(que agora sera o segundo)
+	(*referenciaElementoDaListaEncadeada) = noh;	//endereço do inicio aponta pro novo primeiro noh
 }
 
 //adiciono um elemento novo em qualquer lugar
