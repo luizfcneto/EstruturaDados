@@ -92,36 +92,65 @@ void adicionaElementoInicio(tElementoDaListaEncadeada* referenciaElementoDaLista
 }
 
 //adiciono um elemento novo em qualquer lugar
-		if(tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) > posicao || tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) < 0 )
-		void adicionaElementoPosicao(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, taluno rap ,int posicao){
-		if(referenciaElementoDaListaEncadeada != NULL){
-			puts("ERRO - Lista Invaldia!\n");
-		}
-		int i = 0;
-		tElementoDaListaEncadeada *noh;
-		noh = referenciaElementoDaListaEncadeada;
-		while( (*noh) != NULL ){
-				i++;
-				if( i != posicao )
-				if( i == posicao){
-							(*noh).info = (*rap).matricula;
-							(*noh).proximo =
+void adicionaElementoPosicao(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, taluno rap ,int posicao){
+	if(tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) > posicao || tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) < 0 ){
+		puts("ERRO - Não existe essa posicao!\n");
+	}
+	if(referenciaElementoDaListaEncadeada != NULL){
+		puts("ERRO - Lista Invaldia!\n");
+	}
+	int i = 0;
+	tElementoDaListaEncadeada *noh;	//para percorrer a lista
+	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+	if( noh == NULL ){
+		puts("ERRO - Elemento noh Não Criado Com Sucesso \n");
+	}else{
+		
+		noh = (*referenciaElementoDaListaEncadeada);
+		(*noh).info = (*rap).matricula;
+
+		tElementoDaListaEncadeada *aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));	//saber qual elemento vai apontar para o noh inserido
+		if( aux == NULL){
+			puts("ERRO - Elemento aux Não Criado Com Sucesso \n ");
+
+		}else{
+			aux = (*referenciaElementoDaListaEncadeada);
+			
+			while( i != posicao){	//Faço ele percorrer a lista até encontrar posicao
+				noh = (*noh).proximo;	// noh recebe o primeiro elemento da lista encadeada posicao[quando i = 0]
+				if( posicao - i > 0){	//quando (i == posicao) = 0 pararei de passar para o proximo
+					aux = (*aux).proximo;	//[final] elemento vai ser o antecessor ao noh	
 				}
+				i++;
+			}
+			(*aux).proximo = noh;
+			noh = (*noh).proximo;
 		}
+	}
 }
 
-//Remove elemento novo
-void removeElemento(tle* rlep, int elemento){
-
-
-}
-
-//Busca elemento
-void buscaElemento(tle* rlep, int elemento){
+//Remove elemento por indice
+void removeElemento(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int indice){
 
 
 }
 
+//Remove elemento por conteudo
+void removeElemento(tElementoDaListaEncadeada referenciaElementoDaListaEncadeada, taluno rap){
+
+}
+
+
+//Busca elemento por Indice
+void buscaPorElemento(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int indice){
+
+
+}
+
+//Busca elemento por Conteudo
+void buscaPorConteudo(){
+
+}
 
 //Tamanho da lista
 int tamanhoListaEncadeada(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada){
@@ -155,5 +184,17 @@ int listaEncadeadaVazia(tElementoDaListaEncadeada* referenciaElementoDaListaEnca
 
 //Printa a Lista
 void printaListaEncadeada(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada){
+	int indice = 0;
+	tElementoDaListaEncadeada *noh;
+	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+	if( noh == NULL ){
+		puts("ERRO - Elemento noh Não Criado Com Sucesso! \n");
+	}else{
+		while((*noh).proximo != NULL){
+			prinf("Indice:	[%d] Ponteiro: [ %p ] --> [ %d ] (Conteudo)  \n",i, noh, (*noh).info);
+			i++;
+		}
+
+	}
 
 }
