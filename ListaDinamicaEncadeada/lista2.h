@@ -130,14 +130,79 @@ void adicionaElementoPosicao(tElementoDaListaEncadeada* referenciaElementoDaList
 }
 
 //Remove elemento por indice
-void removeElemento(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int indice){
+void removeElementoPorIndice(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int indice){
+	if(indice > tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) || indice < 0){
+		puts("ERRO - Não existe esse elemento nessa Lista Encadeada! \n");
+	}else{
+		
+		if(referenciaElementoDaListaEncadeada == NULL){
+			puts("ERRO - Lista Invalida! \n");
+		
+		}else{
+		
+			tElementoDaListaEncadeada *noh;
+			noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+			noh = (*referenciaElementoDaListaEncadeada);
+			
+			if(tElementoDaListaEncadeada == NULL){
+				puts("ERRO - Elemento noh Não Foi Criado Com Sucesso! \n");
+		
+			}else{
+				int i = 0;
+				tElementoDaListaEncadeada *aux;
+				aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+				aux = (*referenciaElementoDaListaEncadeada);
+				if(aux == NULL){
+					puts("ERRO - Elemento aux Não Foi Criado Com Sucesso! \n");
+				
+				}else{
 
+					while( indice != i ){
+						noh= = (*noh).proximo;
+					
+						if( i == indice-1){
+							aux = (*aux).proximo 	//final aux = i-1 e noh = i -> aux é anterior a noh
+						}
+						i++;	
+					}
+
+					(*aux).proximo = (*noh).proximo;	//o campo do endereço proximo de aux vai ser o que era o proximo de noh
+					liberaListaEncadeada(noh);	
+				}
+			}
+		}	
+	}
 
 }
 
 //Remove elemento por conteudo
-void removeElemento(tElementoDaListaEncadeada referenciaElementoDaListaEncadeada, taluno rap){
+void removeElementoPorConteudo(tElementoDaListaEncadeada referenciaElementoDaListaEncadeada, taluno rap){
+	tElementoDaListaEncadeada *noh;
+	int tem = -1;
+	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+	tElementoDaListaEncadeada *aux;
+	aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+	noh = (*referenciaElementoDaListaEncadeada);
+	aux = (*referenciaElementoDaListaEncadeada);
+	if(aux == NULL || noh == NULL || referenciaElementoDaListaEncadeada == NULL){
+		puts("ERRO - Algum elemento com erro de alocacao! \n");
 
+	}else{
+		while( (*noh).proximo == NULL ){
+			noh = (*noh).proximo;
+			if( (*noh).info == (*rap).matricula ){
+				tem = 1;
+				aux = (*noh).proximo;	//aux vai ser antecessor a noh , pois só será apontado para o proximo 
+			}
+			if(tem != 1){
+				aux = (*aux).proximo;
+			}
+		}
+		if(tem == -1){
+				puts("ERRO - Não possui um elemento com essa matricula na Lista!	\n");
+		}
+
+	}
 }
 
 
@@ -148,7 +213,8 @@ void buscaPorElemento(tElementoDaListaEncadeada* referenciaElementoDaListaEncade
 }
 
 //Busca elemento por Conteudo
-void buscaPorConteudo(){
+void buscaPorConteudo(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, taluno* rap){
+	
 
 }
 
