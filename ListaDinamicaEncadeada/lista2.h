@@ -131,90 +131,138 @@ void adicionaElementoPosicao(tElementoDaListaEncadeada* referenciaElementoDaList
 
 //Remove elemento por indice
 void removeElementoPorIndice(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int indice){
-	if(indice > tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) || indice < 0){
-		puts("ERRO - Não existe esse elemento nessa Lista Encadeada! \n");
-	}else{
-		
-		if(referenciaElementoDaListaEncadeada == NULL){
-			puts("ERRO - Lista Invalida! \n");
-		
+	if( !listaEncadeadaVazia(referenciaElementoDaListaEncadeada) ){	//verifica se a lista for vazia! se for F não é vazia
+
+		if(indice > tamanhoListaEncadeada(referenciaElementoDaListaEncadeada) || indice < 0){
+			puts("ERRO - Não existe esse elemento nessa Lista Encadeada! \n");
 		}else{
-		
-			tElementoDaListaEncadeada *noh;
-			noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
-			noh = (*referenciaElementoDaListaEncadeada);
 			
-			if(tElementoDaListaEncadeada == NULL){
-				puts("ERRO - Elemento noh Não Foi Criado Com Sucesso! \n");
-		
+			if(referenciaElementoDaListaEncadeada == NULL){
+				puts("ERRO - Lista Invalida! \n");
+			
 			}else{
-				int i = 0;
-				tElementoDaListaEncadeada *aux;
-				aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
-				aux = (*referenciaElementoDaListaEncadeada);
-				if(aux == NULL){
-					puts("ERRO - Elemento aux Não Foi Criado Com Sucesso! \n");
+			
+				tElementoDaListaEncadeada *noh;
+				noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+				noh = (*referenciaElementoDaListaEncadeada);
 				
+				if(tElementoDaListaEncadeada == NULL){
+					puts("ERRO - Elemento noh Não Foi Criado Com Sucesso! \n");
+			
 				}else{
-
-					while( indice != i ){
-						noh= = (*noh).proximo;
+					int i = 0;
+					tElementoDaListaEncadeada *aux;
+					aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+					aux = (*referenciaElementoDaListaEncadeada);
+					if(aux == NULL){
+						puts("ERRO - Elemento aux Não Foi Criado Com Sucesso! \n");
 					
-						if( i == indice-1){
-							aux = (*aux).proximo 	//final aux = i-1 e noh = i -> aux é anterior a noh
+					}else{
+
+						while( indice != i ){
+							noh= = (*noh).proximo;
+						
+							if( i == indice-1){
+								aux = (*aux).proximo 	//final aux = i-1 e noh = i -> aux é anterior a noh
+							}
+							i++;	
 						}
-						i++;	
+
+						(*aux).proximo = (*noh).proximo;	//o campo do endereço proximo de aux vai ser o que era o proximo de noh
+						liberaListaEncadeada(noh);	
 					}
-
-					(*aux).proximo = (*noh).proximo;	//o campo do endereço proximo de aux vai ser o que era o proximo de noh
-					liberaListaEncadeada(noh);	
 				}
-			}
-		}	
+			}	
+		}
 	}
-
 }
 
 //Remove elemento por conteudo
 void removeElementoPorConteudo(tElementoDaListaEncadeada referenciaElementoDaListaEncadeada, taluno rap){
-	tElementoDaListaEncadeada *noh;
-	int tem = -1;
-	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
-	tElementoDaListaEncadeada *aux;
-	aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
-	noh = (*referenciaElementoDaListaEncadeada);
-	aux = (*referenciaElementoDaListaEncadeada);
-	if(aux == NULL || noh == NULL || referenciaElementoDaListaEncadeada == NULL){
-		puts("ERRO - Algum elemento com erro de alocacao! \n");
+	if( !listaEncadeadaVazia(referenciaElementoDaListaEncadeada) ){
+		tElementoDaListaEncadeada *noh;
+		int tem = -1;
+		noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+		tElementoDaListaEncadeada *aux;
+		aux = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+		noh = (*referenciaElementoDaListaEncadeada);
+		aux = (*referenciaElementoDaListaEncadeada);
+		if(aux == NULL || noh == NULL || referenciaElementoDaListaEncadeada == NULL){
+			puts("ERRO - Algum elemento com erro de alocacao! \n");
 
+		}else{
+			while( (*noh).proximo == NULL ){
+				noh = (*noh).proximo;
+				if( (*noh).info == (*rap).matricula ){
+					tem = 1;
+					aux = (*noh).proximo;	//aux vai ser antecessor a noh , pois só será apontado para o proximo 
+				}
+				if(tem != 1){
+					aux = (*aux).proximo;
+				}
+			}
+			if(tem == -1){
+					puts("ERRO - Não possui um elemento com essa matricula na Lista!	\n");
+			}
+
+		}
 	}else{
-		while( (*noh).proximo == NULL ){
-			noh = (*noh).proximo;
-			if( (*noh).info == (*rap).matricula ){
-				tem = 1;
-				aux = (*noh).proximo;	//aux vai ser antecessor a noh , pois só será apontado para o proximo 
-			}
-			if(tem != 1){
-				aux = (*aux).proximo;
-			}
-		}
-		if(tem == -1){
-				puts("ERRO - Não possui um elemento com essa matricula na Lista!	\n");
-		}
-
+		puts("ERRO - Lista Vazia! \n");
 	}
 }
 
 
 //Busca elemento por Indice
 void buscaPorElemento(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int indice){
+	
+	if(indice < 0 || indice > tamanhoListaEncadeada(referenciaElementoDaListaEncadeada)){
+		puts("ERRO - Lista nao possui esse elemento! \n");
+	}else{
 
+		tElementoDaListaEncadeada *noh;
+		noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+		
+		if(referenciaElementoDaListaEncadeada == NULL || noh == NULL){
+			puts("ERRO - Algum Elemento Invalido! \n");
+		
+		}else{
+			int i = 0;
+			noh = (*referenciaElementoDaListaEncadeada);
 
+			while( i != indice ){
+				noh = (*noh).proximo;
+				i++;
+			}
+			noh = (*noh).proximo;
+			printf("	[%d] - [ %d ]  \n",i,(*noh).info);
+		}
+	}
 }
 
-//Busca elemento por Conteudo
-void buscaPorConteudo(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, taluno* rap){
-	
+//Busca elemento por Conteudo (nesse caso um inteiro de matricula)
+void buscaPorConteudo(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada, int matriculaV){
+	int i = 0;
+	int existe = -1;
+	tElementoDaListaEncadeada *noh;
+	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
+	if( referenciaElementoDaListaEncadeada == NULL || noh == NULL ){
+		puts("ERRO - Algum Elemento Invalido! \n");
+	}else{
+		noh = (*tElementoDaListaEncadeada);
+
+		while( (*noh).proximo != NULL ){
+			
+			if( (*noh).info == matriculaV ){
+				printf(" [%d] - [ %d ] \n", i, (*noh).info);
+				existe = 1;
+			}
+			i++;
+		}
+
+		if( existe == -1 ){
+			puts("ERRO - Não existe elemento com esse conteudo! \n");
+		}
+	}
 
 }
 
