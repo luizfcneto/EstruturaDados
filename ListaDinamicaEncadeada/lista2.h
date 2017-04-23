@@ -16,14 +16,14 @@ typedef struct tAluno{
 }taluno;
 
 typedef struct tElementoDaListaEncadda{
-	tElementoDaListaEncadeada proximo*;	//é um ponteiro para o mesmo tipo de variavel
+	tElementoDaListaEncadeada *proximo;	//é um ponteiro para o mesmo tipo de variavel
 	taluno info; 	//(*taluno).info.matricula
 }*tElementoDaListaEncadeada;
 
 //Cria a lista Encadeada
 tElementoDaListaEncadeada* criaLista(tElementoDaListaEncadeada* referenciaElementoDaListaEncadeada){
 	tElementoDaListaEncadeada listaEncadeada;
-	listaEncadeada = (tElementoDaListaEncadeada*)malloc(sizeof(tElelementoDaListaEncadeada));
+	listaEncadeada = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada));
 	if(listaEncadeada != NULL){
 		*listaEncadeada = NULL;	//*Tenho que devolver o primeiro ponteiro com conteudo de onde aponta pra Nulo;
 	}
@@ -47,7 +47,7 @@ void liberaListaEncadeada(tElelementoDaListaEncadeada* referenciaElementoDaLista
 //Adiciona elemento novo no final da lista encadeada
 void adicionaElementoFinal(tElementoDaListaEncadeada* referenciaElementoDalistaEncadeada, taluno* rap){
 	//Caso não tenha ponteiro apontando para o primeiro ponteiro
-	if( referenciaElementoDaListaEncadeada == NULL ){
+	if( referenciaElementoDalistaEncadeada == NULL ){
 		puts("ERRO - Lista Invalida! \n");
 	}else{
 		tElementoDaListaEncadeada *noh;
@@ -88,7 +88,7 @@ void adicionaElementoInicio(tElementoDaListaEncadeada* referenciaElementoDaLista
 	if( referenciaElementoDaListaEncadeada == NULL){
 		puts("ERRO - Lista Invalida! \n");
 	}
-	tElementoDaListaEncadeada noh*;
+	tElementoDaListaEncadeada *noh;
 	noh = (tElementoDaListaEncadeada*)malloc(sizeof(tElementoDaListaEncadeada)); 	//Cria nó novo
 
 	//Verifica se um novo elemento(noh) foi criado
@@ -173,7 +173,7 @@ void removeElementoPorIndice(tElementoDaListaEncadeada* referenciaElementoDaList
 							noh = noh->proximo;
 						
 							if( i == indice-1){
-								aux = aux->proximo 	//final aux = i-1 e noh = i -> aux é anterior a noh
+								aux = aux->proximo; 	//final aux = i-1 e noh = i -> aux é anterior a noh
 							}
 							i++;	
 						}
