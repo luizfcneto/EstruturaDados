@@ -11,39 +11,38 @@ Nome: Luiz Fernando
 #include "lista2.h"
 
 int main(void) {
-	tElementoDaListaEncadeada *lista;
+	tRaiz listaEncadeada;
 	taluno *dados;
-	int posicao = 5;
+	// int posicao = 5;
 
-	criaLista(lista);
-	printaListaEncadeada(lista);
+	listaEncadeada = criaLista();
+	printaListaEncadeada(listaEncadeada);
 
 	dados->matricula = 111111;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111112;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111113;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111114;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111116;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111117;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111118;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 	dados->matricula = 111119;
-	adicionaElementoFinal(lista, dados);
+	adicionaElementoFinal(listaEncadeada, dados);
 
-	printaListaEncadeada(lista);
+	printaListaEncadeada(listaEncadeada);
 
 	dados->matricula = 111110;
-	adicionaElementoInicio(lista, dados);
-	printaListaEncadeada(lista);
+	adicionaElementoInicio(listaEncadeada, dados);
+	printaListaEncadeada(listaEncadeada);
 
-	adicionaElementoPosicao(lista, dados, posicao);
-	printaListaEncadeada(lista);
-
+	adicionaElementoPosicao(listaEncadeada, dados, 5);
+	printaListaEncadeada(listaEncadeada);
 
 	return 0;
 }
