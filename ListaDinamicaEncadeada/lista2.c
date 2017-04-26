@@ -14,6 +14,8 @@ int main ( void )
 {
 	tRaiz *listaEncadeada;
 	taluno *dados;
+
+	dados = ( taluno* ) malloc ( sizeof ( taluno ) );
 	// int posicao = 5;
 
 	listaEncadeada = criaLista ();
@@ -42,6 +44,7 @@ int main ( void )
 	adicionaElementoInicio ( listaEncadeada, dados );
 	printaListaEncadeada ( listaEncadeada );
 
+	dados->matricula = 111115;
 	adicionaElementoPosicaoOrdenado ( listaEncadeada, dados );
 	printaListaEncadeada ( listaEncadeada );
 

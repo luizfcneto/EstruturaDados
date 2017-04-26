@@ -106,36 +106,54 @@ void adicionaElementoPosicaoOrdenada ( tRaiz* referenciaRaiz, taluno* rap )
 	else{
 		tElementoDaListaEncadeada *noh;		//para percorrer a lista
 		noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
-		noh = *referenciaRaiz;
-		
-		tElementoDaListaEncadeada *aux, *sucessor;		//saber qual elemento vai apontar para o noh inserido
-		aux = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
-		sucessor = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
+		if ( noh == NULL )	puts ( "ERRO - Noh Invalido! \n" );
+		else {
 
-		aux = *referenciaRaiz;
-		sucessor = aux->proximo;
-		if ( *referenciaRaiz == NULL ) 	{		//lista Vazia
-			noh->proximo = *referenciaRaiz;
-			noh->info.matricula = rap->matricula;
-			*referenciaRaiz = noh;
-		}else {
-			if ( rap->matricula <= sucessor->info.matricula )	{
-				noh->info.matricula = rap->matricula;
-				noh->proximo = sucessor;			//primeiro elemento ja é maior que o conteudo de noh(nem entra no while)
-				
-			}	
-			while ( rap->matricula <= aux->info.matricula )	{			//faço aux percorrer a lista até encontrar o matricula de noh maior que matricula de sucessor > que matricula
-				aux = aux->proximo;
-				sucessor = sucessor->proximo;
-				
-				if ( sucessor->info.matricula <= rap->matricula )	{		//If para se encontrar um elemento com conteudo maior que noh depois na lista
-					noh->proximo = sucessor;
-					noh->info.matricula = rap->matricula;	
-					noh = aux->proximo;
-				}
+			noh = *referenciaRaiz;
+			tElementoDaListaEncadeada *aux, *sucessor;		//saber qual elemento vai apontar para o noh inserido
+			aux = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
+			sucessor = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
+
+			if ( aux == NULL || sucessor == NULL )	puts ( "ERRO - aux ou sucessor invalidos! \n" );
+			else {
+
+				aux = *referenciaRaiz;					//aux vai ser igual ao endereço do primeiro elemento (que é o conteudo do endereço de referenciaRaiz)
+				sucessor = aux->proximo;				//sucessor vai ser igual ao endereço do primeiro elemento, 
+				if ( *referenciaRaiz == NULL ) 	{		//lista Vazia
+					noh->proximo = *referenciaRaiz;
+					noh->info.matricula = rap->matricula;
+					*referenciaRaiz = noh;
+				}else {
+					if ( rap->matricula <= aux->info.matricula )	{		//verifica se a matricula de aluno é menor que o que possui no primeiro elemento
+						noh->info.matricula = rap->matricula;
+						noh->proximo = aux;			//primeiro elemento ja é maior que o conteudo de noh(nem entra no while)
+						
+					}else {
+						int ajuda = 0;
+						//percorre a lista ate encontrar um conteudo maior, senao encontrar vai percorrer ate o ultimo elemento
+						while ( rap->matricula <= aux->info.matricula || aux->proximo == NULL)	{			
+							
+							if ( sucessor->info.matricula >= rap->matricula )	{		
+								noh->proximo = sucessor;
+								noh->info.matricula = rap->matricula;	
+								aux->proximo = noh;
+								break;
+							}
+							aux = aux->proximo;
+							sucessor = sucessor->proximo;
+
+							if ( sucessor->proximo == NULL )	ajuda = 1;
+						}
+						//caso sucessor percorra toda a lista e nao tenha ninguem menor que a matricula que deseja adicionar
+						if ( ajuda )	{
+							sucessor->proximo = noh;
+							noh->info.matricula = rap->matricula;
+							noh->proximo = NULL;
+						}
+					}
+				} 								
 			}
-
-		} 								
+		}
 	}
 }
 
