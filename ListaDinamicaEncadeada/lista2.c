@@ -45,7 +45,7 @@ int main ( void )
 	printaListaEncadeada ( listaEncadeada );
 
 	dados->matricula = 111115;
-	adicionaElementoPosicaoOrdenado ( listaEncadeada, dados );
+	adicionaElementoPosicaoOrdenada( listaEncadeada, dados );
 	printaListaEncadeada ( listaEncadeada );
 
 	return 0;

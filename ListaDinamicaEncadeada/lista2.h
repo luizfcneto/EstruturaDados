@@ -17,6 +17,8 @@ typedef struct tAluno
 	//float nota1, nota2, nota3, media;
 } taluno;
 
+
+
 struct _tElementoDaListaEncadeada 
 {
 	struct _tElementoDaListaEncadeada *proximo;	//é um ponteiro para o mesmo tipo de variavel
@@ -25,6 +27,16 @@ struct _tElementoDaListaEncadeada
 
 typedef struct _tElementoDaListaEncadeada *tRaiz;	//primeiro elemento, raiz é um ponteiro de ponteiro (**) defini outra variavel, a tRaiz para faciliar compilação
 typedef struct _tElementoDaListaEncadeada tElementoDaListaEncadeada;
+
+/*
+//Outra Forma de implementar lista encadeada:
+typedef struct _tElementoDaListaEncadeada
+{
+	struct _tElementoDaListaEncadeada *proximo;
+	taluno info;
+} tRaiz;
+
+*/
 
 //Cria a lista Encadeada
 tRaiz* criaLista () 
@@ -48,6 +60,35 @@ void liberaListaEncadeada ( tRaiz* referenciaRaiz )
 		}
 		free ( referenciaRaiz );
 	}
+}
+
+//Tamanho da list
+int tamanhoListaEncadeada	( tRaiz* referenciaRaiz )
+{
+	if ( referenciaRaiz == NULL)	return 0;		//Verifica se Raiz aponta pra algum endereço com conteudo(não nulo)
+	
+	int contador = 0;
+	tElementoDaListaEncadeada *noh;
+	noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
+	noh = *referenciaRaiz;		//noh vai receber o endereço do primeiro elemento, que é o conteudo do ponteiro raiz
+	
+	while	( noh != NULL ){
+		contador++;
+		noh = noh->proximo;	//foi utilizado (*noh)->proximo, pois noh recebe o endereço do conteudo da variavel "proximo" (do proximo elemento)
+	}
+	return contador;
+}
+
+//Lista cheia não faz sentido ter em listas dinamicas porque o limite é a própria memória
+
+//Lista Vazia
+int listaEncadeadaVazia	( tRaiz* referenciaRaiz )	
+{
+	if ( referenciaRaiz == NULL )	return 1;		//se o endereço de Raiz não esta apontando pra nenhum outro endereço lista está vazia(true)
+	
+	if ( *referenciaRaiz == NULL )	return 1;		//se o conteudo não esta apontando pra nenhum endereço lista está vazia(true)
+	
+	return 0;
 }
 
 //Adiciona elemento novo no final da lista encadeada
@@ -261,35 +302,8 @@ void buscaPorConteudo ( tRaiz* referenciaRaiz, taluno* rap  )
 
 }
 
-//Tamanho da list
-int tamanhoListaEncadeada	( tRaiz* referenciaRaiz )
-{
-	if ( referenciaRaiz == NULL)	return 0;		//Verifica se Raiz aponta pra algum endereço com conteudo(não nulo)
-	
-	int contador = 0;
-	tElementoDaListaEncadeada *noh;
-	noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
-	noh = *referenciaRaiz;		//noh vai receber o endereço do primeiro elemento, que é o conteudo do ponteiro raiz
-	
-	while	( noh != NULL ){
-		contador++;
-		noh = noh->proximo;	//foi utilizado (*noh)->proximo, pois noh recebe o endereço do conteudo da variavel "proximo" (do proximo elemento)
-	}
-	return contador;
-}
-
-//Lista cheia não faz sentido ter em listas dinamicas porque o limite é a própria memória
 
 
-//Lista Vazia
-int listaEncadeadaVazia	( tRaiz* referenciaRaiz )	
-{
-	if ( referenciaRaiz == NULL )	return 1;		//se o endereço de Raiz não esta apontando pra nenhum outro endereço lista está vazia(true)
-	
-	if ( *referenciaRaiz == NULL )	return 1;		//se o conteudo não esta apontando pra nenhum endereço lista está vazia(true)
-	
-	return 0;
-}
 
 
 //Printa a Lista
