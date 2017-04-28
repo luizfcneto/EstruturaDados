@@ -140,7 +140,7 @@ void adicionaElementoInicio ( tRaiz* referenciaRaiz, taluno* rap )
 	*referenciaRaiz = noh;		//endereço do inicio aponta pro novo primeiro noh	
 }
 
-//adiciono um elemento novo em qualquer lugar
+//adiciono um elemento novo em qualquer lugar *dando errado... corrigir!
 void adicionaElementoPosicaoOrdenada ( tRaiz* referenciaRaiz, taluno* rap )
 {
 	if ( referenciaRaiz == NULL )	puts ( "ERRO - Raiz Invaldia!\n" );
@@ -198,7 +198,7 @@ void adicionaElementoPosicaoOrdenada ( tRaiz* referenciaRaiz, taluno* rap )
 	}
 }
 
-//Remove elemento por indice
+//Remove elemento por Indice 		*REFAZER
 void removeElementoPorIndice ( tRaiz* referenciaRaiz, int indice )
 {
 	if ( listaEncadeadaVazia ( referenciaRaiz ) == 0 )	{			//verifica se a lista for vazia! se for F não é vazia
@@ -220,13 +220,13 @@ void removeElementoPorIndice ( tRaiz* referenciaRaiz, int indice )
 					i++;	
 				}
 				aux->proximo = noh->proximo;				//o campo do endereço proximo de aux vai ser o que era o proximo de noh
-				free ( noh );	
+				//free ( noh );			-> estava apagando a lista toda!
 			}	
 		}
 	}
 }
 
-//Remove elemento por conteudo
+//Remove elemento por conteudo 		*REFAZER
 void removeElementoPorConteudo	( tRaiz* referenciaRaiz, taluno* rap )
 {
 	if ( listaEncadeadaVazia ( referenciaRaiz ) != 1 )	{	//verifica se a lista é vazia, se for retornará 1
@@ -247,7 +247,7 @@ void removeElementoPorConteudo	( tRaiz* referenciaRaiz, taluno* rap )
 				}
 				if ( tem != 1 )	{
 					aux = aux->proximo;
-					free ( noh );
+					//free ( noh );		-> estava apagando a lista toda!
 				}
 			}
 			if ( tem == -1 )	puts ( "ERRO - Não possui um elemento com essa matricula na Lista!	\n" );
@@ -258,7 +258,7 @@ void removeElementoPorConteudo	( tRaiz* referenciaRaiz, taluno* rap )
 
 
 //Busca elemento por Indice
-void buscaPorElemento	( tRaiz* referenciaRaiz, int indice ) 
+void buscaPorIndice	( tRaiz* referenciaRaiz, int indice ) 
 {
 	if ( indice < 0 || indice > tamanhoListaEncadeada ( referenciaRaiz ) ) 	puts ( "ERRO - Lista nao possui esse elemento! \n" );
 	else {
@@ -273,7 +273,7 @@ void buscaPorElemento	( tRaiz* referenciaRaiz, int indice )
 				i++;
 			}
 			noh = noh->proximo;
-			printf ( "	[%d] - [ %d ]  \n", i, noh->info.matricula );
+			printf ( " [%d] - [ %d ]  \n", i, noh->info.matricula );
 		}
 	}
 }
@@ -281,19 +281,20 @@ void buscaPorElemento	( tRaiz* referenciaRaiz, int indice )
 //Busca elemento por Conteudo (nesse caso um inteiro de matricula)
 void buscaPorConteudo ( tRaiz* referenciaRaiz, taluno* rap  )
 {
-	int i = 1;
+	int i = 0;
 	int existe = -1;
 	tElementoDaListaEncadeada *noh;
 	noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 	noh = *referenciaRaiz;
 	if ( referenciaRaiz == NULL || *referenciaRaiz == NULL )	puts ( "ERRO - Raiz Invalida!! \n" );
 	else {
-		while	( noh->proximo != NULL )	{	
+		while	( noh != NULL )	{	
 			if ( noh->info.matricula == rap->matricula )	{
-				printf (" [%d] - [ %d ] \n", i, noh->info.matricula );
+				printf ( " [%d] - [ %d ] \n", i, noh->info.matricula );
 				existe = 1;
 			}
 			i++;
+			noh = noh->proximo;
 		}
 		if ( existe == -1 )	{
 			puts ( "ERRO - Não existe elemento com esse conteudo! \n" );
@@ -313,12 +314,12 @@ void printaListaEncadeada	( tRaiz* referenciaRaiz )
 	tElementoDaListaEncadeada *noh;
 	noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 	noh = *referenciaRaiz;
-	while	( noh->proximo != NULL ){
+	while	( noh != NULL ){
 		printf ( "Indice:	[%d] Ponteiro: [ %p ] --> [ %d ] (Conteudo)  \n", indice, noh, noh->info.matricula );
 		indice++;
 		noh = noh->proximo;
 	}
 
-	printf ("_____________________________________________________________________________________________________" );
+	printf ("_____________________________________________________________________________________________________ \n" );
 
 }
