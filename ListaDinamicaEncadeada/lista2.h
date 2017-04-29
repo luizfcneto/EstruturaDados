@@ -200,12 +200,13 @@ void adicionaElementoPosicaoOrdenada ( tRaiz* referenciaRaiz, taluno* rap )
 
 //Remove elemento por Indice 		*REFAZER
 void removeElementoPorIndice ( tRaiz* referenciaRaiz, int indice )
-{
+{	
 	if ( listaEncadeadaVazia ( referenciaRaiz ) == 0 )	{			//verifica se a lista for vazia! se for F não é vazia
 		if ( indice > tamanhoListaEncadeada ( referenciaRaiz ) || indice < 0 )	puts ( "ERRO - Não existe esse elemento nessa Lista Encadeada! \n" );
 		else {
 			if ( referenciaRaiz == NULL || *referenciaRaiz == NULL )	puts ( "ERRO - Raiz Invalida! \n" );
 			else {
+				printf ("\nRemovido o elemento %d com sucesso!\n",indice);	
 				tElementoDaListaEncadeada *noh;
 				noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) ); 
 				noh = *referenciaRaiz;				
@@ -213,14 +214,14 @@ void removeElementoPorIndice ( tRaiz* referenciaRaiz, int indice )
 				tElementoDaListaEncadeada *aux;
 				aux = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 				aux = *referenciaRaiz;
-				while ( indice != i )	{
-					noh = noh->proximo;					
-					if( i == indice-1 )	aux = aux->proximo; 				//final aux = i-1 e noh = i -> aux é anterior a noh
-					
+				aux = aux->proximo;
+				while ( indice < i )	{
+					noh = noh->proximo;	
+					aux = aux->proximo;				
 					i++;	
 				}
-				aux->proximo = noh->proximo;				//o campo do endereço proximo de aux vai ser o que era o proximo de noh
-				//free ( noh );			-> estava apagando a lista toda!
+				noh->proximo = aux->proximo;				//o campo do endereço proximo de aux vai ser o proximo de noh
+				//free ( aux );			//-> estava apagando a lista toda!
 			}	
 		}
 	}
@@ -237,21 +238,23 @@ void removeElementoPorConteudo	( tRaiz* referenciaRaiz, taluno* rap )
 		aux = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 		noh = *referenciaRaiz;
 		aux = *referenciaRaiz;
+		aux = aux->proximo;
 		if ( referenciaRaiz == NULL || *referenciaRaiz == NULL )	puts ( "ERRO - Raiz Invalida! \n" );
 		else {
-			while	( noh->proximo != NULL )	{
+			while ( rap->matricula != noh->info.matricula || noh != NULL) {
+				if ( rap->matricula == aux->info.matricula ){
+					tem = 1;					
+					break;
+				}
+				aux = aux->proximo;
 				noh = noh->proximo;
-				if ( noh->info.matricula == (*rap).matricula )	{
-					tem = 1;
-					aux = noh->proximo;		//aux vai ser antecessor a noh , pois só será apontado para o proximo 
-				}
-				if ( tem != 1 )	{
-					aux = aux->proximo;
-					//free ( noh );		-> estava apagando a lista toda!
-				}
 			}
 			if ( tem == -1 )	puts ( "ERRO - Não possui um elemento com essa matricula na Lista!	\n" );
-
+			else {
+				noh->proximo = aux->proximo;
+				free( aux );		// vai apagar a lista toda;
+				printf ("\nRemovido o conteudo %d com sucesso!\n",rap->matricula);
+			}
 		}
 	}else puts ( "ERRO - Lista Vazia! \n" );
 }
@@ -265,7 +268,8 @@ void buscaPorIndice	( tRaiz* referenciaRaiz, int indice )
 		tElementoDaListaEncadeada *noh;
 		noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 		noh = *referenciaRaiz;
-		if ( referenciaRaiz == NULL || *referenciaRaiz == NULL )	puts ( "ERRO - Algum Elemento Invalido! \n" );
+		if ( referenciaRaiz == NULL || *referenciaRaiz == 
+			NULL )	puts ( "ERRO - Algum Elemento Invalido! \n" );
 		else {
 			int i = 1;
 			while	( i != indice )	{
@@ -273,7 +277,7 @@ void buscaPorIndice	( tRaiz* referenciaRaiz, int indice )
 				i++;
 			}
 			noh = noh->proximo;
-			printf ( " [%d] - [ %d ]  \n", i, noh->info.matricula );
+			printf ( "BUSCA: Indice: [ %d ] - Conteudo: [ %d ]  \n", i, noh->info.matricula );
 		}
 	}
 }
@@ -290,7 +294,7 @@ void buscaPorConteudo ( tRaiz* referenciaRaiz, taluno* rap  )
 	else {
 		while	( noh != NULL )	{	
 			if ( noh->info.matricula == rap->matricula )	{
-				printf ( " [%d] - [ %d ] \n", i, noh->info.matricula );
+				printf ( "BUSCA: Indice: [ %d ] - Conteudo: [ %d ] \n", i, noh->info.matricula );
 				existe = 1;
 			}
 			i++;
@@ -315,7 +319,7 @@ void printaListaEncadeada	( tRaiz* referenciaRaiz )
 	noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 	noh = *referenciaRaiz;
 	while	( noh != NULL ){
-		printf ( "Indice:	[%d] Ponteiro: [ %p ] --> [ %d ] (Conteudo)  \n", indice, noh, noh->info.matricula );
+		printf ( " Indice:	[%d] Ponteiro: [ %p ] --> [ %d ] (Conteudo)  \n", indice, noh, noh->info.matricula );
 		indice++;
 		noh = noh->proximo;
 	}

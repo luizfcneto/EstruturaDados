@@ -27,7 +27,24 @@ int main ( void )
 	adicionaElementoFinal ( listaEncadeada, dados );
 	dados->matricula = 111113;
 	adicionaElementoFinal ( listaEncadeada, dados );
-	
+	dados->matricula = 111114;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111115;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111116;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111117;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111118;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111119;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111120;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111121;
+	adicionaElementoFinal ( listaEncadeada, dados );
+	dados->matricula = 111122;
+	adicionaElementoFinal ( listaEncadeada, dados );
 
 	printaListaEncadeada ( listaEncadeada );
 
@@ -42,30 +59,30 @@ int main ( void )
 	*/
 
 	//testa remover que funcione!
-	//removeElementoPorIndice	( listaEncadeada , 1 );		//indide na lista começa no 0
-	//printaListaEncadeada ( listaEncadeada );
+	removeElementoPorIndice	( listaEncadeada , 1 );		//indide na lista começa no 0
+	printaListaEncadeada ( listaEncadeada );
 
-	//dados->matricula = 111113;
-	//removeElementoPorConteudo ( listaEncadeada , dados );
+	dados->matricula = 111113;
+	removeElementoPorConteudo ( listaEncadeada , dados );
 	//printaListaEncadeada ( listaEncadeada );
 
 
 	//teste remover que não funcione!
-	removeElementoPorIndice ( listaEncadeada, 15 );
-	dados->matricula = 3;
-	removeElementoPorConteudo ( listaEncadeada , dados );
+	//removeElementoPorIndice ( listaEncadeada, 15 );
+	//dados->matricula = 3;
+	//removeElementoPorConteudo ( listaEncadeada , dados );
 	printaListaEncadeada ( listaEncadeada );	
 
 	//teste Busca que funcione:
-	buscaPorIndice ( listaEncadeada, 2);
-	dados->matricula = 111111;
+	buscaPorIndice ( listaEncadeada, 4);
+	dados->matricula = 111115;
 	buscaPorConteudo ( listaEncadeada, dados );
 
 
 	//teste busca que nao funcione:
-	buscaPorIndice ( listaEncadeada, 100 );
-	dados->matricula = 3;
-	buscaPorConteudo ( listaEncadeada , dados);
+	//buscaPorIndice ( listaEncadeada, 100 );
+	//dados->matricula = 3;
+	//buscaPorConteudo ( listaEncadeada , dados);
 
 
 
