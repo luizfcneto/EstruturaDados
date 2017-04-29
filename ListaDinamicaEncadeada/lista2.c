@@ -29,8 +29,8 @@ int main ( void )
 	adicionaElementoFinal ( listaEncadeada, dados );
 	dados->matricula = 111114;
 	adicionaElementoFinal ( listaEncadeada, dados );
-	dados->matricula = 111115;
-	adicionaElementoFinal ( listaEncadeada, dados );
+	//dados->matricula = 111115;
+	//adicionaElementoFinal ( listaEncadeada, dados );
 	dados->matricula = 111116;
 	adicionaElementoFinal ( listaEncadeada, dados );
 	dados->matricula = 111117;
@@ -52,11 +52,11 @@ int main ( void )
 	adicionaElementoInicio ( listaEncadeada, dados );
 	printaListaEncadeada ( listaEncadeada );
 
-	/*
+	
 	dados->matricula = 111115;
 	adicionaElementoPosicaoOrdenada( listaEncadeada, dados );
 	printaListaEncadeada ( listaEncadeada );
-	*/
+	
 
 	//testa remover que funcione!
 	removeElementoPorIndice	( listaEncadeada , 1 );		//indide na lista começa no 0

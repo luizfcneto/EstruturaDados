@@ -145,51 +145,52 @@ void adicionaElementoPosicaoOrdenada ( tRaiz* referenciaRaiz, taluno* rap )
 {
 	if ( referenciaRaiz == NULL )	puts ( "ERRO - Raiz Invaldia!\n" );
 	else{
-		tElementoDaListaEncadeada *noh;		//para percorrer a lista
+		tElementoDaListaEncadeada *noh;			//para percorrer a lista
 		noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 		if ( noh == NULL )	puts ( "ERRO - Noh Invalido! \n" );
 		else {
-
-			noh = *referenciaRaiz;
-			tElementoDaListaEncadeada *aux, *sucessor;		//saber qual elemento vai apontar para o noh inserido
+			tElementoDaListaEncadeada *aux, *novo;		//aux (saber em que posicao elemento novo sera inserido)
 			aux = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
-			sucessor = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
+			novo = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 
-			if ( aux == NULL || sucessor == NULL )	puts ( "ERRO - aux ou sucessor invalidos! \n" );
+			if ( aux == NULL || novo == NULL )	puts ( "ERRO - aux ou novo invalidos! \n" );
 			else {
-
-				aux = *referenciaRaiz;					//aux vai ser igual ao endereço do primeiro elemento (que é o conteudo do endereço de referenciaRaiz)
-				sucessor = aux->proximo;				//sucessor vai ser igual ao endereço do primeiro elemento, 
-				if ( *referenciaRaiz == NULL ) 	{		//lista Vazia
-					noh->proximo = *referenciaRaiz;
-					noh->info.matricula = rap->matricula;
-					*referenciaRaiz = noh;
+				printf ("\n Adicionando elemento ordenado: %d \n",rap->matricula);
+				novo->info.matricula = rap->matricula;
+				//lista Vazia
+				if ( *referenciaRaiz == NULL ) 	{		
+					novo->proximo = *referenciaRaiz;
+					*referenciaRaiz = novo;
+				
 				}else {
-					if ( rap->matricula <= aux->info.matricula )	{		//verifica se a matricula de aluno é menor que o que possui no primeiro elemento
-						noh->info.matricula = rap->matricula;
-						noh->proximo = aux;			//primeiro elemento ja é maior que o conteudo de noh(nem entra no while)
-						
+					aux = *referenciaRaiz;					
+					aux = aux->proximo;
+					noh = *referenciaRaiz;
+					//verifica se a matricula de aluno é menor que o que possui no primeiro elemento [deve ser o primeiro elemento]
+					if ( rap->matricula <= aux->info.matricula )	{		
+						novo->proximo = aux;			
+						noh = novo;
 					}else {
+						//aux posicao [i+1] noh posicao[i] novo = conteudo adicionaremos
 						int ajuda = 0;
 						//percorre a lista ate encontrar um conteudo maior, senao encontrar vai percorrer ate o ultimo elemento
-						while ( rap->matricula <= aux->info.matricula || aux->proximo == NULL)	{			
+						while ( noh != NULL ) {			
 							
-							if ( sucessor->info.matricula >= rap->matricula )	{		
-								noh->proximo = sucessor;
-								noh->info.matricula = rap->matricula;	
-								aux->proximo = noh;
+							//adiciona o elemento na lista, quando o rap.matricula é maior que noh->info.matricula, mas menor que aux->info.matricula 
+							if ( novo->info.matricula > noh->info.matricula && novo->info.matricula < aux->info.matricula )	{		
+								noh->proximo = novo;	
+								novo->proximo = aux;
 								break;
 							}
 							aux = aux->proximo;
-							sucessor = sucessor->proximo;
+							noh = noh->proximo;
 
-							if ( sucessor->proximo == NULL )	ajuda = 1;
+							if ( aux == NULL )	ajuda = 1;
 						}
-						//caso sucessor percorra toda a lista e nao tenha ninguem menor que a matricula que deseja adicionar
+						//caso noh percorra toda a lista e nao tenha ninguem menor que a matricula que deseja adicionar
 						if ( ajuda )	{
-							sucessor->proximo = noh;
-							noh->info.matricula = rap->matricula;
-							noh->proximo = NULL;
+							noh->proximo = novo;
+							novo->proximo = NULL;
 						}
 					}
 				} 								
@@ -319,7 +320,7 @@ void printaListaEncadeada	( tRaiz* referenciaRaiz )
 	noh = ( tElementoDaListaEncadeada* ) malloc ( sizeof ( tElementoDaListaEncadeada ) );
 	noh = *referenciaRaiz;
 	while	( noh != NULL ){
-		printf ( " Indice:	[%d] Ponteiro: [ %p ] --> [ %d ] (Conteudo)  \n", indice, noh, noh->info.matricula );
+		printf ( " Indice: [%d] \tEndereco: [ %p ] - Conteudo ( Matricula ): [ %d ] --> Aponta [ %p ] \n", indice, noh, noh->info.matricula, noh->proximo );
 		indice++;
 		noh = noh->proximo;
 	}
