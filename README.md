@@ -18,8 +18,9 @@ Quando Utilizar?
   - Tamanho Máximo bem definido
   - Operação mais frequente é a de BUSCA
 
-2: Lista Dinamica [ENCADEADA]
+2: Lista Dinamica
 
+2.1: Encadeada
  Vantagens:
    - Melhor utilização dos recursos da memória (Se precisar de mais eu aloco durante o programa)
    - Não precisa movimentar os elementos na lista nas operações de inserção e remoção
@@ -32,3 +33,18 @@ Desvantagens:
 Quando Utilizar?
    - Quando não posso garantir a quantidade minima de memória pra aplicação
    - Operações mais frequentes são Inserção e Remoção
+
+2.2: DuplamenteEncadeada
+
+Vantagens:
+   - Melhor utilização dos recursos da memória (Se precisar de mais eu aloco durante o programa)
+   - Não precisa movimentar os elementos na lista nas operações de inserção e remoção
+   
+   
+Desvantagens:
+   - Acesso Indireto aos elemento (Todo conteudo será lincado por uma variavel ponteiro
+   - Necessidade de percorrer a lista para acessar a um elemento, conteudo.
+   
+Quando Utilizar?
+   - Quando não posso garantir a quantidade minima de memória pra aplicação
+   - Operações mais frequentes são Inserção(ordenada) e Remoção
