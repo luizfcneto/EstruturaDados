@@ -4,6 +4,7 @@ lista1.c possui apenas o algoritmo principal do codigo
 a implementação das funcoes utilizadas aqui estao localizadas
 em lista1.h
 
+Nome: Luiz Fernando (luizfcneto)
 */
 
 #include <stdio.h>

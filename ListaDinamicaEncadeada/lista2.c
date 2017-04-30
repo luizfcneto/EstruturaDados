@@ -2,8 +2,7 @@
 Descrição: Exemplo de funcionamento de implementação
 da estrutura de dados: Lista Dinamica Encadeada.
 
-Nome: Luiz Fernando
-
+Nome: Luiz Fernando (luizfcneto)
 */
 
 #include <stdio.h>

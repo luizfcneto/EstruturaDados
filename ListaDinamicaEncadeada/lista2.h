@@ -1,4 +1,5 @@
 /*
+Descrição: Implementação e declaração das funcoes implementadas em lista2.c (lista encadeada)
 1-	Inicia-se uma lista encadeada com um ponteiro da lista apontando pra um elemento com conteudo nulo.
 2-	Quando um ponteiro de um elemento aponta para nulo, quer dizer que esse elemento é o ultimo.
 
@@ -307,10 +308,6 @@ void buscaPorConteudo ( tRaiz* referenciaRaiz, taluno* rap  )
 	}
 
 }
-
-
-
-
 
 //Printa a Lista
 void printaListaEncadeada	( tRaiz* referenciaRaiz )
