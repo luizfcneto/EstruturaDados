@@ -27,13 +27,28 @@ typedef struct _tElemento tElemento;
 //Criar Lista
 tRaiz* criaLista ( tRaiz* referenciaRaiz )
 {
-
-}
+	tRaiz *listaNova;
+	listaNova = (tRaiz*) malloc ( sizeof ( tRaiz ) );
+	if ( listaNova == NULL ) printf("ERRO - Lista Nova Invalida! \n");
+	return listaNova;
+}	
 
 //Liberar Lista
 void liberaLista ( tRaiz* referenciaRaiz )
 {
-
+	if ( referenciaRaiz != NULL )
+	{
+		tRaiz *noh;		//noh vai armazenar cada elemento da lista(*referenciaRaiz) e referenciaRaiz vai percorrer a lista 
+		noh = *referenciaRaiz;
+		while ( referenciaRaiz != NULL ){
+			noh = *referenciaRaiz;
+			*referenciaRaiz = (*referenciaRaiz)->proximo;
+			free ( noh );
+		}
+		free ( referenciaRaiz );
+	}else {
+		puts ("ERRO - Lista Vazia \n");
+	}
 }
 
 //Tamanho Lista
@@ -97,5 +112,5 @@ void buscaConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 //Printa lista na tela
 void printaListaDuplamenteEncadeada ( tRaiz* referenciaRaiz )
 {
-	
+
 }
