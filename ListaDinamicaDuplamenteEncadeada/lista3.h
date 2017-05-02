@@ -140,7 +140,24 @@ void buscaPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 void buscaConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
 	if ( referenciaRaiz != NULL ) {
-			tElemento *noh;
+			if ( *referenciaRaiz )	printf ("ERRO - LISTA VAZIA!! \n");
+			else	{
+					int indice = 0, tem = -1;
+					tElemento *noh;
+					noh = *referenciaRaiz;
+
+					while ( noh == NULL )	{
+						if ( noh->info.matricula == rap->matricula )	{
+							printf ("Indice [ %d ] Endereço anterior: [ %p ] <-- Conteudo: [ %d ]  --> Endereço Proximo: [ %p ] ",indice, noh->anterior, noh->info.matricula, noh->proximo );
+							tem = 1;
+							break;
+						}
+						noh->anterior = noh;
+						noh = noh->proximo;
+						indice++;
+					}	if ( tem == -1 ) printf ("ERRO - Elemento [ %d ] não encontrado na Lista! \n", rap->matricula);
+
+			}
 
 	}else printf ("ERRO - LISTA INVALIDA! \n");
 
