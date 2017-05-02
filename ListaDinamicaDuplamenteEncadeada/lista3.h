@@ -31,14 +31,14 @@ tRaiz* criaLista ( tRaiz* referenciaRaiz )
 	listaNova = (tRaiz*) malloc ( sizeof ( tRaiz ) );
 	if ( listaNova == NULL ) printf("ERRO - Lista Nova Invalida! \n");
 	return listaNova;
-}	
+}
 
 //Liberar Lista
 void liberaLista ( tRaiz* referenciaRaiz )
 {
 	if ( referenciaRaiz != NULL )
 	{
-		tRaiz *noh;		//noh vai armazenar cada elemento da lista(*referenciaRaiz) e referenciaRaiz vai percorrer a lista 
+		tRaiz *noh;		//noh vai armazenar cada elemento da lista(*referenciaRaiz) e referenciaRaiz vai percorrer a lista
 		noh = *referenciaRaiz;
 		while ( referenciaRaiz != NULL ){
 			noh = *referenciaRaiz;
@@ -66,12 +66,41 @@ int listaVazia ( tRaiz* referenciaRaiz )
 //Lista Cheia -> Não faz sentido em listas dinamicas, o limite de alocação é a quantidade de memoria disponivel pra rodar o programa
 
 //Adiciona na Lista Ordenado
-void adicionaOrdenadoLista ( tRaiz* referenciaRaiz )
+void adicionaOrdenadoLista ( tRaiz* referenciaRaiz, taluno *rap )
 {
+	if ( referenciaRaiz != NULL ){
+
+		//ListaVazia
+		if ( *referenciaRaiz == NULL )	puts("ERRO - Lista Vazia!! \n");
+
+		else {
+			tElemento *noh, *novo;
+			noh = *referenciaRaiz;
+			novo = *referenciaRaiz;
+			printf ("Elemento: [ %f ] adicionado ordenadamente com sucesso!! \n", rap->matricula);
+			while( noh == NULL)	{
+					noh->anterior = noh;
+					noh = noh->proximo;
+
+					if ( (*noh).anterior->info.matricula < rap->matricula && rap->matricula < (*noh).proximo->info.matricula ){
+						novo->info.matricula = rap->matricula;
+						novo->anterior = noh;
+						novo->proximo = noh->anterior;
+						break;
+					}
+			}if ( noh == NULL ) {		//Se entrar aqui percorreu toda a lista, será o ultimo elemento a ser adicionado
+				noh->proximo = novo;
+				novo->anterior = noh;
+				novo->proximo = NULL;
+			}
+
+		}
+	}
+
 
 }
 
-//Adiciona no final da Lista 
+//Adiciona no final da Lista
 void adicionaFinalLista ( tRaiz* referenciaRaiz )
 {
 
