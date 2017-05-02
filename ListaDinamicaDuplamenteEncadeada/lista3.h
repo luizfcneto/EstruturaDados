@@ -71,9 +71,13 @@ void adicionaOrdenadoLista ( tRaiz* referenciaRaiz, taluno *rap )
 	if ( referenciaRaiz != NULL ){
 
 		//ListaVazia
-		if ( *referenciaRaiz == NULL )	puts("ERRO - Lista Vazia!! \n");
-
-		else {
+		if ( *referenciaRaiz == NULL ) {
+				tElemento *novo;
+				novo = *referenciaRaiz;
+				novo->anterior = NULL;
+				novo->proximo = NULL;
+				novo->info.matricula = rap->matricula;
+		}	else {
 			tElemento *noh, *novo;
 			noh = *referenciaRaiz;
 			novo = *referenciaRaiz;
@@ -135,6 +139,10 @@ void buscaPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 //Busca por Conteudo [matricula]
 void buscaConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
+	if ( referenciaRaiz != NULL ) {
+			tElemento *noh;
+
+	}else printf ("ERRO - LISTA INVALIDA! \n");
 
 }
 
