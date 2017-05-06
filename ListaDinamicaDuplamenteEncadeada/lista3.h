@@ -85,9 +85,31 @@ void adicionaOrdenadoLista ( tRaiz* referenciaRaiz )
 }
 
 //Adiciona no final da Lista 
-void adicionaFinalLista ( tRaiz* referenciaRaiz )
+void adicionaFinalLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
-
+	if ( referenciaRaiz != NULL ){	
+		tElemento *noh,*novo;
+		novo = ( tElemento* ) malloc ( sizeof (tElemento ) );
+		novo->info.matricula = rap->matricula;
+		noh = ( tElemento* ) malloc ( sizeof (tElemento ) );
+		noh = *referenciaRaiz;
+		
+		//ListaVazia
+		if ( noh == NULL ){
+			noh = novo;
+			novo->proximo = NULL;
+			novo->anterior = NULL;
+		}else {			
+			while ( noh->proximo != NULL ){
+				noh = noh->proximo;
+			}
+			novo->proximo = noh->proximo;
+			novo->anterior = noh;
+			noh->proximo = novo;
+		}
+	} else {
+		printf ("ERRO - Lista Invalida! \n");
+	}
 }
 
 //Adiciona no Inicio da Lista
