@@ -113,9 +113,32 @@ void adicionaFinalLista ( tRaiz* referenciaRaiz, taluno* rap )
 }
 
 //Adiciona no Inicio da Lista
-void adicionaInicioLista ( tRaiz* referenciaRaiz )
+void adicionaInicioLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
-
+	if ( referenciaRaiz != NULL ) {
+		tElemento *novo;
+		novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		novo = *referenciaRaiz;
+		if ( novo != NULL ) {
+			
+			//Lista Vazia!
+			if ( *referenciaRaiz == NULL ) {
+				novo->anterior == NULL;
+				novo->proximo == NULL;
+				novo->info.matricula = rap->matricula;
+				*referenciaRaiz = novo;
+			} else {
+				novo->anterior = (*referenciaRaiz)->anterior;
+				novo->proximo = (*referenciaRaiz)->proximo;
+				*referenciaRaiz = novo;	
+			}			
+			
+		} else {
+			printf ("ERRO - Novo não criado com sucesso! \n");
+		}
+	} else {
+		printf ("ERRO - Lista Invalida! \n");
+	}
 }
 
 //Remover elemento por posicao
