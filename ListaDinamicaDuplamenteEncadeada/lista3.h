@@ -38,7 +38,7 @@ void liberaLista ( tRaiz* referenciaRaiz )
 {
 	if ( referenciaRaiz != NULL )
 	{
-		tRaiz *noh;		//noh vai armazenar cada elemento da lista(*referenciaRaiz) e referenciaRaiz vai percorrer a lista 
+		tElemento *noh;		//noh vai armazenar cada elemento da lista(*referenciaRaiz) e referenciaRaiz vai percorrer a lista 
 		noh = *referenciaRaiz;
 		while ( referenciaRaiz != NULL ){
 			noh = *referenciaRaiz;
@@ -123,8 +123,8 @@ void adicionaInicioLista ( tRaiz* referenciaRaiz, taluno* rap )
 			
 			//Lista Vazia!
 			if ( *referenciaRaiz == NULL ) {
-				novo->anterior == NULL;
-				novo->proximo == NULL;
+				novo->anterior = NULL;
+				novo->proximo = NULL;
 				novo->info.matricula = rap->matricula;
 				*referenciaRaiz = novo;
 			} else {
@@ -144,13 +144,83 @@ void adicionaInicioLista ( tRaiz* referenciaRaiz, taluno* rap )
 //Remover elemento por posicao
 void removerPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 {
+	if ( indice <= tamanhoLista ( referenciaRaiz ) || indice >= 0 ) {
+		
+		if ( referenciaRaiz == NULL ) {
+			
+			if ( listaVazia ( referenciaRaiz ) == 0 ){
+				tElemento *noh;
+				noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+				
+				if ( noh != NULL ) {
+					int i = 0;
+					noh = *referenciaRaiz;
+
+					while ( noh != NULL ){
+						if ( i == indice ){
+							noh->anterior->proximo = noh->proximo;
+							noh->proximo->anterior = noh->anterior;
+							break;
+						}
+						noh = noh->proximo;
+						i++;
+					}
+					free ( noh );
+
+		
+				} else {
+					printf("ERRO - Noh não criado com sucesso! \n");
+				}
+		
+			} else {
+				printf ("ERRO - Lista Vazia!! \n");
+			}
+		
+		} else {
+			printf ("ERRO - Lista Invalida! \n");
+		}
+	
+	} else {
+		printf ("ERRO - Posicao Invalida na Lista!\n");
+	}
 
 }
 
 //Remover elemento por conteudo [matricula]
 void removerConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
+	if ( referenciaRaiz != NULL ) {
 
+		if ( listaVazia ( referenciaRaiz ) == 0 ) {
+			tElemento *noh;
+			noh = ( tElemento* ) malloc ( sizeof ( tElemento ) ); 
+			if ( noh != NULL ) {
+				int tem = -1;
+				noh = *referenciaRaiz;
+				
+				while ( noh != NULL ) {
+					if ( noh->info.matricula == rap->matricula ) {
+						noh->anterior->proximo = noh->proximo;
+						noh->proximo->anterior = noh->anterior;
+						tem = 1;
+						break;
+					}
+					noh = noh->proximo;
+				}
+				if ( tem == -1 )	printf ("ERRO - Elemento não consta na lista! \n");
+				free ( noh );
+
+			} else {
+				printf ("ERRO - noh não criado com sucesso! \n");
+			}
+
+		} else {
+			printf ("ERRO - Lista Vazia! \n");
+		}
+
+	} else {
+		printf ("ERRO - Lista Invalida! \n");
+	}
 
 
 }
