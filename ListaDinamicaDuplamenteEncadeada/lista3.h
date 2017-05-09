@@ -79,9 +79,47 @@ int listaVazia ( tRaiz* referenciaRaiz )
 //Lista Cheia -> Não faz sentido em listas dinamicas, o limite de alocação é a quantidade de memoria disponivel pra rodar o programa
 
 //Adiciona na Lista Ordenado
-void adicionaOrdenadoLista ( tRaiz* referenciaRaiz )
+void adicionaOrdenadoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
+	if ( referenciaRaiz == NULL ) {
 
+		tElemento *noh, *novo;
+		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		if ( noh != NULL) {
+			
+			novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+			if ( novo != NULL ) {
+				noh = *referenciaRaiz;
+				int ajuda = -1;
+				while ( noh != NULL ) {
+
+					if ( noh->info.matricula < rap->matricula && noh->proximo->info.matricula > rap->matricula ) {
+						novo->info.matricula = rap->matricula;
+						novo->anterior = noh;
+						novo->proximo = noh->proximo;
+						noh->proximo->anterior = novo;
+						ajuda = 1;
+						break;
+					}
+					noh = noh->proximo;
+					novo = novo->proximo;
+				}
+				if ( ajuda == -1 ) {
+					novo->proximo = noh;
+					novo->anterior = noh->anterior;
+				}
+
+			} else {
+				printf ("ERRO - Novo nao criado com sucesso! \n");
+			}
+
+		} else {
+			printf ("ERRO - Noh não criado com sucesso! \n");
+		}
+
+	} else {
+		printf ("ERRO - Lista Invalida! \n");
+	}
 }
 
 //Adiciona no final da Lista 
