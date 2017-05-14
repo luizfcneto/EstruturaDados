@@ -25,7 +25,7 @@ typedef struct _tElemento *tRaiz;
 typedef struct _tElemento tElemento;
 
 //Criar Lista
-tRaiz* criaLista ( tRaiz* referenciaRaiz )
+tRaiz* criaLista ( )
 {
 	tRaiz *listaNova;
 	listaNova = (tRaiz*) malloc ( sizeof ( tRaiz ) );
@@ -81,7 +81,7 @@ int listaVazia ( tRaiz* referenciaRaiz )
 //Adiciona na Lista Ordenado
 void adicionaOrdenadoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
-	if ( referenciaRaiz == NULL ) {
+	if ( referenciaRaiz != NULL ) {
 
 		tElemento *noh, *novo;
 		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
