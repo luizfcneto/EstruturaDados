@@ -17,7 +17,8 @@ int main(void){
 	dados = ( taluno* ) malloc ( sizeof ( taluno ) );
 
 	listaDuplamenteEncadeada = criaLista ();
-
+	// printf ("Criou a lista");
+	
 
 	//teste adicionando final
 	dados->matricula = 111118;
@@ -43,55 +44,55 @@ int main(void){
 
 	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
 
-	//teste Adicionando ordenado!
-	dados->matricula = 111115;
-	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
-	dados->matricula = 111114;
-	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
-	dados->matricula = 111117;
-	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
-	dados->matricula = 111116;
-	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	// //teste Adicionando ordenado!
+	// dados->matricula = 111115;
+	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	// dados->matricula = 111114;
+	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	// dados->matricula = 111117;
+	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	// dados->matricula = 111116;
+	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
 
-	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
+	// printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
 
 
-	//remover escolhido da lista 	FUNCIONE!
-	removerPosicaoLista ( listaDuplamenteEncadeada, 3 );
-	removerPosicaoLista ( listaDuplamenteEncadeada, 5 );
+	// //remover escolhido da lista 	FUNCIONE!
+	// removerPosicaoLista ( listaDuplamenteEncadeada, 3 );
+	// removerPosicaoLista ( listaDuplamenteEncadeada, 5 );
 
-	//remover escolhido da lista 	NAO FUNCIONE!
-	removerPosicaoLista ( listaDuplamenteEncadeada, -3 );
-	removerPosicaoLista ( listaDuplamenteEncadeada, 20 );
+	// //remover escolhido da lista 	NAO FUNCIONE!
+	// removerPosicaoLista ( listaDuplamenteEncadeada, -3 );
+	// removerPosicaoLista ( listaDuplamenteEncadeada, 20 );
 
-	//remover por conteudo 	FUNCIONE!
-	dados->matricula = 1111117;
-	removerConteudoLista ( listaDuplamenteEncadeada, dados );
-	dados->matricula = 1111119;
-	removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	// //remover por conteudo 	FUNCIONE!
+	// dados->matricula = 1111117;
+	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	// dados->matricula = 1111119;
+	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
 
-	//remover conteudo NAO FUNCIONE!
-	dados->matricula = 123;
-	removerConteudoLista ( listaDuplamenteEncadeada, dados );
-	dados->matricula = 321;
-	removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	// //remover conteudo NAO FUNCIONE!
+	// dados->matricula = 123;
+	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	// dados->matricula = 321;
+	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
 
-	// Busca por indice FUNCIONA!
-	buscaPosicaoLista ( listaDuplamenteEncadeada, 4 );
+	// // Busca por indice FUNCIONA!
+	// buscaPosicaoLista ( listaDuplamenteEncadeada, 4 );
 
-	//Busca por indice NAO FUNCIONA!  
-	buscaPosicaoLista ( listaDuplamenteEncadeada, 8 );
+	// //Busca por indice NAO FUNCIONA!  
+	// buscaPosicaoLista ( listaDuplamenteEncadeada, 8 );
 
-	//Busca por Conteudo FUNCIONA!
-	dados->matricula = 111111;
-	buscaConteudoLista ( listaDuplamenteEncadeada, dados );
+	// //Busca por Conteudo FUNCIONA!
+	// dados->matricula = 111111;
+	// buscaConteudoLista ( listaDuplamenteEncadeada, dados );
 
-	//Busca por Conteudo NAO FUNCIONA!
-	dados->matricula = 111118;
-	buscaConteudoLista ( listaDuplamenteEncadeada, dados );
+	// //Busca por Conteudo NAO FUNCIONA!
+	// dados->matricula = 111118;
+	// buscaConteudoLista ( listaDuplamenteEncadeada, dados );
 	
 
-	//liberaLista ( listaDuplamenteEncadeada );
+	// //liberaLista ( listaDuplamenteEncadeada );
 
 
 	return 0;

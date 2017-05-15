@@ -26,7 +26,8 @@ typedef struct _tElemento tElemento;
 
 //Criar Lista
 tRaiz* criaLista ( )
-{
+{	
+	printf ("Criou a lista \n");
 	tRaiz *listaNova;
 	listaNova = (tRaiz*) malloc ( sizeof ( tRaiz ) );
 	if ( listaNova == NULL ) printf("ERRO - Lista Nova Invalida! \n");
@@ -89,6 +90,7 @@ void adicionaOrdenadoLista ( tRaiz* referenciaRaiz, taluno* rap )
 			
 			novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
 			if ( novo != NULL ) {
+				printf ("Elemento Adicionado ordenadamente com sucesso!");
 				noh = *referenciaRaiz;
 				int ajuda = -1;
 				while ( noh != NULL ) {
@@ -129,22 +131,29 @@ void adicionaFinalLista ( tRaiz* referenciaRaiz, taluno* rap )
 		tElemento *noh,*novo;
 		novo = ( tElemento* ) malloc ( sizeof (tElemento ) );
 		novo->info.matricula = rap->matricula;
+
 		noh = ( tElemento* ) malloc ( sizeof (tElemento ) );
-		noh = *referenciaRaiz;
 		
-		//ListaVazia
-		if ( noh == NULL ){
-			noh = novo;
-			novo->proximo = NULL;
-			novo->anterior = NULL;
-		}else {			
-			while ( noh->proximo != NULL ){
-				noh = noh->proximo;
-			}
-			novo->proximo = noh->proximo;
-			novo->anterior = noh;
-			noh->proximo = novo;
+		if ( novo == NULL || noh == NULL )	printf ("ERRO - Noh e novo nao criados com sucesso! \n");
+		else {
+			noh = *referenciaRaiz;
+
+			//ListaVazia
+			if ( noh == NULL ){
+				novo->proximo = noh;
+				novo->anterior = noh;
+				*referenciaRaiz = novo;
+			}else {			
+				while ( noh->proximo != NULL ){
+					noh = noh->proximo;
+				}
+				novo->proximo = noh->proximo;
+				novo->anterior = noh;
+				noh->proximo = novo;
+			} 
+			printf ("Elemento adicionado no final com sucesso! \n");	
 		}
+
 	} else {
 		printf ("ERRO - Lista Invalida! \n");
 	}
@@ -154,25 +163,22 @@ void adicionaFinalLista ( tRaiz* referenciaRaiz, taluno* rap )
 void adicionaInicioLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
 	if ( referenciaRaiz != NULL ) {
-		tElemento *novo;
+		tElemento *novo, *noh;
 		novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
-		novo = *referenciaRaiz;
-		if ( novo != NULL ) {
-			
-			//Lista Vazia!
-			if ( *referenciaRaiz == NULL ) {
-				novo->anterior = NULL;
-				novo->proximo = NULL;
-				novo->info.matricula = rap->matricula;
-				*referenciaRaiz = novo;
-			} else {
-				novo->anterior = (*referenciaRaiz)->anterior;
-				novo->proximo = (*referenciaRaiz)->proximo;
-				*referenciaRaiz = novo;	
-			}			
-			
-		} else {
-			printf ("ERRO - Novo não criado com sucesso! \n");
+		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+
+		if ( novo == NULL || noh == NULL ) 	printf ("ERRO - Novo ou noh nao criado com sucesso!");
+		
+		else {
+			noh = *referenciaRaiz;
+						
+			novo->info.matricula = rap->matricula;
+			novo->anterior = NULL;
+			novo->proximo = noh;
+			noh->anterior = novo;
+			*referenciaRaiz = novo;
+	
+			printf ("Elemento adicionado no inicio com sucesso! \n");
 		}
 	} else {
 		printf ("ERRO - Lista Invalida! \n");
@@ -193,7 +199,7 @@ void removerPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 				if ( noh != NULL ) {
 					int i = 0;
 					noh = *referenciaRaiz;
-
+					printf ("Elemento removido por posicao com sucesso! \n");
 					while ( noh != NULL ){
 						if ( i == indice ){
 							noh->anterior->proximo = noh->proximo;
@@ -236,6 +242,7 @@ void removerConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 				int tem = -1;
 				noh = *referenciaRaiz;
 				
+				printf ("Elemento removido por conteudo com sucesso! \n");
 				while ( noh != NULL ) {
 					if ( noh->info.matricula == rap->matricula ) {
 						noh->anterior->proximo = noh->proximo;
