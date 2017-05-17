@@ -81,44 +81,37 @@ int listaVazia ( tRaiz* referenciaRaiz )
 
 //Adiciona na Lista Ordenado
 void adicionaOrdenadoLista ( tRaiz* referenciaRaiz, taluno* rap )
-{
+{	
 	if ( referenciaRaiz != NULL ) {
 
 		tElemento *noh, *novo;
 		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
-		if ( noh != NULL) {
-			
-			novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
-			if ( novo != NULL ) {
-				printf ("Elemento Adicionado ordenadamente com sucesso!");
-				noh = *referenciaRaiz;
-				int ajuda = -1;
-				while ( noh != NULL ) {
+		novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		if ( noh == NULL || novo == NULL )	printf ("ERRO - Noh e novo nao criados com sucesso!\n");
+		
+		else {
+			printf ("Elemento Adicionado ordenadamente com sucesso! \n");
+			noh = *referenciaRaiz;
 
-					if ( noh->info.matricula < rap->matricula && noh->proximo->info.matricula > rap->matricula ) {
-						novo->info.matricula = rap->matricula;
-						novo->anterior = noh;
-						novo->proximo = noh->proximo;
-						noh->proximo->anterior = novo;
-						ajuda = 1;
-						break;
-					}
-					noh = noh->proximo;
-					novo = novo->proximo;
+			int ajuda = -1;
+			while ( noh != NULL ) {
+				if ( noh->info.matricula < rap->matricula && noh->proximo->info.matricula > rap->matricula ) {
+					novo->info.matricula = rap->matricula;
+					novo->anterior = noh;
+					novo->proximo = noh->proximo;
+					noh->proximo->anterior = novo;
+					noh->proximo = novo;
+					ajuda = 1;
+					break;
 				}
-				if ( ajuda == -1 ) {
-					novo->proximo = noh;
-					novo->anterior = noh->anterior;
-				}
-
-			} else {
-				printf ("ERRO - Novo nao criado com sucesso! \n");
+				noh = noh->proximo;
 			}
-
-		} else {
-			printf ("ERRO - Noh não criado com sucesso! \n");
-		}
-
+			if ( ajuda == -1 ) {
+				novo->proximo = noh;
+				novo->anterior = noh->anterior;
+				noh->proximo = novo;
+			}
+		} 
 	} else {
 		printf ("ERRO - Lista Invalida! \n");
 	}

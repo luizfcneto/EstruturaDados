@@ -44,17 +44,17 @@ int main(void){
 
 	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
 
-	// //teste Adicionando ordenado!
-	// dados->matricula = 111115;
-	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
-	// dados->matricula = 111114;
-	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
-	// dados->matricula = 111117;
-	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
-	// dados->matricula = 111116;
-	// adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	//teste Adicionando ordenado!
+	dados->matricula = 111115;
+	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	dados->matricula = 111114;
+	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	dados->matricula = 111117;
+	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
+	dados->matricula = 111116;
+	adicionaOrdenadoLista ( listaDuplamenteEncadeada, dados );
 
-	// printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
+	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
 
 
 	// //remover escolhido da lista 	FUNCIONE!
