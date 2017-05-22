@@ -1,3 +1,4 @@
+
 /*
 Descrição: Implementação e declaração das funcoes de lista duplamente encadeada
 
@@ -215,16 +216,16 @@ void removerPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 //Remover elemento por conteudo [matricula]
 void removerConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
-	if ( referenciaRaiz != NULL ) {
-
-		if ( listaVazia ( referenciaRaiz ) == 0 ) {
+	if ( referenciaRaiz == NULL )	printf ("ERRO - Lista Invalida! \n");
+	else {
+		if ( listaVazia ( referenciaRaiz ) != 0 )	printf ("ERRO - Lista Vazia! \n");
+		else {
 			tElemento *noh;
 			noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
-			if ( noh != NULL ) {
+			if ( noh == NULL )	printf ("ERRO - Noh nao criado com sucesso! \n");
+			else {
 				int tem = -1;
 				noh = *referenciaRaiz;
-
-				printf ("Elemento removido por conteudo com sucesso! \n");
 				while ( noh != NULL ) {
 					if ( noh->info.matricula == rap->matricula ) {
 						noh->anterior->proximo = noh->proximo;
@@ -235,28 +236,19 @@ void removerConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 					noh = noh->proximo;
 				}
 				if ( tem == -1 )	printf ("ERRO - Elemento não consta na lista! \n");
-				free ( noh );
-
-			} else {
-				printf ("ERRO - noh não criado com sucesso! \n");
+				else {
+					printf ("Elemento do conteudo [ %d ] removido com sucesso! \n",rap->matricula);
+				}
 			}
-
-		} else {
-			printf ("ERRO - Lista Vazia! \n");
 		}
-
-	} else {
-		printf ("ERRO - Lista Invalida! \n");
 	}
-
-
 }
 
 //Busca por indice
 void buscaPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 {
-	printf ("Entrou busca");
-	if ( referenciaRaiz != NULL ) {
+	if ( referenciaRaiz == NULL ) printf ("ERRO - Lista Invalida! \n");
+	else {
 		if ( indice > tamanhoLista ( referenciaRaiz ) || indice < 0 )	puts ("ERRO - Indice Invalido, menor ou maior que tamanho da Lista!\n");
 		else {
 			tElemento *noh;
@@ -264,9 +256,10 @@ void buscaPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 			if ( noh == NULL )	puts ("ERRO - Noh nao criado com sucesso! \n");
 			else {
 				int i = 0;
+				noh = *referenciaRaiz;
 				while ( noh != NULL ){
 					if ( i == indice ) {
-						printf ("Indice: [ %d ] \tConteudo (Matricula): [ %d ] \n", indice, noh->info.matricula );
+						printf ("Indice: [ %d ]  \tConteudo (Matricula): [ %d ] \n", indice, noh->info.matricula );
 						break;
 					}
 					i++;
@@ -274,25 +267,26 @@ void buscaPosicaoLista ( tRaiz* referenciaRaiz, int indice )
 				}
 			}
 		}
-	} else {
-		printf ("ERRO - Lista Invalida! \n");
 	}
 }
 
 //Busca por Conteudo [matricula]
 void buscaConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 {
-	if ( referenciaRaiz != NULL ) {
+	if ( referenciaRaiz == NULL )	printf ("ERRO - Lista Invalida! \n");
+	else {
 		tElemento *noh;
-		if ( listaVazia ( referenciaRaiz ) != 1 ){
+		if ( listaVazia ( referenciaRaiz ) == 1 )	printf ("ERRO - Lista Vazia! \n");
+		else {
 			noh = ( tElemento* ) malloc ( sizeof( tElemento ) );
 			if ( noh == NULL ) 	puts ("ERRO - Noh nao criado com Sucesso! \n");
 			else {
+				noh = *referenciaRaiz;
 				int tem = -1, indice = 0;
 				while ( noh != NULL ) {
 					if ( noh->info.matricula == rap->matricula ) {
 						tem = 1;
-						printf ("Indice: [ %d ] \tConteudo (Matricula): [ %d ] \n", indice, noh->info.matricula );
+						printf ("Indice: [ %d ]  \tConteudo (Matricula): [ %d ] \n", indice, noh->info.matricula );
 						break;
 					}
 					noh = noh->proximo;
@@ -300,11 +294,8 @@ void buscaConteudoLista ( tRaiz* referenciaRaiz, taluno* rap )
 				}
 				if ( tem == -1 )	puts ("ERRO - Elemento nao consta na Lista! \n");
 			}
-		} else puts ("ERRO - Lista Vazia! \n");
-	} else {
-		puts ("ERRO - Lista Invalida! \n");
+		}
 	}
-
 }
 
 //Printa lista na tela

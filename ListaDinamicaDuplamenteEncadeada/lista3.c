@@ -70,35 +70,38 @@ int main(void){
 	removerPosicaoLista ( listaDuplamenteEncadeada, 20 );
 
 	// //remover por conteudo 	FUNCIONE!
-	dados->matricula = 1111117;
+	dados->matricula = 111117;
 	removerConteudoLista ( listaDuplamenteEncadeada, dados );
 	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
-	
-	// dados->matricula = 1111119;
-	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
+
+	dados->matricula = 111119;
+	removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
 
 	// //remover conteudo NAO FUNCIONE!
-	// dados->matricula = 123;
-	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
-	// dados->matricula = 321;
-	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	dados->matricula = 123;
+	removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	dados->matricula = 321;
+	removerConteudoLista ( listaDuplamenteEncadeada, dados );
+
+	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
 
 	// // Busca por indice FUNCIONA!
-	// buscaPosicaoLista ( listaDuplamenteEncadeada, 4 );
+	buscaPosicaoLista ( listaDuplamenteEncadeada, 4 );
 
-	// //Busca por indice NAO FUNCIONA!
-	// buscaPosicaoLista ( listaDuplamenteEncadeada, 8 );
+	// // //Busca por indice NAO FUNCIONA!
+	buscaPosicaoLista ( listaDuplamenteEncadeada, 8 );
 
-	// //Busca por Conteudo FUNCIONA!
-	// dados->matricula = 111111;
-	// buscaConteudoLista ( listaDuplamenteEncadeada, dados );
+	// // //Busca por Conteudo FUNCIONA!
+	dados->matricula = 111111;
+	buscaConteudoLista ( listaDuplamenteEncadeada, dados );
 
-	// //Busca por Conteudo NAO FUNCIONA!
-	// dados->matricula = 111118;
-	// buscaConteudoLista ( listaDuplamenteEncadeada, dados );
+	// // //Busca por Conteudo NAO FUNCIONA!
+	dados->matricula = 111119;
+	buscaConteudoLista ( listaDuplamenteEncadeada, dados );
 
 
-	// //liberaLista ( listaDuplamenteEncadeada );
+	// liberaLista ( listaDuplamenteEncadeada );
 
 
 	return 0;
