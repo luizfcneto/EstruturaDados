@@ -1,5 +1,5 @@
 /*
-Descrição: Exemplo de funcionamento e implementações 
+Descrição: Exemplo de funcionamento e implementações
 da estrutura: lista dinamica duplamente encadeada
 
 Nome: Luiz Fernando (luizfcneto)
@@ -10,7 +10,7 @@ Nome: Luiz Fernando (luizfcneto)
 #include "lista3.h"
 
 int main(void){
-	
+
 	tRaiz *listaDuplamenteEncadeada;
 	taluno *dados;
 
@@ -18,7 +18,7 @@ int main(void){
 
 	listaDuplamenteEncadeada = criaLista ();
 	// printf ("Criou a lista");
-	
+
 
 	//teste adicionando final
 	dados->matricula = 111118;
@@ -58,16 +58,22 @@ int main(void){
 
 
 	// //remover escolhido da lista 	FUNCIONE!
-	// removerPosicaoLista ( listaDuplamenteEncadeada, 3 );
-	// removerPosicaoLista ( listaDuplamenteEncadeada, 5 );
+	removerPosicaoLista ( listaDuplamenteEncadeada, 3 );
+	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
+
+	removerPosicaoLista ( listaDuplamenteEncadeada, 5 );
+	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
+
 
 	// //remover escolhido da lista 	NAO FUNCIONE!
-	// removerPosicaoLista ( listaDuplamenteEncadeada, -3 );
-	// removerPosicaoLista ( listaDuplamenteEncadeada, 20 );
+	removerPosicaoLista ( listaDuplamenteEncadeada, -3 );
+	removerPosicaoLista ( listaDuplamenteEncadeada, 20 );
 
 	// //remover por conteudo 	FUNCIONE!
-	// dados->matricula = 1111117;
-	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	dados->matricula = 1111117;
+	removerConteudoLista ( listaDuplamenteEncadeada, dados );
+	printaListaDuplamenteEncadeada ( listaDuplamenteEncadeada );
+	
 	// dados->matricula = 1111119;
 	// removerConteudoLista ( listaDuplamenteEncadeada, dados );
 
@@ -80,7 +86,7 @@ int main(void){
 	// // Busca por indice FUNCIONA!
 	// buscaPosicaoLista ( listaDuplamenteEncadeada, 4 );
 
-	// //Busca por indice NAO FUNCIONA!  
+	// //Busca por indice NAO FUNCIONA!
 	// buscaPosicaoLista ( listaDuplamenteEncadeada, 8 );
 
 	// //Busca por Conteudo FUNCIONA!
@@ -90,7 +96,7 @@ int main(void){
 	// //Busca por Conteudo NAO FUNCIONA!
 	// dados->matricula = 111118;
 	// buscaConteudoLista ( listaDuplamenteEncadeada, dados );
-	
+
 
 	// //liberaLista ( listaDuplamenteEncadeada );
 
