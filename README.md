@@ -49,3 +49,9 @@ Quando Utilizar?
    - Quando não posso garantir a quantidade minima de memória pra aplicação
    - Operações mais frequentes são Inserção(ordenada) e Remoção
    - Necessidade de acessar informação de um elemento antecessor 
+   
+3: Fila (Lista especial) Pode ser dinamica ou estática  
+  
+Quando Utilizar?
+  - Controle de Fluxo
+  - Recursos compartilhados ( Impressora, Transações de Banco de Dados, etc )
