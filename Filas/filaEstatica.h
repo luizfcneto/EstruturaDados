@@ -25,21 +25,31 @@ typedef struct tFila
 //Cria Fila
 tfila* criaFila ( ) 
 {
+	tfila *filaEstatica;
+	filaEstatica = ( tfila* ) malloc ( sizeof ( tfila ) );
+	if (filaEstatica == NULL )	printf ("ERRO - Fila Invalida! \n");
+	else {
+		filaEstatica->inicio = 0;
+		filaEstatica->final = 0;
+		filaEstatica->quantidade = 0;
+	}
 
 }
 
 //Tamanho da Fila
-void tamanhoFila ( )
+int tamanhoFila (tfila* rfp)
 {
-
+	return rfp->quantidade;
 }
 
 
 //Libera Fila
-void liberaFila ( ) 
+void liberaFila (tfila* rfp) 
 {
-
+	free (rfp);
 }
+
+//Insere na Fila
 
 //Printa Fila
 void printaFila ( ) 
