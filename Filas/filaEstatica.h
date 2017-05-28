@@ -70,9 +70,25 @@ void liberaFila (tfila* rfp)
 }
 
 //Insere na Fila
+void insereFila ( tfila* rfp, taluno* rap ) 
+{
+	
+}
 
-//Printa Fila
-void printaFila ( ) 
+void removeFila ( tfila* rfp, taluno* rap )
 {
 
+}
+
+//Printa Fila irei ver todos os elementos somente para facilitar visuzaliação 
+void printaFila ( tfila* rfp ) 
+{
+	int indice = 0;
+	if ( tfila == 0 )	printf ("ERRO - Fila Invalida! \n");
+	else {
+		for ( indice = 0 ; indice < MAX ; indice++ ) {
+			printf ("Indice: [ %d ] - Conteudo: [ %d ] \n", indice, rfp->dado.matricula);
+		}
+		
+	}
 }
