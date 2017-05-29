@@ -69,26 +69,46 @@ void liberaFila (tfila* rfp)
 	free (rfp);
 }
 
-//Insere na Fila
+//Insere na Fila (Só podemos inserir elementos no final)
 void insereFila ( tfila* rfp, taluno* rap ) 
 {
-	
+	if (rfp == NULL)	printf ("ERRO - Fila Invalida! \n");
+	else {
+
+		if (rfp->final == MAX)	printf ("ERRO - Fila Cheia! \n");
+		else {
+			rfp->dado[rfp->final].matricula = rap->matricula;
+			rfp->quantidade++;
+			rfp->final++;
+		}
+	}
 }
 
-void removeFila ( tfila* rfp, taluno* rap )
+//Remover Fila (Só podemos remover elementos no final)	
+void removeFila ( tfila* rfp )
 {
+	if (rfp == NULL)	printf ("ERRO - Fila Invalida! \n");
+	else {
 
+		if (rfp->final == rfp->inicio)	printf ("ERRO - Fila Vazia! \n");
+		else {
+			rfp->dado[rfp->final].matricula = 0;
+			rfp->final--;
+			rfp->quantidade--;
+
+		}
+	}
 }
 
 //Printa Fila irei ver todos os elementos somente para facilitar visuzaliação 
 void printaFila ( tfila* rfp ) 
 {
 	int indice = 0;
-	if ( tfila == 0 )	printf ("ERRO - Fila Invalida! \n");
+	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
 	else {
 		for ( indice = 0 ; indice < MAX ; indice++ ) {
-			printf ("Indice: [ %d ] - Conteudo: [ %d ] \n", indice, rfp->dado.matricula);
+			printf ("Indice: [ %d ] - Conteudo: [ %d ] \n", indice, rfp->dado[indice].matricula);
 		}
-		
+		printf ("Posição a ser adicionado elemento: [ %d ] \n",rfp->final);
 	}
 }
