@@ -10,7 +10,7 @@ Email: luizfcneto123@gmail.com
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "listaDinamica.h"
+#include "filaDinamica.h"
 
 int main ()
 {	
