@@ -71,7 +71,19 @@ void liberaFila ( tRaiz* rfp )
 //Adiciona Elemento
 void adicionaElemento ( tRaiz* rfp, taluno* rap )
 {
-	
+	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
+	else {
+		tElemento *novo;
+		novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		if ( novo == NULL )	printf ("ERRO - Elemento novo nao criado com sucesso! \n");
+		else {
+			novo = *rfp;
+			while ( novo->proximo != NULL )	{
+				novo = novo->proximo;
+			}
+			novo->dado.matricula = rap->matricula;
+		}
+	}
 }
 
 //Remove Elemento
@@ -83,5 +95,18 @@ void removeElemento ( tRaiz* rfp, taluno* rap )
 //Printa Fila
 void printaFila ( tRaiz* rfp )
 {
-	
+	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
+	else {
+		tElemento *noh;
+		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		if ( noh == NULL ) printf ("ERRO - Noh Invalido! \n");
+		else {
+			noh = *rfp;
+			int indice = 0;
+			while ( noh->proximo != NULL )	{
+				printf ("Indice: [ %d ] \t\tDado(Conteudo): [ %d ] \n", indice, rfp->dado.matricula);
+				noh = noh->proximo;
+			}
+		}
+	}
 }
