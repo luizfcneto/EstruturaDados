@@ -89,7 +89,20 @@ void adicionaElemento ( tRaiz* rfp, taluno* rap )
 //Remove Elemento
 void removeElemento ( tRaiz* rfp, taluno* rap )
 {
-
+	if ( rfp == NULL )	printf ("ERRO - Fila Invalida!! \n");
+	else {
+		tElemento *noh;
+		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		if ( noh == NULL )	printf ("ERRO - Noh nao criado com sucesso! \n");
+		else {
+			noh = *rfp;
+			while ( noh->proximo != NULL )	{
+				noh = noh->proximo;
+			}
+			
+			free (noh);
+		}
+	}
 }
 
 //Printa Fila
