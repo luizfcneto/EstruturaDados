@@ -15,17 +15,18 @@ struct tAluno
 
 struct tElemento
 {
-	struct tElemento *proximo;
 	taluno dado;
-}
+	struct tElemento *proximo;
+};
 
 typedef struct tElemento *tRaiz;
+typedef struct tElemento telemento;
 
 tRaiz* criaFila ()
 {
 	tRaiz *novo;
 	novo = ( tRaiz* ) malloc ( sizeof ( tRaiz ) );
-	if ( novo == NULL )	printf ("ERRO - Raiz Invalida, nao criada com sucesso! \n"); 
+	if ( novo == NULL )	printf ("ERRO - Raiz Invalida, nao criada com sucesso! \n");
 
 	return novo;
 }
@@ -33,10 +34,11 @@ tRaiz* criaFila ()
 //tamanho da Fila
 int tamanhoFila ( tRaiz* rfp )
 {
+	int indice = 0;
 	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
 	else {
-		tElemento *no;
-		no = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		telemento *no;
+		no = ( telemento* ) malloc ( sizeof ( telemento ) );
 		if ( no == NULL )	printf ("ERRO - No nao criado com sucesso! ");
 		else {
 			no = *rfp;
@@ -65,7 +67,20 @@ int filaVazia ( tRaiz* rfp )
 //Libera Fila
 void liberaFila ( tRaiz* rfp )
 {
-
+	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
+	else {
+		telemento *noh;
+		noh = ( telemento* ) malloc ( sizeof ( telemento ) );
+		if ( noh == NULL )	printf ("ERRO - Noh nao criado com sucesso! \n");
+		else{
+			noh = *rfp;
+			while ( rfp != NULL )	{
+				noh = noh->proximo;
+				free (noh);
+			}
+			free (rfp);
+		}
+	}
 }
 
 //Adiciona Elemento
@@ -73,8 +88,8 @@ void adicionaElemento ( tRaiz* rfp, taluno* rap )
 {
 	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
 	else {
-		tElemento *novo;
-		novo = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		telemento *novo;
+		novo = ( telemento* ) malloc ( sizeof ( telemento ) );
 		if ( novo == NULL )	printf ("ERRO - Elemento novo nao criado com sucesso! \n");
 		else {
 			novo = *rfp;
@@ -91,15 +106,15 @@ void removeElemento ( tRaiz* rfp, taluno* rap )
 {
 	if ( rfp == NULL )	printf ("ERRO - Fila Invalida!! \n");
 	else {
-		tElemento *noh;
-		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		telemento *noh;
+		noh = ( telemento* ) malloc ( sizeof ( telemento ) );
 		if ( noh == NULL )	printf ("ERRO - Noh nao criado com sucesso! \n");
 		else {
 			noh = *rfp;
 			while ( noh->proximo != NULL )	{
 				noh = noh->proximo;
 			}
-			
+
 			free (noh);
 		}
 	}
@@ -110,14 +125,14 @@ void printaFila ( tRaiz* rfp )
 {
 	if ( rfp == NULL )	printf ("ERRO - Fila Invalida! \n");
 	else {
-		tElemento *noh;
-		noh = ( tElemento* ) malloc ( sizeof ( tElemento ) );
+		telemento *noh;
+		noh = ( telemento* ) malloc ( sizeof ( telemento ) );
 		if ( noh == NULL ) printf ("ERRO - Noh Invalido! \n");
 		else {
 			noh = *rfp;
 			int indice = 0;
 			while ( noh->proximo != NULL )	{
-				printf ("Indice: [ %d ] \t\tDado(Conteudo): [ %d ] \n", indice, rfp->dado.matricula);
+				printf ("Indice: [ %d ] \t\tDado(Conteudo): [ %d ] \n", indice, noh->dado.matricula);
 				noh = noh->proximo;
 			}
 		}
