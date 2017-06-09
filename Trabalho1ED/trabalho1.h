@@ -9,7 +9,7 @@ Email: luizfcneto123@gmail.com
 //Estrutura CIDR
 typedef struct tCIDR
 {
-  char blocoIP[4];   //Como armazenarei os Ips?
+  int blocoIP[4];   //Como armazenarei os Ips?
   char info[100];   //Informação do bloco
 } tcidr;
 

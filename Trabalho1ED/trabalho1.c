@@ -22,6 +22,25 @@ Email: luizfcneto123@gmail.com
 
 int main()
 {
+	tRaiz *raiz;
+	raiz = criaLista ();
+	int quantidade;
 
-  return 0;
+	// puts ("Informe a quantidade de ips que serão lidos: ");
+	scanf ("%d" ,&quantidade);
+		
+	tcdir *cidrs[quantidade];	//Como inicializo um vetor de ponteiros de estruturas?
+
+
+	//Entrada dos Blocos CIDR
+	for ( int i = 0; i < quantidade; i++ ) {
+		scanf ("%d.%d.%d.%d/%d",cidrs[i]->blocoIP[0], cidrs[i]->blocoIP[1], cidrs[i]->blocoIP[2], cidrs[i]->blocoIP[3], cidrs[i]->chaveBloco );
+		gets (cidrs[i]->info);
+		scanf(" ");				//Ajeitar o Buffer, primeira leitura foi inteiro, depois foi "string"
+	}
+
+	//Entrada dos Blocos que quero descobrir a informação 
+
+
+	return 0;
 }
