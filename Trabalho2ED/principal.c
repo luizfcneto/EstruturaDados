@@ -9,6 +9,7 @@ Email: luizfcneto123@gmail.com
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "sort.h"
 
 
@@ -16,7 +17,7 @@ int main ()
 {
 	int vetor[9], inicio, final;
 	inicio = 0;
-	final = 8;
+	final = 9;
 	vetor[0] = 3;
 	vetor[1] = 4;
 	vetor[2] = 2;
@@ -30,8 +31,8 @@ int main ()
 	printf ("Vetor incial: \n");
 	printaVetor (vetor, final);
 
-	quickSort (vetor, inicio, final);
-
+	// quickSort ( vetor, inicio, final );
+	mergeSort ( vetor, inicio, final );
 	printf("\nConclusao: \n");
 	printaVetor (vetor, final);
 
