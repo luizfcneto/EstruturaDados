@@ -4,6 +4,12 @@
  * 	Email: luizfcneto123@gmail.com	
  * 	Descrição: Implementação da classe Pilha e seus métodos para manipulação de dados (nesta classe inteiros)
  * 		para fazer a lista 1 de Ed1
+ * 
+ * 		"Implementado" apenas a letra: 
+ * 		
+ * 			a) void ordenaPilha();	-> "implementado de forma incorreta, manipulando por vetores, nao consegui fazer
+ * 				de outra forma.
+ * 	
  * 	Entrada: tamanhoPilha (int) ou NULL (construtor default)
  *	Saida: NULL (Pilha Ordenada);
  */

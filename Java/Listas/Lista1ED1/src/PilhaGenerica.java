@@ -140,7 +140,6 @@ public class PilhaGenerica<T> {
 			
 		}
 		
-		
 	}
 	
 	//1) c - Reverter a ordem da pilha que solicitou o metodo
