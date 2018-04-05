@@ -2,7 +2,7 @@
  * 	Autor: Luiz Fernando (Luizfcneto)
  * 	Email: Luizfcneto123@gmail.com
  * 	Descrição: 
- * 		Fila2Pilhas serve para utilizarmos os métodos push e pop de pilha ja que ela é uma extensao de pilha
+ * 		Fila2Pilhas serve para utilizarmos os métodos push e pop de duas pilhas, para representarmos uma fila
  * 		
  * 		Exercicio02 da Lista 02
  * 		- pilha1 sera responsavel pela insercao dos valores

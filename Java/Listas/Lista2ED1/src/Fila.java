@@ -108,20 +108,28 @@ public class Fila {
 	//1) Adicionar numa Fila Mista que adicione os elementos da fila1 e fila2 alternadamente
 	public Fila combinaFilas( Fila fila1, Fila fila2 ) {
 		int tamanhoTotal = fila1.quantidadeFila + fila2.quantidadeFila;
-		while ( !this.verificaCheia() && tamanhoTotal > 0 ){
-			
-			//se fila1 nao fica vazia
-			if ( !fila1.verificaVazia() ) 
-				this.adicionaNaFila( fila1.removeInicioDaFila() );
-			
-			//se fila2 nao fica vazia
-			if ( !fila2.verificaVazia() )
-				this.adicionaNaFila( fila2.removeInicioDaFila() );
-			
-			tamanhoTotal--;
-			
+		
+		//se tamanho de fila1 + fila2 for superior ao tamanho total da fila mista.
+		if ( tamanhoTotal > this.tamanhoFila ) 
+			return null;
+		
+		else {
+			while ( !this.verificaCheia() && tamanhoTotal > 0 ){
+				
+				//se fila1 nao fica vazia
+				if ( !fila1.verificaVazia() ) 
+					this.adicionaNaFila( fila1.removeInicioDaFila() );
+				
+				//se fila2 nao fica vazia
+				if ( !fila2.verificaVazia() )
+					this.adicionaNaFila( fila2.removeInicioDaFila() );
+				
+				tamanhoTotal--;
+				
+			}
+			return this;
 		}
-		return this;
+		
 			
 	}
 	
