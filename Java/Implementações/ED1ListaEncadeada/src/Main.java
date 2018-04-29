@@ -5,8 +5,6 @@
  * 	Descrição: Classe principal será responsavel pela manipulação 
  * 	 de informação utilizando uma implementação de Lista Encadeada
  * 	
- * 	
- * 
  * 
  * 
  */
@@ -24,13 +22,13 @@ public class Main {
 		lista.insereNaLista( 40 );
 		lista.insereNaLista( 100 );
 		
-		//printa Lista
+		//printa Lista 
 		lista.printaListaEncadeada();
 		
 		
 		
 		//testando remover:		[com conteudo na lista]
-		lista.removePorConteudoDaLista( 15 );
+		lista.removePorConteudoDaLista( 100 );
 		
 		//testando remover: 	[sem conteudo na lita]
 		lista.removePorConteudoDaLista( 90 );
@@ -43,7 +41,7 @@ public class Main {
 		
 		System.out.println( "____________________________________________________________________________________" );
 		lista.printaListaEncadeada();
-	
+		
 	}
 	
 }

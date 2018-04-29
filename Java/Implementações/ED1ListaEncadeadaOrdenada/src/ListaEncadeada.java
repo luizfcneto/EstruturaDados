@@ -88,7 +88,7 @@ public class ListaEncadeada {
 		
 	}
 	
-	//Remove um elemento da Lista Encadeada ( por conteudo! ) ATENTAR AO FATODE REMOVER O PRIMEIRO ELEMENTO!
+	//Remove um elemento da Lista Encadeada ( por conteudo! )
 	public Elo removePorConteudoDaLista ( int conteudo ) {
 		
 		if ( !this.listaVazia() ) {
@@ -166,6 +166,7 @@ public class ListaEncadeada {
 			}
 		} else 
 			System.out.println( "Lista Encadeada Vazia! " );
+		
 	}
 	
 }
