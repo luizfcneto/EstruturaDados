@@ -18,6 +18,8 @@ public class Main {
 		listaOrdenada.adicionaOrdenado( 2 );
 		listaOrdenada.adicionaOrdenado( 8 );
 		listaOrdenada.adicionaOrdenado( 20 );
+		listaOrdenada.adicionaOrdenado( 9 );
+		listaOrdenada.adicionaOrdenado( 12 );
 		
 		//Imprime a Lista Ordenada
 		listaOrdenada.printaListaEncadeadaOrdenada();
@@ -32,7 +34,14 @@ public class Main {
 		//Busca na Lista ordenada
 		listaOrdenada.buscaOrdenado( 10 );
 		
+		//Imprime a Lista Ordenada
+		listaOrdenada.printaListaEncadeadaOrdenada();
 		
+		//Remove Ordenado existe
+		listaOrdenada.removeOrdenado( 2 );
+		
+		//Imprime a Lista Ordenada
+		listaOrdenada.printaListaEncadeadaOrdenada();
 	}
 	
 }

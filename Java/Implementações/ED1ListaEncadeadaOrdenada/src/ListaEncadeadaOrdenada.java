@@ -17,23 +17,59 @@
 public class ListaEncadeadaOrdenada extends ListaEncadeada {
 
 	//adiciona Ordenado na lista encadeada Ordenada
-	public void adicionaOrdenado( int novo ) {
+	public void adicionaOrdenado( int elementoNovo ) {
+		Elo novo = new Elo( elementoNovo );
 		
-		Elo auxiliar = new Elo();			//percorrerá a lista até encontrar um elemento maior que novo
-		Elo anterior = new Elo();			//irá percorrer a lista antes do auxiliar
-	
-		auxiliar = this.primeiro;
-		auxiliar = auxiliar.proximo;
-		anterior = this.primeiro;				
-		anterior.conteudo = novo;			
+		//lista vazia
+		if ( this.listaVazia() ) {
+			novo.proximo = this.primeiro;
+			this.primeiro = novo;
 		
-		//Problema [ quando so tiver um elemento na lista, deste modo ele ira adicionar um elemento maior no inicio ]
-		while ( auxiliar != null && auxiliar.conteudo > novo ) {				
-			auxiliar = auxiliar.proximo;
-			anterior = anterior.proximo;
 			
+		}else {
+			Elo auxiliar = new Elo();
+			Elo anterior = new Elo();
+			auxiliar = this.primeiro;
+			
+			
+			//um elemento apenas:
+			if ( auxiliar.proximo == null ) {
+				
+				if ( novo.conteudo > auxiliar.conteudo ) {
+					novo.proximo = auxiliar.proximo;
+					auxiliar.proximo = novo;
+				
+				}else {
+					novo.proximo = auxiliar;
+					this.primeiro = novo;
+					
+				}
+				
+			}
+			
+			//comparando com o primeiro elemento
+			if ( auxiliar.conteudo > novo.conteudo ) {
+				novo.proximo = auxiliar;
+				this.primeiro = novo;
+			
+			}else {										//Comparando todos
+							
+				auxiliar = auxiliar.proximo;
+				anterior = this.primeiro;
+				
+			
+				while ( auxiliar != null ) {
+					if ( auxiliar.conteudo > novo.conteudo )
+						break;
+					
+					auxiliar = auxiliar.proximo;
+					anterior = anterior.proximo;
+					
+				}
+				anterior.proximo = novo;
+				novo.proximo = auxiliar;
+			}
 		}
-		anterior.proximo = auxiliar;	
 		
 	}
 	
@@ -41,40 +77,65 @@ public class ListaEncadeadaOrdenada extends ListaEncadeada {
 	public boolean removeOrdenado ( int conteudo ) {
 		
 		if ( !this.listaVazia() ) {
-			boolean presente = false;
+			
 			Elo auxiliar = new Elo();
 			Elo anterior = new Elo();
-			
 			auxiliar = this.primeiro;
-			auxiliar = auxiliar.proximo;
-			anterior = this.primeiro;
 			
-			while ( auxiliar != null && auxiliar.conteudo > conteudo ) {
-				
-				if ( auxiliar.conteudo == conteudo ) {
-					anterior.proximo = auxiliar.proximo;
-					presente = true;
-					break;
-					
-				}
-								
-				auxiliar = auxiliar.proximo;
-				anterior = anterior.proximo;
-			
-			}
-			
-			if ( presente ) 
+			//comparando o primeiro elemento:
+			if ( auxiliar.conteudo == conteudo ) {
+				this.primeiro = auxiliar.proximo;
+				System.out.println( "Elemento " + conteudo + " Removido com sucesso!" );
 				return true;
 			
-			else {
-				System.out.println( "Elemento não pertence a lista!" );
-				return false;
-			 
+				
+			//Comparando todos da lista menos o primeiro elemento
+			}else {
+				
+				
+				//caso queira remover o primeiro elemento:
+				if ( auxiliar.conteudo == conteudo ) {
+					this.primeiro = auxiliar.proximo;
+					System.out.println( "Elemento " + conteudo + " Removido com sucesso!" );
+					return true;
+					
+				}
+				
+				auxiliar = auxiliar.proximo;
+				anterior = this.primeiro;
+				boolean presente = false;
+				
+				while ( auxiliar != null ) {
+					
+					if ( auxiliar.conteudo == conteudo ) {
+						anterior.proximo = auxiliar.proximo;
+						presente = true;
+						break;
+						
+					}
+					
+					if ( auxiliar.conteudo > conteudo ) 
+						break;
+									
+					auxiliar = auxiliar.proximo;
+					anterior = anterior.proximo;
+				
+				}
+				
+				if ( presente ) {
+					System.out.println( "Elemento " + conteudo + " Removido com sucesso!" );
+					return true;
+				
+				}else {
+					System.out.println( "Elemento " + conteudo + " não pertence a lista!" );
+					return false;
+				 
+				}
 			}
-			
 		}else {
 			System.out.println( "Lista Vazia!" );
 			return false;
+		
 		}
 		
 	}
@@ -115,13 +176,14 @@ public class ListaEncadeadaOrdenada extends ListaEncadeada {
 			int contador = 0;
 			Elo auxiliar = new Elo( );
 			auxiliar = this.primeiro;
-			
+			System.out.println("___________________________________________INICIO___________________________________________");
 			while ( auxiliar != null ) {
 				System.out.println("Indice: " + contador + " Elemento: " + auxiliar.conteudo + " Hash: [ " + auxiliar + " ] " + " ---> " + auxiliar.proximo );
 				auxiliar = auxiliar.proximo;
 				contador++;
 				
 			}
+			System.out.println("___________________________________________FIM___________________________________________\n");
 		} else 
 			System.out.println( "Lista Encadeada Vazia! " );
 	
