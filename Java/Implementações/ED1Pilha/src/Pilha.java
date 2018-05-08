@@ -10,7 +10,7 @@
 
 public class Pilha {
 	//variaveis necessárias para implementar a pilha
-	private int topo, tamanhoPilha, elemento;
+	private int topo, tamanhoPilha;
 	private int vetor[];
 	
 
@@ -55,18 +55,17 @@ public class Pilha {
 		
 		} else 
 			System.out.println( "Erro, Pilha Vazia" );
-			return 0;
+			return -1;
 	
 	}
 	
 	
 	//push() => adiciona um elemento na pilha, caso ela não esteja cheia.
 	public void push( int elemento ) {
-		this.elemento = elemento;
 		
 		if( !this.verificaPilhaCheia() ) {
 			this.topo += 1;
-			this.vetor[this.topo] = this.elemento;
+			this.vetor[this.topo] = elemento;
 			
 		}else 
 			System.out.println(" ERRO, Pilha Cheia" );
@@ -75,14 +74,14 @@ public class Pilha {
 	
 	//Metodo para retornar o ultimo elemento inserido, primeiro a sair : [topo]
 	public int retornaTopoPilha() {
-		int elementoDaPilha = -1;
 		
 		if ( !verificaPilhaVazia() ) {
+			int elementoDaPilha;
 			elementoDaPilha = this.vetor[this.topo];
 			return elementoDaPilha;
 			
 		}else 
-			return elementoDaPilha;
+			return -1;
 		
 	}
 	
