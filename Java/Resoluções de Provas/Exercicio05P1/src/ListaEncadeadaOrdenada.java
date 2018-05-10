@@ -209,7 +209,7 @@ public class ListaEncadeadaOrdenada extends ListaEncadeada {
 					auxiliar1 = novo.proximo;
 				}
 				 
-				//auxiliar1.conteudo <= auxiliar2.conteudo		a1= 1	an1= 0 	a2=4	an2= 3  
+				//auxiliar1.conteudo <= auxiliar2.conteudo
 				if ( auxiliar1.conteudo <= auxiliar2.conteudo  ) {
 					auxiliar1 = auxiliar1.proximo;
 					anterior1 = anterior1.proximo;					
