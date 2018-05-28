@@ -47,24 +47,46 @@ public class ListaDuplamenteEncadeadaOrdenada extends ListaDuplamenteEncadeada {
 	
 	
 	//adiciona ordenadamente o elemento na lista
-	public void adicionaOrndenada( int elemento ) {
+	public void adicionaOrdenada( int elemento ) {
+		Elo auxiliar = new Elo();
+		auxiliar = this.primeiro;
 		
 		//primeiro elemento
 		if ( this.verificaVazia() ) {
 			Elo novo = new Elo( elemento );
 			this.primeiro = novo;
-						
-		}else {
-			Elo auxiliar = new Elo();
-			auxiliar = this.primeiro;
-			Elo novo = new Elo( elemento );
 			
-			while ( auxiliar.dado < elemento && auxiliar.proximo != null ) {		
+		//adiciona no inicio da lista
+		}else if ( elemento < auxiliar.dado ) {
+			Elo novo = new Elo( elemento );
+			novo.anterior = auxiliar.anterior;
+			novo.proximo = auxiliar;
+			auxiliar.anterior = novo;
+			this.primeiro = novo;
+			
+		} else {
+			Elo novo = new Elo( elemento );
+			boolean adicionado = false;
+			
+			while ( auxiliar.proximo != null ) {							
+				if ( elemento < auxiliar.dado ) {
+					novo.proximo = auxiliar;
+					novo.anterior = auxiliar.anterior;
+					auxiliar.anterior.proximo = novo;
+					auxiliar.anterior = novo;
+					adicionado = true;
+					break;
+					
+				}
 				auxiliar = auxiliar.proximo;
 				
-			}			
-			novo.proximo = auxiliar;
-			auxiliar.anterior.proximo = novo;				
+			}
+			if ( !adicionado ) {
+				novo.anterior = auxiliar;
+				novo.proximo = auxiliar.proximo;
+				auxiliar.proximo = novo;
+				
+			}
 			
 		}		
 				
@@ -103,8 +125,7 @@ public class ListaDuplamenteEncadeadaOrdenada extends ListaDuplamenteEncadeada {
 			Elo auxiliar = new Elo();
 			auxiliar = this.primeiro;
 			
-			while ( auxiliar.dado < elemento && auxiliar != null ) {
-				
+			while ( auxiliar.dado != elemento && auxiliar != null ) {
 				indice++;
 				auxiliar = auxiliar.proximo;
 				
