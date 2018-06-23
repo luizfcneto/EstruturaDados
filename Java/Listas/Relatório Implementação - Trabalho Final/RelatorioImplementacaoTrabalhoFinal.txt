@@ -57,20 +57,13 @@
 		Descrição da implementação da Classe ArvBin:
 
 		- Caraterísticas:
-			-
-			-
-			-
-			-
-			-
+			- private char simbolo			// simbolo armazenado na raiz
+			- private int prefequencia		// frequencia em que o simbolo armazenado na raiz 
+			- private ArvBin esquerda, direita
 
 
 		- Métodos:
-			-
-			-
-			-
-			-
-			-
-			-
-			-
-			-
-			-
+			- public ArvBin( char simbolo, int frequencia )
+			- public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita )
+			- public void mostra() 
+			- public void mostraCodigo() 
