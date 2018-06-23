@@ -1,21 +1,21 @@
 
 public class BinMinHeap {
-	private int n; 					/* Numero de elementos no heap */
-	private int tam; 				/* Tamanho do heap */
-	private	Arvbin[] vetor; 		/* Vetor com elementos */
+	private int n; 					// Numero de elementos no heap 
+	private int tamanho; 			// Tamanho do heap 
+	private	ArvBin[] vetor; 		// Vetor com elementos 
 	
-	/* Constrói heap vazio a partir dos elementos (caracteres). */
+	// Constrói heap vazio a partir dos elementos (caracteres). 
 	public BinMinHeap( int tamanho ) {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação. 
 		
 		
 		
 		
 	}
 	
-	/* Testa se a heap está vazia. */
+	// Testa se a heap está vazia. 
 	public boolean vazia() {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação. 
 		
 		
 		
@@ -23,59 +23,59 @@ public class BinMinHeap {
 		
 	}
 	
-	/* Refaz a condição de heap (heapify). */
+	// Refaz a condição de heap ( heapify ).
 	public void refaz( int i ) {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação. 
+		
+		
 	}
 
-	/* Constrói a heap (build heap). */
+	// Constrói a heap (build heap). 
 	public void constroiHeap() {
-		/* O grupo deve preencher a implementação. */
-		
+		// O grupo deve preencher a implementação. 
 		
 		
 	}
 
-	/* Lê dados via teclado e insere na heap. */
+	//Lê dados via teclado e insere na heap.
 	public void carregaDados() {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação. 
 		
 		
 	}
 	
-	/* Executa o algoritmo de Huffman. */
+	// Executa o algoritmo de Huffman.
 	public void aplicaHuffman() {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação.
 		
 		
 	}
 	
-	/* Chama o método mostra códigos da classe Arvbin. */
+	// Chama o método mostra códigos da classe Arvbin.
 	public void mostraCodigos() {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação. 
 		
 		
 	}
 	
-	/* Insere x na heap. */
-	public void insere( Arvbin x ) {
-		/* O grupo deve preencher a implementação. */
+	// Insere x na heap. 
+	public void insere( ArvBin x ) {
+		// O grupo deve preencher a implementação. 
+		
+		
+	}
+	
+	// Remove e retorna o menor item. 
+	public void removeMin( ArvBin x ) {
+		// O grupo deve preencher a implementação.
 		
 		
 		
 	}
 	
-	/* Remove e retorna o menor item. */
-	public void removeMin(Arvbin x) {
-		/* O grupo deve preencher a implementação. */
-		
-		
-		
-	}
-	
-	/* Imprime o conteúdo da heap. */
+	// Imprime o conteúdo da heap.
 	public void imprime() {
-		/* O grupo deve preencher a implementação. */
+		// O grupo deve preencher a implementação.
 		
 		
 		
