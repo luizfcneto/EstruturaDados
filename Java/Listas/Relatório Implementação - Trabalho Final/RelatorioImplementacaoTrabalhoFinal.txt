@@ -30,6 +30,8 @@
 
 					- As folhas das subarvores serão as chaves que anteriormente possuiam menos frequência, portanto devem ter mais bits para compensar no tamanho total de informação.
 
+					- A implementação da ArvBin é para ter um papel com fim expositivo e consulta
+
 
 			 
 
@@ -57,8 +59,8 @@
 		Descrição da implementação da Classe ArvBin:
 
 		- Caraterísticas:
-			- private char simbolo			// simbolo armazenado na raiz
-			- private int prefequencia		// frequencia em que o simbolo armazenado na raiz 
+			- private char simbolo					// simbolo armazenado na raiz
+			- private int frequencia				// frequencia em que o simbolo armazenado na raiz 
 			- private ArvBin esquerda, direita
 
 
@@ -67,3 +69,5 @@
 			- public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita )
 			- public void mostra() 
 			- public void mostraCodigo() 
+
+

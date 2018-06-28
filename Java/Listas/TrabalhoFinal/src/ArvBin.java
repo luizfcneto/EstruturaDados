@@ -1,9 +1,9 @@
-// Nessa implementação, os conceitos de "nó" e "árvore" se misturam. 
+// Nessa implementação, os conceitos de "nó" e "árvore" se misturam. (Nó = ArvBin)
 public class ArvBin {
 	
-	private char simbolo; 				// Símbolo armazenado na raiz.
-	private int frequencia; 			// Frequência do símbolo armazenado na raiz.
-	private ArvBin esquerda, direita; 	// Referências para subárvores esquerda e direita. 
+	private char simbolo; 						// Símbolo armazenado na raiz.
+	private int frequencia; 					// Frequência do símbolo armazenado na raiz.
+	private ArvBin raiz, esquerda, direita; 	// Referências para raiz e subárvores esquerda e direita. 
 	
 	/* Construtor de árvore sem subárvores (direita = esquerda = null). 
 	 São fornecidos apenas o símbolo e a frequência da raiz. */
@@ -22,7 +22,7 @@ public class ArvBin {
 		
 	}
 	
-	// Imprime o conteúdo da árvore em pré-ordem.
+	// Imprime o conteúdo da árvore (em pré-ordem).
 	public void mostra() {
 		// O grupo deve preencher a implementação 
 		
