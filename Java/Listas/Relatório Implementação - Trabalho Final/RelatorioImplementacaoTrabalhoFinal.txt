@@ -15,59 +15,66 @@
 			- BinMinHeap.java :
 
 				O que é?
-					- É uma classe que implementa uma fila de prioridades (Heap binária) com característica de chave ( neste caso será frequência de aparição ) minima.
+					- É uma classe que implementa uma fila de prioridades (Heap binária).
+						Ela pode ser uma lista encadeada ou um vetor que contenha a chave  que define a prioridade da heap. Neste caso:
+							- a frequencia é a chave 
+							- a propriedade da chave é de minimo.
+							- o vetor da fila de prioridades é de Arvore Binaria, que tem como conteudo o simbolo e a chave frequencia.
+
+			[  |  |  |  |  |  ] 			vetor[ i ].frequencia = chave
+								
 
 				Porque utilizamos?
-					- Devemos utiliza-la para selecionarmos os caracteres que tem chaves menores ( os que tem menos frequência ) como prioridade.
+					- Devemos utiliza-la para selecionarmos os caracteres que tem chaves menores ( os que tem menos frequência ) como prioridade 
+						para realizar o algoritmo de huffman.
+
+
+				Descrição da implementação da Classe BinMinHeap:
+	
+			- Características:
+				- private int n 				//numero de elementos presentes na heap
+				- private int tamanho		//tamanho do vetor da heap
+				- private ArvBin[] vetor	// vetor com os elementos 
+	
+	
+			- Métodos Básicos: 
+				- public BinMinHeap( int tamanho )
+				- public boolean vazia()
+				- public refaz ( int i )
+				- public constroiHeap()
+				- public void carregaDados()
+				- public void aplicaHuffman()
+				- public void mostraCodigos()
+				- public void insere ( ArvBin x )
+				- public removeMin( ArvBin x )
+				- public void imprime()
+	
+			- Métodos que devemos acrescentar:
+			
 
 			- ArvBin.java :
 				
 				O que é?
-					- É uma classe que implementa uma estrutura de arvore binária
-
+					- É uma classe que implementa uma estrutura de ArvoreBinaria.
+						
 				Porque utilizamos?
-					- Para refazermos as chaves afim de reduzir os bits da informação ( deixando as chaves menores, que aparecem menos, com mais bits e as chaves maiores, que aparecem mais, com menos bits ).
-
-					- As folhas das subarvores serão as chaves que anteriormente possuiam menos frequência, portanto devem ter mais bits para compensar no tamanho total de informação.
-
-					- A implementação da ArvBin é para ter um papel com fim expositivo e consulta
+					- Cada simbolo será uma arvore binária. 
+					- A raiz irá receber o símbolo (char) e a frequencia (int) que é a chave da BinMinHeap.
 
 
-			 
+				Descrição da implementação da Classe ArvBin:
 
-		Descrição da implementação da Classe BinMinHeap:
-
-		- Características:
-			- private int n 			//numero de elementos na heap
-			- private int tamanho		//tamanho da heap
-			- private ArvBin[] vetor	// vetor com os elementos 
-
-
-		- Métodos: 
-			- public BinMinHeap( int tamanho )
-			- public boolean vazia()
-			- public refaz ( int i )
-			- public constroiHeap()
-			- public void carregaDados()
-			- public void aplicaHuffman()
-			- public void mostraCodigos()
-			- public void insere ( ArvBin x )
-			- public removeMin( ArvBin x )
-			- public void imprime()
-
-
-		Descrição da implementação da Classe ArvBin:
-
-		- Caraterísticas:
-			- private char simbolo					// simbolo armazenado na raiz
-			- private int frequencia				// frequencia em que o simbolo armazenado na raiz 
-			- private ArvBin esquerda, direita
-
-
-		- Métodos:
-			- public ArvBin( char simbolo, int frequencia )
-			- public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita )
-			- public void mostra() 
-			- public void mostraCodigo() 
-
+				- Caraterísticas:
+					- private char simbolo					// simbolo armazenado na raiz
+					- private int frequencia					// frequencia em que o simbolo armazenado na raiz possui 
+					- private ArvBin esquerda, direita		// referencia para as sub-arvores esquerda e direita.
+		
+		
+				- Métodos Básicos:
+					- public ArvBin( char simbolo, int frequencia )
+					- public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita )
+					- public void mostra() 
+					- public void mostraCodigo() 
+			
+				- Métodos que devemos acrescentar:
 

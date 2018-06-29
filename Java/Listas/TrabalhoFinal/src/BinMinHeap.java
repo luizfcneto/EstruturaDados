@@ -1,25 +1,24 @@
+import java.util.Scanner;
 
 public class BinMinHeap {
 	private int n; 					// Numero de elementos no heap 
 	private int tamanho; 			// Tamanho do heap 
-	private	ArvBin[] vetor; 		// Vetor com elementos 
+	private	ArvBin[] vetor; 		// Vetor com elementos, elementos serão arvores binarias de conteudo caracteres e chave frequencia( int ). 
 	
-	// Constrói heap vazio a partir dos elementos (caracteres). 
+	// Constrói heap vazio a partir dos elementos ( caracteres ). 
 	public BinMinHeap( int tamanho ) {
-		// O grupo deve preencher a implementação. 
-		
-		
-		
+		this.n = 0;
+		this.tamanho = tamanho;
+		this.vetor = new ArvBin[ this.tamanho ];
 		
 	}
 	
 	// Testa se a heap está vazia. 
 	public boolean vazia() {
-		// O grupo deve preencher a implementação. 
-		
-		
-		
-		return false;
+		if ( this.n == 0 )
+			return true;
+		else
+			return false;
 		
 	}
 	
@@ -39,8 +38,19 @@ public class BinMinHeap {
 
 	//Lê dados via teclado e insere na heap.
 	public void carregaDados() {
-		// O grupo deve preencher a implementação. 
-		
+		char simbolo;
+		int numeroEntradas = this.tamanho;
+		int frequencia;
+		Scanner scan = new Scanner( System.in );
+				
+		while ( numeroEntradas > 0 ) {
+			System.out.println( " Digite o símbolo e a frequência, respectivamente: " );
+			simbolo = scan.nextLine();
+			frequencia = scan.nextInt();
+			ArvBin nova = new ArvBin( simbolo, frequencia );
+			this.insere( nova );
+			
+		}
 		
 	}
 	
