@@ -45,7 +45,9 @@ public class BinMinHeap {
 				
 		while ( numeroEntradas > 0 ) {
 			System.out.println( " Digite o símbolo e a frequência, respectivamente: " );
-			simbolo = scan.nextLine();
+			
+			//Ver como pegar entrada de um char
+			//simbolo = scan.
 			frequencia = scan.nextInt();
 			ArvBin nova = new ArvBin( simbolo, frequencia );
 			this.insere( nova );
