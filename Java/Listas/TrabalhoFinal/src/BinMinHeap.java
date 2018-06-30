@@ -74,7 +74,7 @@ public class BinMinHeap {
 	public void insere( ArvBin elem ) {
 		int dir;
 		
-		if ( this.tam == this.n ){
+		if ( this.tamanho == this.n ){
 		System.out.println("Não há mais posições livres na fila de prioridades");
 		return;
 		}
