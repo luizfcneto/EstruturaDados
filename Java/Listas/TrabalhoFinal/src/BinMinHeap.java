@@ -24,7 +24,23 @@ public class BinMinHeap {
 	
 	// Refaz a condição de heap ( heapify ).
 	public void refaz( int i ) {
-		// O grupo deve preencher a implementação. 
+		 
+		int filho;
+		ArvBin x = vetor[ i ];
+
+		for( ; i * 2 <= n; i = filho ) {
+			filho = i * 2;
+			if( ( filho != n ) && ( vetor[ filho + 1 ].getFrequencia() < vetor[ filho ].getFrequencia() ) )
+				filho++;
+			
+			if( vetor[ filho ].getFrequencia() < x.getFrequencia() )
+				vetor[ i ] = vetor[ filho ];
+			
+			else
+				break;
+			
+		}
+		vetor[ i ] = x;
 		
 		
 	}
