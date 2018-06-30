@@ -70,11 +70,23 @@ public class BinMinHeap {
 		
 	}
 	
-	// Insere x na heap. 
-	public void insere( ArvBin x ) {
-		// O grupo deve preencher a implementação. 
+	// Insere elem na heap. 
+	public void insere( ArvBin elem ) {
+		int dir;
 		
+		if ( this.tam == this.n ){
+		System.out.println("Não há mais posições livres na fila de prioridades");
+		return;
+		}
+	
+		vetor[ 0 ] = elem;   
+		dir = ++n;
 		
+		for( ; elem < vetor[dir/2]; dir /= 2 )
+			vetor[dir] = vetor[ dir/2 ];
+				   
+		vetor[dir] = elem;
+				   
 	}
 	
 	// Remove e retorna o menor item. 
