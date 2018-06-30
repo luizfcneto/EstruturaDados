@@ -74,18 +74,19 @@ public class BinMinHeap {
 	public void insere( ArvBin elem ) {
 		int dir;
 		
-		if ( this.tam == this.n ){
-		System.out.println("Não há mais posições livres na fila de prioridades");
-		return;
+		if ( this.tamanho == this.n ){
+			System.out.println("Não há mais posições livres na fila de prioridades");
+			return;
+		
 		}
 	
 		vetor[ 0 ] = elem;   
-		dir = ++n;
+		dir = ++this.n;
 		
-		for( ; elem < vetor[dir/2]; dir /= 2 )
-			vetor[dir] = vetor[ dir/2 ];
+		for( ;  elem.getFrequencia() < vetor[ dir/2 ].getFrequencia() ; dir /= 2 )
+			vetor[ dir ] = vetor[ dir/2 ];
 				   
-		vetor[dir] = elem;
+		vetor[ dir ] = elem;
 				   
 	}
 	

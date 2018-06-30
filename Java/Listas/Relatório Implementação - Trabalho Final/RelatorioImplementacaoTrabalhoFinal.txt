@@ -77,4 +77,4 @@
 					- public void mostraCodigo() 
 			
 				- Métodos que devemos acrescentar:
-
+					- public getFrequencia() 					// para comparar as chaves na insercao das arvores na BinMinHeap

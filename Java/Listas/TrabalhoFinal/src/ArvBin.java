@@ -46,4 +46,11 @@ public class ArvBin {
 	}
 	
 	// Caso necessário, o grupo pode definir novos métodos.
+	public int getFrequencia() {
+		return this.frequencia;
+
+	}
+	
+	
 }
+
