@@ -69,6 +69,8 @@ public class BinMinHeap {
 			
 		}
 		
+		scan.close();
+		
 	}
 	
 	// Executa o algoritmo de Huffman.
