@@ -46,10 +46,10 @@ public class BinMinHeap {
 	}
 
 	// Constrói a heap (build heap). 
-	public void constroiHeap() {
-		// O grupo deve preencher a implementação. 
-		
-		
+	public void constroiHeap()
+	{
+		for( int i = n / 2; i > 0; i-- )
+			refaz(i);
 	}
 
 	//Lê dados via teclado e insere na heap.
