@@ -124,8 +124,11 @@ public class BinMinHeap {
 	
 	// Imprime o conteúdo da heap.
 	public void imprime() {
-		// O grupo deve preencher a implementação.
 		
+		for( int i = 1; i <= n; i++ )
+			System.out.print( "v["+ i + "] = " + this.vetor[ i ].getSimbolo() + "\t" + this.vetor[ i ].getFrequencia() );
+
+		System.out.println();
 		
 		
 	}
