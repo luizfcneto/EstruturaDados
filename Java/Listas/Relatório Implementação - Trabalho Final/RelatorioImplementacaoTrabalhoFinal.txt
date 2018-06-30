@@ -38,16 +38,16 @@
 	
 	
 			- Métodos Básicos: 
-				- public BinMinHeap( int tamanho )
-				- public boolean vazia()
-				- public refaz ( int i )
-				- public constroiHeap()
-				- public void carregaDados()
-				- public void aplicaHuffman()
-				- public void mostraCodigos()
-				- public void insere ( ArvBin x )
-				- public removeMin( ArvBin x )
-				- public void imprime()
+				- public BinMinHeap( int tamanho )				// construtor da BinMinHeap, parametro necessario é o tamanho, que define o tamanho do vetor das chaves de prioridade da Heap
+				- public boolean vazia()							// retorna se a BinMinHeap está vazia, quando n = 0;
+				- public refaz ( int i )								// procurar saber
+				- public constroiHeap()							// procurar saber
+				- public void carregaDados()					// Entrada do programa, cria uma arvore binaria para cada par de parametro ( frequencia , char ) de entrada e adiciona na HeapBinMin
+				- public void aplicaHuffman()					// analisando
+				- public void mostraCodigos()					// ao gerar a arvore após o aplicaHuffman, imprimiremos esta em pre-ordem levando como criterio imprimir quem é filho a esquerda tem como códio 0 e a direita 1
+				- public void insere ( ArvBin x )					// insere no vetor de chaves da heap o novo elemento ( que é uma arvore binaria )
+				- public removeMin( ArvBin x )					// remove do vetor de chaves da heap o elemento ( que é uma arvore binaria ) desejado.
+				- public void imprime()							// imprime a arvore binaria construida em pre-ordem
 	
 			- Métodos que devemos acrescentar:
 			
@@ -71,7 +71,7 @@
 		
 		
 				- Métodos Básicos:
-					- public ArvBin( char simbolo, int frequencia )
+					- public ArvBin( char simbolo, int frequencia )										
 					- public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita )
 					- public void mostra() 
 					- public void mostraCodigo() 
