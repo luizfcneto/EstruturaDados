@@ -42,14 +42,12 @@ public class BinMinHeap {
 		}
 		vetor[ i ] = x;
 		
-		
 	}
 
 	// Constrói a heap (build heap). 
-	public void constroiHeap()
-	{
-		for( int i = n / 2; i > 0; i-- )
-			refaz(i);
+	public void constroiHeap() {
+		for( int i = this.n / 2; i > 0; i-- )
+			refaz( i );
 	}
 
 	//Lê dados via teclado e insere na heap.
@@ -68,7 +66,6 @@ public class BinMinHeap {
 			numeroEntradas--;
 			
 		}
-		
 		scan.close();
 		
 	}
@@ -131,7 +128,6 @@ public class BinMinHeap {
 			System.out.print( "v["+ i + "] = " + this.vetor[ i ].getSimbolo() + "\t" + this.vetor[ i ].getFrequencia() );
 
 		System.out.println();
-		
 		
 	}
 }
