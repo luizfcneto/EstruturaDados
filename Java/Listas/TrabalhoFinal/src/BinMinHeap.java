@@ -48,7 +48,7 @@ public class BinMinHeap {
 	// Constrói a heap (build heap). 
 	public void constroiHeap()
 	{
-		for( int i = n / 2; i > 0; i-- )
+		for( int i = this.n / 2; i > 0; i-- )
 			refaz(i);
 	}
 
