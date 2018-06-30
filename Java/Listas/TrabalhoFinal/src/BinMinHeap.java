@@ -9,7 +9,7 @@ public class BinMinHeap {
 	public BinMinHeap( int tamanho ) {
 		this.n = 0;
 		this.tamanho = tamanho;
-		this.vetor = new ArvBin[ this.tamanho ];
+		this.vetor = new ArvBin[ this.tamanho + 1 ];
 		
 	}
 	
