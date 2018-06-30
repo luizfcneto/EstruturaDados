@@ -45,6 +45,11 @@ public class BinMinHeap {
 				
 		while ( numeroEntradas > 0 ) {
 			
+			simbolo = scan.next().charAt(0);
+			frequencia = scan.nextInt();
+			ArvBin nova = new ArvBin( simbolo, frequencia );
+			this.insere( nova );		
+			numeroEntradas--;
 			
 		}
 		
