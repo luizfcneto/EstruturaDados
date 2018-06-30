@@ -46,9 +46,17 @@ public class ArvBin {
 	}
 	
 	// Caso necessário, o grupo pode definir novos métodos.
+	
+	//retorna frequencia da arvore
 	public int getFrequencia() {
 		return this.frequencia;
 
+	}
+	
+	//retorna o simbolo da arvore
+	public char getSimbolo() {
+		return this.simbolo;
+		
 	}
 	
 	

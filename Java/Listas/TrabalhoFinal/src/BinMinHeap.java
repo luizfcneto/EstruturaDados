@@ -44,13 +44,7 @@ public class BinMinHeap {
 		Scanner scan = new Scanner( System.in );
 				
 		while ( numeroEntradas > 0 ) {
-			System.out.println( " Digite o símbolo e a frequência, respectivamente: " );
 			
-			//Ver como pegar entrada de um char
-			//simbolo = scan.
-			frequencia = scan.nextInt();
-			ArvBin nova = new ArvBin( simbolo, frequencia );
-			this.insere( nova );
 			
 		}
 		
@@ -91,10 +85,19 @@ public class BinMinHeap {
 	}
 	
 	// Remove e retorna o menor item. 
-	public void removeMin( ArvBin x ) {
-		// O grupo deve preencher a implementação.
+	public ArvBin removeMin( ArvBin elem ) {
 		
+		if( this.vazia() ) {
+			System.out.println( "Fila de prioridade Vazia!! " );
+			return null;
+		}
 		
+		ArvBin retirada = new ArvBin( vetor[ 1 ].getSimbolo() ,vetor[ 1 ].getFrequencia() );
+		vetor [ 1 ] = vetor [ n ];
+		this.n --;
+		refaz( 1 );
+		
+		return retirada;
 		
 	}
 	
