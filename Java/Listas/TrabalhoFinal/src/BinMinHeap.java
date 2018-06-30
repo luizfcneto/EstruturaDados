@@ -48,8 +48,10 @@ public class BinMinHeap {
 			
 			simbolo = scan.next().charAt(0);
 			frequencia = scan.nextInt();
-			ArvBin nova = new ArvBin( simbolo, frequencia );
+			Arvbin nova = new Arvbin( simbolo, frequencia );
 			this.insere( nova );
+			
+			numeroEntradas--;
 			
 		}
 		
