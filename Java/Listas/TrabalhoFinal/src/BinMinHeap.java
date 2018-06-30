@@ -48,6 +48,7 @@ public class BinMinHeap {
 	public void constroiHeap() {
 		for( int i = this.n / 2; i > 0; i-- )
 			refaz( i );
+		
 	}
 
 	//Lê dados via teclado e insere na heap.
