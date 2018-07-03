@@ -59,7 +59,7 @@ public class BinMinHeap {
 		Scanner scan = new Scanner( System.in );
 				
 		while ( numeroEntradas > 0 ) {
-			
+			System.out.println( "Informe o simbolo e a frequencia, respectivamente: " + numeroEntradas );
 			simbolo = scan.next().charAt(0);
 			frequencia = scan.nextInt();
 			ArvBin nova = new ArvBin( simbolo, frequencia );
@@ -75,6 +75,13 @@ public class BinMinHeap {
 	public void aplicaHuffman() {
 		// O grupo deve preencher a implementação.
 		
+		while ( this.n != 1 ) { 
+			//1 - remover os dois menores elementos do vetor
+			ArvBin xn = new ArvBin ( 'n' , ( vetor[ 1 ].getFrequencia() + vetor[ 2 ].getFrequencia() ), this.removeMin(), this.removeMin()  );
+			//2 - criar um nó novo que vai ter como parametro 
+			this.insere( xn );
+		
+		}
 		
 	}
 	
@@ -106,7 +113,7 @@ public class BinMinHeap {
 	}
 	
 	// Remove e retorna o menor item. 
-	public ArvBin removeMin( ArvBin elem ) {
+	public ArvBin removeMin() {
 		
 		if( this.vazia() ) {
 			System.out.println( "Fila de prioridade Vazia!! " );
@@ -126,7 +133,7 @@ public class BinMinHeap {
 	public void imprime() {
 		
 		for( int i = 1; i <= n; i++ )
-			System.out.print( "v["+ i + "] = " + this.vetor[ i ].getSimbolo() + "\t" + this.vetor[ i ].getFrequencia() );
+			System.out.println( "v["+ i + "] = " + this.vetor[ i ].getSimbolo() + " frequencia: " + this.vetor[ i ].getFrequencia() );
 
 		System.out.println();
 		

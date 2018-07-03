@@ -27,6 +27,7 @@ public class ArvBin {
 	
 	// Imprime o conteúdo da árvore (em pré-ordem).
 	public void mostra() {
+		
 		System.out.print("(" + simbolo);
 		
 		if ( this.esquerda != null )
@@ -36,6 +37,7 @@ public class ArvBin {
 		 	 this.direita.mostra();
 		
 		System.out.print(")");
+		
 				
 	}
 	
