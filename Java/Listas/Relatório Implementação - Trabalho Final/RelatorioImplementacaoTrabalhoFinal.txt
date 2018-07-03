@@ -21,9 +21,6 @@
 							- a propriedade da chave é de minimo.
 							- o vetor da fila de prioridades é de Arvore Binaria, que tem como conteudo o simbolo e a chave frequencia.
 
-			[  |  |  |  |  |  ] 			vetor[ i ].frequencia = chave
-								
-
 				Porque utilizamos?
 					- Devemos utiliza-la para selecionarmos os caracteres que tem chaves menores ( os que tem menos frequência ) como prioridade 
 						para realizar o algoritmo de huffman.
@@ -32,20 +29,20 @@
 				Descrição da implementação da Classe BinMinHeap:
 	
 			- Características:
-				- private int n 				//numero de elementos presentes na heap
+				- private int n 			//numero de elementos presentes na heap
 				- private int tamanho		//tamanho do vetor da heap
 				- private ArvBin[] vetor	// vetor com os elementos 
 	
 	
 			- Métodos Básicos: 
 				- public BinMinHeap( int tamanho )				// construtor da BinMinHeap, parametro necessario é o tamanho, que define o tamanho do vetor das chaves de prioridade da Heap
-				- public boolean vazia()							// retorna se a BinMinHeap está vazia, quando n = 0;
-				- public refaz ( int i )								// procurar saber
-				- public constroiHeap()							// procurar saber
+				- public boolean vazia()						// retorna se a BinMinHeap está vazia, quando n = 0;
+				- public refaz ( int i )						// procurar saber [ dificuldades de implementação ]
+				- public constroiHeap()							// procurar saber [ dificuldades de implementação ]
 				- public void carregaDados()					// Entrada do programa, cria uma arvore binaria para cada par de parametro ( frequencia , char ) de entrada e adiciona na HeapBinMin
-				- public void aplicaHuffman()					// analisando
+				- public void aplicaHuffman()					// [ dificuldades de entendimento do algoritmo, mas após releituras tivemos êxito! ]
 				- public void mostraCodigos()					// ao gerar a arvore após o aplicaHuffman, imprimiremos esta em pre-ordem levando como criterio imprimir quem é filho a esquerda tem como códio 0 e a direita 1
-				- public void insere ( ArvBin x )					// insere no vetor de chaves da heap o novo elemento ( que é uma arvore binaria )
+				- public void insere ( ArvBin x )				// insere no vetor de chaves da heap o novo elemento ( que é uma arvore binaria )
 				- public removeMin( ArvBin x )					// remove do vetor de chaves da heap o elemento ( que é uma arvore binaria ) desejado.
 				- public void imprime()							// imprime a arvore binaria construida em pre-ordem
 	
@@ -66,7 +63,7 @@
 
 				- Caraterísticas:
 					- private char simbolo					// simbolo armazenado na raiz
-					- private int frequencia					// frequencia em que o simbolo armazenado na raiz possui 
+					- private int frequencia				// frequencia em que o simbolo armazenado na raiz possui 
 					- private ArvBin esquerda, direita		// referencia para as sub-arvores esquerda e direita.
 		
 		
@@ -79,3 +76,5 @@
 				- Métodos que devemos acrescentar:
 					- public getFrequencia() 					// para comparar as chaves na insercao das arvores na BinMinHeap
 					- public getSimbolo()						// para retornar o simbolo daquela arvore
+					- public getEsquerda()						// retorna subArvore esquerda
+					- public getDireita()						// retorna subArvore direita

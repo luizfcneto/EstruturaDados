@@ -14,7 +14,6 @@ public class Main {
 		heap.carregaDados();
 		heap.imprime();
 		heap.aplicaHuffman();
-		heap.imprime();
 		heap.mostraCodigos();
 		
 		scanner.close();

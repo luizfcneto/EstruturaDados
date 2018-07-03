@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class BinMinHeap {
 	private int n; 					// Numero de elementos no heap 
 	private int tamanho; 			// Tamanho do heap 
-	private	Arvbin[] vetor; 		// Vetor com elementos, elementos serão arvores binarias de conteudo caracteres e chave frequencia( int ). 
+	private	ArvBin[] vetor; 		// Vetor com elementos, elementos serão arvores binarias de conteudo caracteres e chave frequencia( int ). 
 	
 	// Constrói heap vazio a partir dos elementos ( caracteres ). 
 	public BinMinHeap( int tamanho ) {
 		this.n = 0;
 		this.tamanho = tamanho;
-		this.vetor = new Arvbin[ this.tamanho + 1 ];
+		this.vetor = new ArvBin[ this.tamanho + 1 ];
 		
 	}
 	
@@ -26,7 +26,7 @@ public class BinMinHeap {
 	public void refaz( int i ) {
 		 
 		int filho;
-		Arvbin x = vetor[ i ];
+		ArvBin x = vetor[ i ];
 
 		for( ; i * 2 <= n; i = filho ) {
 			filho = i * 2;
@@ -62,7 +62,7 @@ public class BinMinHeap {
 			System.out.println( "Informe o simbolo e a frequencia, respectivamente: " + numeroEntradas );
 			simbolo = scan.next().charAt(0);
 			frequencia = scan.nextInt();
-			Arvbin nova = new Arvbin( simbolo, frequencia );
+			ArvBin nova = new ArvBin( simbolo, frequencia );
 			this.insere( nova );		
 			numeroEntradas--;
 			
@@ -77,18 +77,18 @@ public class BinMinHeap {
 		// O grupo deve preencher a implementação.
 		
 		while ( this.n > 1 ) { 			
-			Arvbin x1 = new Arvbin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
+			ArvBin x1 = new ArvBin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
 			this.removeMin();
 			
-			Arvbin x2 = new Arvbin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
+			ArvBin x2 = new ArvBin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
 			this.removeMin();
 		
-			Arvbin xn = new Arvbin ( ' ', ( x1.getFrequencia() + x2.getFrequencia() ) , x1 , x2  );
+			ArvBin xn = new ArvBin ( ' ', ( x1.getFrequencia() + x2.getFrequencia() ) , x1 , x2  );
 
 			this.insere( xn );
 		
 		}
-		this.vetor[ 1 ].mostra();
+		
 	}
 	
 	
@@ -96,18 +96,16 @@ public class BinMinHeap {
 	public void mostraCodigos()
 	{
 		/* O grupo deve preencher a implementação. */
-		
-		Arvbin aux = vetor[1];
+		ArvBin aux = vetor[1];
 		
 		int sentinela = 0;
-		int[] codigo = new int[tamanho];
-		
+		int[] codigo = new int[ this.tamanho ];
 		aux.mostraCodigo( codigo, sentinela );
 		
 	}
 	
 	// Insere elem na heap. 
-	public void insere( Arvbin elem ) {
+	public void insere( ArvBin elem ) {
 		int dir;
 		
 		if ( this.tamanho == this.n ){
@@ -127,14 +125,14 @@ public class BinMinHeap {
 	}
 	
 	// Remove e retorna o menor item. 
-	public Arvbin removeMin() {
+	public ArvBin removeMin() {
 		
 		if( this.vazia() ) {
 			System.out.println( "Fila de prioridade Vazia!! " );
 			return null;
 		}
 		
-		Arvbin retirada = new Arvbin( vetor[ 1 ].getSimbolo() ,vetor[ 1 ].getFrequencia() );
+		ArvBin retirada = new ArvBin( vetor[ 1 ].getSimbolo() ,vetor[ 1 ].getFrequencia() );
 		vetor [ 1 ] = vetor [ n ];
 		this.n --;
 		refaz( 1 );

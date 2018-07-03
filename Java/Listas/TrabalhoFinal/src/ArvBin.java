@@ -1,13 +1,13 @@
 // Nessa implementação, os conceitos de "nó" e "árvore" se misturam. (Nó = Arvbin)
-public class Arvbin {
+public class ArvBin {
 	
 	private char simbolo; 						// Símbolo armazenado na raiz.
 	private int frequencia; 					// Frequência do símbolo armazenado na raiz.
-	private Arvbin esquerda, direita; 			// Referencia para subárvores esquerda e direita. 
+	private ArvBin esquerda, direita; 			// Referencia para subárvores esquerda e direita. 
 	
 	/* Construtor de árvore sem subárvores (direita = esquerda = null). 
 	 São fornecidos apenas o símbolo e a frequência da raiz. */
-	public Arvbin( char simbolo, int frequencia ) {
+	public ArvBin( char simbolo, int frequencia ) {
 		this.simbolo = simbolo;
 		this.frequencia = frequencia;
 		this.esquerda = null;
@@ -17,7 +17,7 @@ public class Arvbin {
 	
 	/* Construtor de árvore com subárvores. Além de símbolo e frequência da raiz,
 	  são fornecidas as subárvores, que devem ter sido construídas previamente. */
-	public Arvbin( char simbolo, int frequencia, Arvbin esquerda, Arvbin direita ) {
+	public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita ) {
 		this.simbolo = simbolo;
 		this.frequencia = frequencia;
 		this.esquerda = esquerda;
@@ -35,32 +35,30 @@ public class Arvbin {
 		
 		if ( this.direita != null )
 		 	 this.direita.mostra();
-		
 		System.out.print(")");
 		
-				
 	}
 	
 	// Novo método para imprimir os códigos de Huffman de cada símbolo na árvore.
-	public void mostraCodigo(int[] vetor, int sentinela) {
-		// O grupo deve preencher a implementação 
+	public void mostraCodigo( int[] vetor, int sentinela ) {
 		
-		if( this.esquerda == null && this.direita == null) {
-			System.out.println("simbolo = ");
+		if( this.esquerda == null && this.direita == null ) {
+			System.out.println("\nSimbolo: " + this.simbolo + " - Frequência: " + this.frequencia + " Código: " );
 			
-			for(int i = 0; i < sentinela; ++i) {
-				System.out.println(vetor[i]);
-			}
+			for( int i = 0; i < sentinela ; i++ ) 
+				System.out.print( vetor[ i ] + " " );
+			
+			return;
 		}
 		
 		if( this.esquerda != null) {
-			vetor[sentinela] = 0;
-			this.esquerda.mostraCodigo(vetor, ++sentinela);	
+			vetor[ sentinela ] = 0;
+			this.esquerda.mostraCodigo( vetor, sentinela++ );	
 		}
 		
 		if( this.direita != null) {
-			vetor[sentinela] = 1;
-			this.direita.mostraCodigo(vetor, ++sentinela);
+			vetor[ sentinela ] = 1;
+			this.direita.mostraCodigo( vetor, sentinela++ );
 		}
 		
 	}
@@ -79,14 +77,15 @@ public class Arvbin {
 		
 	}
 	
-	public Arvbin getEsquerda() {
+	//retorna subarvore esquerda
+	public ArvBin getEsquerda() {
 		return this.esquerda;
 		
 	}
 	
-	public Arvbin getDireita() {
+	//retorna subarvore direita
+	public ArvBin getDireita() {
 		return this.direita;
 	}
-	
 	
 }
