@@ -72,21 +72,25 @@ public class BinMinHeap {
 	}
 	
 	// Executa o algoritmo de Huffman.
-	public void aplicaHuffman() {		
-		while ( this.n != 1 ) { 
+
+	public void aplicaHuffman(){
+		// O grupo deve preencher a implementação.
+		
+		while ( this.n > 1 ) { 			
 			ArvBin x1 = new ArvBin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
-			ArvBin x2 = new ArvBin ( this.vetor[ 2 ].getSimbolo() , vetor [ 2 ].getFrequencia(), this.vetor[ 2 ].getEsquerda(), this.vetor[ 2 ].getDireita() );
-			
-			this.removeMin();
 			this.removeMin();
 			
+			ArvBin x2 = new ArvBin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
+			this.removeMin();
+		
 			ArvBin xn = new ArvBin ( ' ', ( x1.getFrequencia() + x2.getFrequencia() ) , x1 , x2  );
-			
+
 			this.insere( xn );
 		
 		}
 		this.vetor[ 1 ].mostra();
 	}
+	
 	
 	// Chama o método mostra códigos da classe Arvbin.
 	public void mostraCodigos() {
