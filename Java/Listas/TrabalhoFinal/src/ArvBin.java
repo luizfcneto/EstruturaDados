@@ -53,12 +53,12 @@ public class ArvBin {
 		
 		if( this.esquerda != null) {
 			vetor[ sentinela ] = 0;
-			this.esquerda.mostraCodigo( vetor, sentinela++ );	
+			this.esquerda.mostraCodigo( vetor, sentinela + 1 );	
 		}
 		
 		if( this.direita != null) {
 			vetor[ sentinela ] = 1;
-			this.direita.mostraCodigo( vetor, sentinela++ );
+			this.direita.mostraCodigo( vetor, sentinela + 1 );
 		}
 		
 	}
