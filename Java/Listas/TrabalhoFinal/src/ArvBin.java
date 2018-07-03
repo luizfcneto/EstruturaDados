@@ -42,8 +42,26 @@ public class ArvBin {
 	}
 	
 	// Novo método para imprimir os códigos de Huffman de cada símbolo na árvore.
-	public void mostraCodigo() {
+	public void mostraCodigo(int[] vetor, int sentinela) {
 		// O grupo deve preencher a implementação 
+		
+		if( this.esquerda == null && this.direita == null) {
+			System.out.println(simbolo + '=' );
+			
+			for(int i = 0; i < sentinela; ++i)
+				System.out.println(vetor[i]);
+			
+		}
+		
+		if( this.esquerda != null) {
+			vetor[sentinela] = 0;
+			this.esquerda.mostraCodigo(vetor, ++sentinela);	
+		}
+		
+		if( this.direita != null) {
+			vetor[sentinela] = 1;
+			this.direita.mostraCodigo(vetor, ++sentinela);
+		}
 		
 	}
 	
