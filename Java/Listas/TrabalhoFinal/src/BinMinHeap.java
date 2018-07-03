@@ -77,11 +77,19 @@ public class BinMinHeap {
 		
 		while ( this.n != 1 ) { 
 			//1 - remover os dois menores elementos do vetor
-			ArvBin xn = new ArvBin ( 'n' , ( vetor[ 1 ].getFrequencia() + vetor[ 2 ].getFrequencia() ), this.removeMin(), this.removeMin()  );
+			
+			ArvBin x1 = new ArvBin ( this.vetor[ 1 ].getSimbolo() , vetor [ 1 ].getFrequencia(), this.vetor[ 1 ].getEsquerda(), this.vetor[ 1 ].getDireita() );
+			ArvBin x2 = new ArvBin ( this.vetor[ 2 ].getSimbolo() , vetor [ 2 ].getFrequencia(), this.vetor[ 2 ].getEsquerda(), this.vetor[ 2 ].getDireita() );
+			
+			this.removeMin();
+			this.removeMin();
+			
+			ArvBin xn = new ArvBin ( ' ', ( x1.getFrequencia() + x2.getFrequencia() ) , x1 , x2  );
 			//2 - criar um nó novo que vai ter como parametro 
 			this.insere( xn );
 		
 		}
+		this.vetor[ 1 ].mostra();
 		
 	}
 	

@@ -28,7 +28,7 @@ public class ArvBin {
 	// Imprime o conteúdo da árvore (em pré-ordem).
 	public void mostra() {
 		
-		System.out.print("(" + simbolo);
+		System.out.print("(" + this.frequencia + this.simbolo);
 		
 		if ( this.esquerda != null )
 			this.esquerda.mostra();
@@ -59,6 +59,15 @@ public class ArvBin {
 	public char getSimbolo() {
 		return this.simbolo;
 		
+	}
+	
+	public ArvBin getEsquerda() {
+		return this.esquerda;
+		
+	}
+	
+	public ArvBin getDireita() {
+		return this.direita;
 	}
 	
 	
