@@ -93,9 +93,16 @@ public class BinMinHeap {
 	
 	
 	// Chama o método mostra códigos da classe Arvbin.
-	public void mostraCodigos() {
+	public void mostraCodigos()
+	{
+		/* O grupo deve preencher a implementação. */
 		
+		Arvbin aux = vetor[1];
 		
+		int sentinela = 0;
+		int[] codigo = new int[tamanho];
+		
+		aux.mostraCodigo( codigo, sentinela );
 		
 	}
 	
