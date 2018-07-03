@@ -1,13 +1,13 @@
-// Nessa implementação, os conceitos de "nó" e "árvore" se misturam. (Nó = ArvBin)
-public class ArvBin {
+// Nessa implementação, os conceitos de "nó" e "árvore" se misturam. (Nó = Arvbin)
+public class Arvbin {
 	
 	private char simbolo; 						// Símbolo armazenado na raiz.
 	private int frequencia; 					// Frequência do símbolo armazenado na raiz.
-	private ArvBin esquerda, direita; 			// Referencia para subárvores esquerda e direita. 
+	private Arvbin esquerda, direita; 			// Referencia para subárvores esquerda e direita. 
 	
 	/* Construtor de árvore sem subárvores (direita = esquerda = null). 
 	 São fornecidos apenas o símbolo e a frequência da raiz. */
-	public ArvBin( char simbolo, int frequencia ) {
+	public Arvbin( char simbolo, int frequencia ) {
 		this.simbolo = simbolo;
 		this.frequencia = frequencia;
 		this.esquerda = null;
@@ -17,7 +17,7 @@ public class ArvBin {
 	
 	/* Construtor de árvore com subárvores. Além de símbolo e frequência da raiz,
 	  são fornecidas as subárvores, que devem ter sido construídas previamente. */
-	public ArvBin( char simbolo, int frequencia, ArvBin esquerda, ArvBin direita ) {
+	public Arvbin( char simbolo, int frequencia, Arvbin esquerda, Arvbin direita ) {
 		this.simbolo = simbolo;
 		this.frequencia = frequencia;
 		this.esquerda = esquerda;
@@ -79,15 +79,14 @@ public class ArvBin {
 		
 	}
 	
-	public ArvBin getEsquerda() {
+	public Arvbin getEsquerda() {
 		return this.esquerda;
 		
 	}
 	
-	public ArvBin getDireita() {
+	public Arvbin getDireita() {
 		return this.direita;
 	}
 	
 	
 }
-
