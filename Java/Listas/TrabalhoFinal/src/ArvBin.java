@@ -46,11 +46,11 @@ public class Arvbin {
 		// O grupo deve preencher a implementação 
 		
 		if( this.esquerda == null && this.direita == null) {
-			System.out.println(simbolo + '=' );
+			System.out.println("simbolo = ");
 			
-			for(int i = 0; i < sentinela; ++i)
+			for(int i = 0; i < sentinela; ++i) {
 				System.out.println(vetor[i]);
-			
+			}
 		}
 		
 		if( this.esquerda != null) {
