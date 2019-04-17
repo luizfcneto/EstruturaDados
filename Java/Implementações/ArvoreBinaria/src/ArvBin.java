@@ -1,7 +1,7 @@
 /*		Implementação da Estrutura de Dados - Arvore Binaria
  * 	Autor: Luizfcneto
  * 	Email: luizfcneto123@gmail.com
- * 	Descrição: Implementação da Estrutura de dados - Arvore binária
+ * 	Descrição: Implementação da Estrutura de dados - Arvore binária através de ponteiros!
  * 	
  * 	- Atributos:
  * 		- ArvBin esquerda;
@@ -9,14 +9,13 @@
  * 		- int valor;				//Arvore contendo valor do tipo inteiro.
  * 		- int altura;
  * 		
- * 		
  * 	- Métodos:
- * 		- void addNaArvBin ( int valor );		--DONE
- * 		- boolean remove ( int valor );			--ToDo
- * 		- boolean busca ( int valor );			--ToDo
+ * 		- boolean busca ( int valor );			--DONE
+ * 		- ArvBin busca( int valor );			--DONE
  * 		- int retornaValor ();					--DONE
  * 		- ArvBin retornaEsquerda();				--DONE
  * 		- ArvBin retornaDireita();				--DONE
+ * 		- boolean arvoreVazia();				--DONE
  * 		- void defineEsquerda( ArvBin filho );	--DONE
  * 		- void defineDireita ( ArvBin filho );	--DONE
  * 		- void retornaAlturaArvore ();			--DONE
@@ -97,7 +96,7 @@ public class ArvBin {
 	}
 	
 	//Método para atualizar Altura da arvore
-	public int retornaAlturaArvore( ) {
+	public int alturaArvore( ) {
 		
 		if ( this.direita == null && this.esquerda == null )
 			return 0;
@@ -106,10 +105,10 @@ public class ArvBin {
 		int altDir = 0;
 		
 		if ( this.esquerda != null ) 
-			altEsq = esquerda.retornaAlturaArvore();			
+			altEsq = esquerda.alturaArvore();			
 		
 		if ( this.direita != null ) 
-			altDir = direita.retornaAlturaArvore();
+			altDir = direita.alturaArvore();
 		
 		if ( altEsq >= altDir )
 			return 1 + altEsq;
@@ -119,72 +118,95 @@ public class ArvBin {
 		
 	}
 
-	//Método para adicionar elemento novo na Árvore.
-	public void addNaArvBin ( int numero ) {
-		
-		//Se arvore estiver vazia: não tem como comparar com valor algum
-		if ( this.altura == -1) {
-			this.valor = numero;
-			this.altura++;
-		
-		}else {
-			// numero menor que valor da raiz da subArvore
-			if ( numero < this.valor ) {
-				if ( this.esquerda != null ) 
-					this.esquerda.addNaArvBin( numero );
-				
-				else {
-					ArvBin nova = new ArvBin ( numero );
-					this.esquerda = nova;
-					nova.altura = this.altura+1;
-				
-				}
-			}
-			
-			// numero maior que valor da raiz da subArvore
-			if ( numero > this.valor ) {
-				if ( this.direita != null ) 
-					this.direita.addNaArvBin( numero );
-				
-				else {
-					ArvBin nova = new ArvBin ( numero );
-					this.direita = nova;
-					nova.altura = this.altura+1;
-				
-				}	
-			}
-		}
-	}
+	//Método para buscar nó na arvore retorna Boolean
+//	public Boolean busca ( int numero ) {
+//		
+//		if ( !this.arvoreVazia() ) {
+//			
+//			if ( this.valor == numero )
+//				return true;
+//			
+//			if ( this.esquerda != null && this.valor > numero ) 
+//				return this.esquerda.busca( numero );
+//			
+//			if ( this.esquerda == null && this.valor > numero )
+//				return false;
+//			
+//			if ( this.direita != null && this.valor < numero )
+//				return this.direita.busca( numero );
+//				
+//			if ( this.direita == null && this.valor < numero );
+//				return false;
+//				
+//		}else 
+//			return false;
+//	
+//	}
 	
-
-	//Método para buscar nó na arvore
-	public Boolean busca ( int numero ) {
+	//Método para buscar elemento na arvore, retornando o nó.
+	public ArvBin busca ( int numero ) {
 		if ( !this.arvoreVazia() ) {
-			if ( this.valor == numero )
-				return true;
+			if ( this.valor == numero ) 
+				return this;
 			
-			if ( this.esquerda != null && this.valor < numero ) 
+			if ( this.esquerda != null && this.valor > numero ) 
 				return this.esquerda.busca( numero );
 			
-			if ( this.direita != null && this.valor > numero )
+			if ( this.esquerda == null && this.valor > numero )
+				return null;
+			
+			if ( this.direita != null && this.valor < numero )
 				return this.direita.busca( numero );
 				
-			if ( this.valor != numero )
-				return false;
+			if ( this.direita == null && this.valor < numero );
+				return null;
 				
 		}else 
-			return false;
-	
+			return null;
 	}
 	
-	
-	
-	
+	//Método para adicionar elemento novo na Árvore. 
+		public void adiciona ( int numero ) {
+			
+			//Se arvore estiver vazia: não tem como comparar com valor algum
+			if ( this.altura == -1) {
+				this.valor = numero;
+				this.altura++;
+			
+			}else {
+				// numero menor que valor do "pai" da subArvore
+				if ( numero < this.valor ) {
+					if ( this.esquerda != null ) 
+						this.esquerda.adiciona( numero );
+					
+					else {
+						ArvBin nova = new ArvBin ( numero );
+						this.esquerda = nova;
+						nova.altura = this.altura+1;
+					
+					}
+				}
+				
+				// numero maior que valor do "pai" da subArvore
+				if ( numero > this.valor ) {
+					if ( this.direita != null ) 
+						this.direita.adiciona ( numero );
+					
+					else {
+						ArvBin nova = new ArvBin ( numero );
+						this.direita = nova;
+						nova.altura = this.altura+1;
+					
+					}	
+				}
+			}
+		}
+			
 	//Método para imprimir elementos da Árvore
 	public void printaArvBin () {
 		
 		if ( this.altura > -1 ) {
-			System.out.print( "( " + this.valor + "h: "+ this.altura);
+			System.out.print( "( " + this.valor + " h: "+ this.altura);
 			
 			if ( this.esquerda != null ) 
 				esquerda.printaArvBin();
@@ -192,14 +214,10 @@ public class ArvBin {
 			if ( this.direita != null )
 				direita.printaArvBin();
 			
-			System.out.print( ") ");			
+			System.out.print( " ) ");			
 			
 		}else 
 			System.out.println("Arvore Vazia!");
 		
 	}
 }
-
-
-
-

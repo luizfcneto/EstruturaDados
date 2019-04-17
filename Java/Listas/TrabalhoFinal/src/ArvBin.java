@@ -26,17 +26,41 @@ public class ArvBin {
 	}
 	
 	// Imprime o conteúdo da árvore (em pré-ordem).
-	public void mostra() {
-		
+	public void mostraPre() {
 		System.out.print("(" + this.frequencia + this.simbolo);
-		
 		if ( this.esquerda != null )
-			this.esquerda.mostra();
+			this.esquerda.mostraPre();		
 		
 		if ( this.direita != null )
-		 	 this.direita.mostra();
+		 	 this.direita.mostraPre();
 		System.out.print(")");
+				
+	}
+	
+	public void mostraPos() {
+		System.out.print( "(" );
 		
+		if ( this.esquerda != null )
+			this.esquerda.mostraPos();		
+		
+		if ( this.direita != null )
+		 	 this.direita.mostraPos();
+		System.out.print( this.frequencia + " " + this.simbolo);
+		System.out.print(")");
+	}
+	
+	public void mostraSimetrico() {
+		
+		System.out.print( "(" );
+		if ( this.esquerda != null )
+			this.esquerda.mostraSimetrico();		
+		
+		System.out.print(this.frequencia + " " + this.simbolo);
+		
+		if ( this.direita != null )
+		 	 this.direita.mostraSimetrico();
+		
+		System.out.print(")");
 	}
 	
 	// Novo método para imprimir os códigos de Huffman de cada símbolo na árvore.

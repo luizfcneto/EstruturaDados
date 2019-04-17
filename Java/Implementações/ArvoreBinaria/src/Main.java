@@ -3,7 +3,6 @@
  * 	Email: luizfcneto123@gmail.com
  * 	Descrição: Classe para testar se implementação de ArvBin está correta.
  * 	Entrada: n numeros inteiros
- * 	 
  * 
  */
 
@@ -14,7 +13,7 @@ public class Main {
 	public static void main( String[] args ) {
 		Scanner entrada = new Scanner( System.in );
 		int n, h, elemento;
-		Boolean presente = false;
+		
 		
 		
 		System.out.println( "Defina o tamanho da entrada: " );
@@ -23,10 +22,10 @@ public class Main {
 		ArvBin arvore = new ArvBin();	
 		
 		
-		//entrada da arvore binaria
+		//entrada da arvore binaria somente para fins ilustrativos de como funciona a estrutura
 		System.out.println( "Informe os valores que deseja inserir na Arvore, digite um negativo para sair: " );
 		while ( n > 0 ) {
-			arvore.addNaArvBin( entrada.nextInt() );
+			arvore.adiciona( entrada.nextInt() );
 			n--;
 		
 		}
@@ -34,14 +33,16 @@ public class Main {
 		//Printa arvore:
 		arvore.printaArvBin();
 		
-		h = arvore.retornaAlturaArvore();
+		h = arvore.alturaArvore();
 		
 		System.out.println( "\n Altura da Arvore: " + h );
 		
 		System.out.println( "Informe o valor que deseja buscar na arvore: " );
 		elemento = entrada.nextInt();
-		presente = arvore.busca( elemento );
-		if ( presente == null )
+		ArvBin noBusca = null;
+		noBusca = arvore.busca( elemento );
+		
+		if ( noBusca == null )
 			System.out.println( elemento + " NÃO ESTA PRESENTE ");
 		
 		else 

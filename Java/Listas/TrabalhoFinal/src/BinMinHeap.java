@@ -89,6 +89,17 @@ public class BinMinHeap {
 		
 		}
 		
+		this.vetor[1].mostraPre();
+		System.out.println( " _____________FIM PRE____________" );
+		
+
+		this.vetor[1].mostraPos();
+		System.out.println( " _____________FIM Pos____________" );
+		
+
+		this.vetor[1].mostraSimetrico();
+		System.out.println( " _____________FIM Simetrico____________" );
+		
 	}
 	
 	
