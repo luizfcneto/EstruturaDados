@@ -13,7 +13,9 @@ public class Main {
 	
 	public static void main( String[] args ) {
 		Scanner entrada = new Scanner( System.in );
-		int n, h;
+		int n, h, elemento;
+		Boolean presente = false;
+		
 		
 		System.out.println( "Defina o tamanho da entrada: " );
 		//tamanho da entrada
@@ -35,6 +37,16 @@ public class Main {
 		h = arvore.retornaAlturaArvore();
 		
 		System.out.println( "\n Altura da Arvore: " + h );
+		
+		System.out.println( "Informe o valor que deseja buscar na arvore: " );
+		elemento = entrada.nextInt();
+		presente = arvore.busca( elemento );
+		if ( presente == null )
+			System.out.println( elemento + " NÃO ESTA PRESENTE ");
+		
+		else 
+			System.out.println( elemento + " Está presente ");
+		
 		
 		entrada.close();
 	

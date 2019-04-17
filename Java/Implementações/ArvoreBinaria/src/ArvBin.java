@@ -118,7 +118,7 @@ public class ArvBin {
 			return 1 + altDir;
 		
 	}
-	
+
 	//Método para adicionar elemento novo na Árvore.
 	public void addNaArvBin ( int numero ) {
 		
@@ -156,6 +156,30 @@ public class ArvBin {
 		}
 	}
 	
+
+	//Método para buscar nó na arvore
+	public Boolean busca ( int numero ) {
+		if ( !this.arvoreVazia() ) {
+			if ( this.valor == numero )
+				return true;
+			
+			if ( this.esquerda != null && this.valor < numero ) 
+				return this.esquerda.busca( numero );
+			
+			if ( this.direita != null && this.valor > numero )
+				return this.direita.busca( numero );
+				
+			if ( this.valor != numero )
+				return false;
+				
+		}else 
+			return false;
+	
+	}
+	
+	
+	
+	
 	//Método para imprimir elementos da Árvore
 	public void printaArvBin () {
 		
@@ -175,3 +199,7 @@ public class ArvBin {
 		
 	}
 }
+
+
+
+
