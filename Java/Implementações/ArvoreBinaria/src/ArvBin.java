@@ -10,16 +10,16 @@
  * 		- int altura;
  * 		
  * 	- Métodos:
- * 		- boolean busca ( int valor );			--DONE
- * 		- ArvBin busca( int valor );			--DONE
- * 		- int retornaValor ();					--DONE
- * 		- ArvBin retornaEsquerda();				--DONE
- * 		- ArvBin retornaDireita();				--DONE
- * 		- boolean arvoreVazia();				--DONE
- * 		- void defineEsquerda( ArvBin filho );	--DONE
- * 		- void defineDireita ( ArvBin filho );	--DONE
- * 		- void retornaAlturaArvore ();			--DONE
- * 		- void printaArvBin ();					--DONE
+ * 		- boolean busca ( int valor );			
+ * 		- ArvBin busca( int valor );			
+ * 		- int retornaValor ();					
+ * 		- ArvBin retornaEsquerda();				
+ * 		- ArvBin retornaDireita();				
+ * 		- boolean arvoreVazia();				
+ * 		- void defineEsquerda( ArvBin filho );	
+ * 		- void defineDireita ( ArvBin filho );	
+ * 		- void retornaAlturaArvore ();			
+ * 		- void printaArvBin ();					
  * 	
  */
 
