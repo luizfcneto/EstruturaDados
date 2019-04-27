@@ -128,87 +128,91 @@ public class ArvBinBusca {
 		return aux;
 		
 	}
-//	
-//	public int minimo(){
-//		if ( this.vazia() ) {
-//			System.out.println( "Arvore Vazia!" );
-//			return 8000;
-//		}
-//		else
-//			return minimo( this.raiz ).chave;
-//	}
-//	
-//	//Retorna a chave de menor valor a partir de um nó desejado.
-//	private No minimo( No aux ) {
-//		if ( aux.esquerda == null )
-//			return aux;
-//		
-//		else
-//			return minimo( aux.esquerda );
-//	}
-//	
-//	//Chama método privado de remover o elemento minimo de um nó especifico
-//	public void removeMin() {
-//		raiz = removeMin( this.raiz );
-//	}
-//		
-//	//Remove elemento minimo de uma subarvore do do nó auxiliar específico
-//	private No removeMin( No aux ) {
-//		if ( aux.esquerda == null )
-//			return aux.direita;
-//		
-//		aux.esquerda = removeMin( aux.esquerda );
-//		return aux;
-//				
-//	}
-//
-//	
-//	//Remove elemento com chave correspodente, caso exista na Arvore
-//	public boolean remove( int chave ) {
-//		if ( this.raiz == null )
-//			return false;
-//		
-//		if ( remove( this.raiz, chave ) != null )
-//			return true;
-//		
-//		else 
-//			return false;
-//	}
-//	
-//	//Retorna o nó que deve ser removido
-//	private No remove( No aux, int chave ) {
-//		if ( aux == null )
-//			return null;
-//		
-//		if ( aux.chave > chave )
-//			aux.esquerda = remove( aux.esquerda, chave );
-//		
-//		if ( aux.chave < chave )
-//			aux.direita = remove ( aux.direita, chave );
-//		
-//		//Nó que deve ser removido
-//		else {
-//			if ( aux.direita == null )
-//				return aux.esquerda;
-//			
-//			if ( aux.esquerda == null )
-//				return aux.direita;
-//			
-//			No temp = aux;
-//			
-//			//encontrar sucessor de aux, que é o minimo da subArvore direita. Referenciá-lo
-//			aux = minimo( temp.direita );
-//			
-//			//
-//			aux.direita = removeMin( temp.direita );
-//			
-//			aux.esquerda = temp.esquerda;
-//			
-//		}
-//		
-//		return aux;
-//	}
-//	
+	
+	public int minimo(){
+		if ( this.vazia() ) {
+			System.out.println( "Arvore Vazia!" );
+			return 8000;
+		}
+		else
+			return minimo( raiz ).chave;
+	}
+	
+	//Retorna a chave de menor valor a partir de um nó desejado.
+	private No minimo( No aux ) {
+		if ( aux.esquerda == null )
+			return aux;
+		
+		else
+			return minimo( aux.esquerda );
+	}
+	
+	//Chama método privado de remover o elemento minimo de um nó especifico
+	public void removeMin() {
+		raiz = removeMin( raiz );
+	}
+		
+	//Remove elemento minimo de uma subarvore do do nó auxiliar específico
+	private No removeMin( No aux ) {
+		if ( aux.esquerda == null )
+			return aux.direita;
+		
+		aux.esquerda = removeMin( aux.esquerda );
+		return aux;
+				
+	}
+
+	
+	//Remove elemento com chave correspodente, caso exista na Arvore
+	public boolean remove( int chave ) {
+		if ( raiz == null )
+			return false;
+		
+		if ( remove( raiz, chave ) != null )
+			return true;
+		
+		else 
+			return false;
+	}
+	
+	//	Método que remove o Nó que contem o inteiro chave  
+	private No remove( No aux, int chave ) {
+		//Se percorrer e não encontrar o nó com chave desejada
+		if ( aux == null )
+			return null;
+		
+		//Procura nó que contenha a chave desejada
+		if ( chave < aux.chave )
+			aux.esquerda = remove( aux.esquerda, chave );
+		
+		else if ( chave > aux.chave )
+			aux.direita = remove ( aux.direita, chave );
+		
+		//Nó que contém a chave que deve ser removido
+		else {
+			if ( aux.direita == null )
+				return aux.esquerda;
+			
+			if ( aux.esquerda == null )
+				return aux.direita;
+			
+			//Variavel temporaria para auxiliar com referencia
+			No temp = aux;
+			
+			//auxiliar recebe o sucessor, que é o menor nó da subArvore direita
+			aux = minimo( temp.direita );
+			
+			//Remove o menor nó da subArvore direita
+			aux.direita = removeMin( temp.direita );
+			
+			//Mantém subArvore esquerda
+			aux.esquerda = temp.esquerda;
+			
+		}
+		
+		return aux;
+	}
+	
 	public int altura() {
 		return altura( this.raiz );
 	}
