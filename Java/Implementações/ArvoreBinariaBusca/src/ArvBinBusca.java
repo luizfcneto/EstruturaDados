@@ -1,3 +1,4 @@
+
 /*		Implementação da Estrutura de Dados - Arvore Binaria de Busca - Ponteiro!
  * 	Autor: Luiz Fernando ( Luizfcneto )
  * 	Email: luizfcneto123@gmail.com	
@@ -11,7 +12,7 @@ public class ArvBinBusca {
 	private No raiz;
 	
 	private class No{
-		private int chave, valor;
+		private int chave, valor, altura;
 		private No esquerda, direita;
 		
 		//Construtor No 1
@@ -20,6 +21,7 @@ public class ArvBinBusca {
 			this.valor = valor;
 			this.esquerda = null;
 			this.direita = null;
+			this.altura = 1;
 			
 		}
 		
@@ -29,6 +31,7 @@ public class ArvBinBusca {
 			this.valor = valor;
 			this.esquerda = esquerda;
 			this.direita = direita;
+			this.altura = 1;
 			
 		}
 		
@@ -49,6 +52,14 @@ public class ArvBinBusca {
 		
 	}
 	
+	public int getAltura( No aux ) {
+		if ( aux == null )
+			return 0;
+		
+//		System.out.println( " Aux: " + aux.chave );
+		return aux.altura;
+	}
+	
 	//Mostra nós da Arvore Binaria de Busca 
 	public void mostra() {
 		mostra ( this.raiz );
@@ -59,7 +70,7 @@ public class ArvBinBusca {
 		if ( aux == null ) 
 			return;
 		
-		System.out.print( "( " + aux.chave + " " );
+		System.out.print( "( c:" + aux.chave + " v:" + aux.valor + " h:" + aux.altura + " " );
 		
 		if ( aux.esquerda != null ) 
 			mostra( aux.esquerda );
@@ -101,29 +112,33 @@ public class ArvBinBusca {
 	}
 	
 	public void insere( int chave, int valor ) {
-		raiz = insere( this.raiz, chave, valor );
+		raiz = insere( raiz, chave, valor );
 	}
 	
 	private No insere( No aux, int chave, int valor ) {
-		
 		//Encontrou posição a ser inserido
-		if ( aux == null )
+		if ( aux == null ) 
 			return new No( chave, valor );
 		
 		//Encontrou um nó com a mesma chave. Atualiza valor
-		if ( aux.chave == chave )
+		if ( aux.chave == chave ) 
 			set( aux, valor );
 		
 		//valor da chave do nó aux é maior que a chave
-		if ( aux.chave > chave ) 
+		if ( aux.chave > chave ) {
+			aux.altura = 1 + Math.max( getAltura( aux.direita ) , getAltura( aux.esquerda ) );
 			aux.esquerda = insere( aux.esquerda, chave, valor );
 		
+		}
 		//valor da chave do nó aux é menor que a chave
-		if ( aux.chave < chave )
+		else if ( aux.chave < chave ) {
+			aux.altura = 1 + Math.max( getAltura ( aux.direita ), getAltura ( aux.esquerda ) );
 			aux.direita = insere( aux.direita, chave, valor );
-		
+			
+		}
 		else 
-			aux.valor = valor;
+			return aux;
+	
 		
 		return aux;
 		
