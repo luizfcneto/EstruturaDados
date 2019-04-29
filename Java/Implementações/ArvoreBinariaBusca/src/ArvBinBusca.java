@@ -1,4 +1,3 @@
-
 /*		Implementação da Estrutura de Dados - Arvore Binaria de Busca - Ponteiro!
  * 	Autor: Luiz Fernando ( Luizfcneto )
  * 	Email: luizfcneto123@gmail.com	
@@ -21,7 +20,7 @@ public class ArvBinBusca {
 			this.valor = valor;
 			this.esquerda = null;
 			this.direita = null;
-			this.altura = 1;
+			this.altura = 0;
 			
 		}
 		
@@ -31,7 +30,7 @@ public class ArvBinBusca {
 			this.valor = valor;
 			this.esquerda = esquerda;
 			this.direita = direita;
-			this.altura = 1;
+			this.altura = 0;
 			
 		}
 		
@@ -119,27 +118,39 @@ public class ArvBinBusca {
 		//Encontrou posição a ser inserido
 		if ( aux == null ) 
 			return new No( chave, valor );
-		
+						
 		//Encontrou um nó com a mesma chave. Atualiza valor
 		if ( aux.chave == chave ) 
 			set( aux, valor );
-		
+
 		//valor da chave do nó aux é maior que a chave
 		if ( aux.chave > chave ) {
-			aux.altura = 1 + Math.max( getAltura( aux.direita ) , getAltura( aux.esquerda ) );
-			aux.esquerda = insere( aux.esquerda, chave, valor );
-		
+//			if ( aux.esquerda == null ) {
+//				aux.altura++;
+//				aux.esquerda = insere( aux.esquerda, chave, valor );
+//						
+//			}else {
+//				aux.altura = 1 + Math.max( getAltura( aux.direita ) , getAltura( aux.esquerda ) );
+				aux.esquerda = insere( aux.esquerda, chave, valor );
+					
+//			}
 		}
 		//valor da chave do nó aux é menor que a chave
 		else if ( aux.chave < chave ) {
-			aux.altura = 1 + Math.max( getAltura ( aux.direita ), getAltura ( aux.esquerda ) );
-			aux.direita = insere( aux.direita, chave, valor );
-			
-		}
-		else 
+//			if ( aux.direita == null ) {
+//				aux.altura++;
+//				aux.direita = insere( aux.direita, chave, valor );
+//				
+//			}else {
+//				aux.altura = 1 + Math.max( getAltura ( aux.direita ), getAltura ( aux.esquerda ) );
+				aux.direita = insere( aux.direita, chave, valor );
+					
+//			}
+		}else 
 			return aux;
-	
 		
+		//atualiza altura dos nós ancestrais de aux. Funcionando! 
+		aux.altura = 1 + Math.max( getAltura( aux.direita ) , getAltura( aux.esquerda ) );
 		return aux;
 		
 	}
