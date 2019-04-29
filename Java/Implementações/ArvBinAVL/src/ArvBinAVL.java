@@ -125,65 +125,110 @@ public class ArvBinAVL extends ArvBinBusca{
 	public void mostra( ) {
 		super.mostra( raiz );
 	}
+	public int minimo(){
+		if ( this.vazia() ) {
+			System.out.println( "Arvore Vazia!" );
+			return 8000;
+		}
+		else
+			return minimo( raiz ).chave;
+	}
 	
-	/*
-	 * 
-	 * Node deleteNode(Node root, int key)  
-    {  
-        // STEP 1: PERFORM STANDARD BST DELETE  
-        if (root == null)  
-            return root;  
+	//Retorna a chave de menor valor a partir de um nó desejado.
+	protected No minimo( No aux ) {
+		if ( aux.esquerda == null )
+			return aux;
+		
+		else
+			return minimo( aux.esquerda );
+	}
+	
+	//Chama método privado de remover o elemento minimo de um nó especifico
+	public void removeMin() {
+		raiz = removeMin( raiz );
+	}
+		
+	//Remove elemento minimo de uma subarvore do do nó auxiliar específico
+	protected No removeMin( No aux ) {
+		if ( aux.esquerda == null )
+			return aux.direita;
+		
+		aux.esquerda = removeMin( aux.esquerda );
+		return aux;
+				
+	}
+	
+	//Remove elemento com chave correspodente, caso exista na Arvore
+	public boolean remove( int chave ) {
+		if ( raiz == null )
+			return false;
+		
+		if ( remove( raiz, chave ) != null )
+			return true;
+		
+		else 
+			return false;
+	}
+	public No remove( No aux, int chave ){ 
+		//Se percorrer e não encontrar o nó com chave desejada
+		if ( aux == null )
+			return null;
+				
+		//Procura nó que contenha a chave desejada
+		if ( chave < aux.chave )
+			aux.esquerda = remove( aux.esquerda, chave );
+				
+		else if ( chave > aux.chave )
+			aux.direita = remove ( aux.direita, chave );
+				
+		//Nó que contém a chave que deve ser removido
+		else {
+			if ( aux.direita == null )
+				return aux.esquerda;
+					
+			if ( aux.esquerda == null )
+				return aux.direita;
+			
+			//Variavel temporaria para auxiliar com referencia
+			No temp = aux;
+					
+			//auxiliar recebe o sucessor, que é o menor nó da subArvore direita
+			aux = minimo( temp.direita );
+					
+			//Remove o menor nó da subArvore direita
+			aux.direita = removeMin( temp.direita );
+			
+			//Mantém subArvore esquerda
+			aux.esquerda = temp.esquerda;
+					
+		}
+
+        // Atualiza a altura do nó  
+        aux.altura = 1 + Math.max( getAltura( aux.esquerda ), getAltura( aux.direita ));  
   
-        // If the key to be deleted is smaller than  
-        // the root's key, then it lies in left subtree  
-        if (key < root.key)  
-            root.left = deleteNode(root.left, key);  
+        // Recebe o balanceamento do nó   
+        int balanco = getBalanco( aux );  
   
-        // If the key to be deleted is greater than the  
-        // root's key, then it lies in right subtree  
-        else if (key > root.key)  
-            root.right = deleteNode(root.right, key);  
+        // Rotação simples a direita
+        if ( balanco > 1 && getBalanco( aux.esquerda ) >= 0 )  
+            return rotacaoSimplesDireita( aux );  
   
-        // if key is same as root's key, then this is the node  
-        // to be deleted  
-        else
-        {  
-  
-            // node with only one child or no child  
-            if ((root.left == null) || (root.right == null))  
-            {  
-                Node temp = null;  
-                if (temp == root.left)  
-                    temp = root.right;  
-                else
-                    temp = root.left;  
-  
-                // No child case  
-                if (temp == null)  
-                {  
-                    temp = root;  
-                    root = null;  
-                }  
-                else // One child case  
-                    root = temp; // Copy the contents of  
-                                // the non-empty child  
-            }  
-            else
-            {  
-  
-                // node with two children: Get the inorder  
-                // successor (smallest in the right subtree)  
-                Node temp = minValueNode(root.right);  
-  
-                // Copy the inorder successor's data to this node  
-                root.key = temp.key;  
-  
-                // Delete the inorder successor  
-                root.right = deleteNode(root.right, temp.key);  
-            }  
+        // Rotação dupla a direita 
+        if ( balanco > 1 && getBalanco( aux.esquerda ) < 0 ) {  
+            aux.esquerda = rotacaoSimplesEsquerda( aux.esquerda );  
+            return rotacaoSimplesEsquerda( aux );  
         }  
   
-	 */
-	
-	
+        // Rotação simples a direita
+        if ( balanco < -1 && getBalanco( aux.direita ) <= 0)  
+            return rotacaoSimplesDireita( aux );  
+  
+        // Rotação dupla a esquerda
+        if ( balanco < -1 && getBalanco( aux.direita ) > 0) {  
+            aux.direita = rotacaoSimplesDireita( aux.direita );  
+            return rotacaoSimplesEsquerda( aux );  
+        }  
+		
+		return aux;
+	}	
 }

@@ -164,7 +164,7 @@ public class ArvBinBusca {
 	}
 	
 	//Retorna a chave de menor valor a partir de um nó desejado.
-	private No minimo( No aux ) {
+	protected No minimo( No aux ) {
 		if ( aux.esquerda == null )
 			return aux;
 		
@@ -178,7 +178,7 @@ public class ArvBinBusca {
 	}
 		
 	//Remove elemento minimo de uma subarvore do do nó auxiliar específico
-	private No removeMin( No aux ) {
+	protected No removeMin( No aux ) {
 		if ( aux.esquerda == null )
 			return aux.direita;
 		
@@ -186,7 +186,6 @@ public class ArvBinBusca {
 		return aux;
 				
 	}
-
 	
 	//Remove elemento com chave correspodente, caso exista na Arvore
 	public boolean remove( int chave ) {

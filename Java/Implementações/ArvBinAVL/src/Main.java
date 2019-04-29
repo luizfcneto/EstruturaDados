@@ -74,6 +74,25 @@ public class Main {
 		
 		System.out.println();
 		
+		//remove elemento da arvore:
+		arvoreBUSCA.remove( 8 );
+		arvoreBUSCA.remove( 6 );
+		
+		arvoreAVL.remove( 8 );
+		arvoreAVL.remove( 6 );
+		
+		//Imprime Arvore sem rotação:
+		System.out.println( "Arvore de Busca:" );
+		arvoreBUSCA.mostra();
+				
+		System.out.println("\n");
+		//Imprime Arvore AVL com rotação:
+		System.out.println( "Arvore AVL:" );
+		arvoreAVL.mostra();
+				
+		System.out.println();
+		
+		
 	}
 	
 }
